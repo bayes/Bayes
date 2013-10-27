@@ -1,0 +1,3 @@
+bayes.MyAuthenticator
+bayes.DoCGI
+bayes.FailedAuthentificationException

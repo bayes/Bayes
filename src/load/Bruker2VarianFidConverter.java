@@ -1,0 +1,126 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package load;
+import bayes.DirectoryManager;
+import bruker.BrukerDataInfo;
+import bruker.BrukerFidReader;
+import utilities.*;
+import fid.*;
+import java.io.*;
+/**
+ *
+ * @author apple
+ */
+public class Bruker2VarianFidConverter {
+
+   public static  boolean readAndWrite(File sourceFile) {
+        BrukerFidReader reader = new  BrukerFidReader(sourceFile);
+        if (reader.isLoaded()  == false){  return false; }
+          
+        // write binary fid, procpar and ffh file
+        // in the curreExp/fid directory
+        boolean isWrite      =  writeFidFiles(sourceFile, reader );
+
+
+        return   isWrite ;
+    }
+
+
+     public static boolean writeFidFiles(File sourceFile,  BrukerFidReader reader){
+         File fidDir             =   DirectoryManager.getFidDir() ;
+
+       // make sure image directory file exists
+       if (fidDir .exists() == false){fidDir.mkdirs();}
+
+
+        File fidDst                         =   DirectoryManager.getFidFile();
+        File ffhDst                         =   DirectoryManager.getFidDesciptorFile ();
+        File procparFile                    =   DirectoryManager.getProcparFile();
+        File abscissFile                    =   DirectoryManager.getAbscissaFile();
+        File textFile                       =   DirectoryManager.getTextFile();
+
+        // create procpar
+        BrukerDataInfo  paramsReader         =   reader.getParamsReader();
+        Procpar procpar                     =   BrukerReader2Procpar( paramsReader);
+
+
+        // write fid file
+        FidWriter fidWriter                 =   new FidWriter();
+        fidWriter.getFileHeader ().nblocks  =    paramsReader.getNumberOfTraces();
+        fidWriter.getFileHeader ().ntraces  =   1;
+        fidWriter.getFileHeader ().np       =   paramsReader.getNp();
+
+        try{
+            fidWriter.writeFid( fidDst, reader.getFid_real(), reader.getFid_imag());
+        } catch(IOException exp){
+            exp.printStackTrace();
+            DisplayText.popupMessage("Failed to write fid binary file.");
+
+            // delete previously written files
+            IO.emptyDirectory(fidDir);
+            return false;
+        }
+
+
+
+        // write procpar file
+        procpar.setFileSource(sourceFile.getAbsolutePath());
+
+        ProcparFileWriterForFid  writer =   new    ProcparFileWriterForFid  ();
+        boolean isDone                  =   writer.writeProcparFile(procpar, procparFile );
+
+
+        if (isDone == false){
+            DisplayText.popupMessage("Failed to write procpar file.");
+
+            // delete previously written files
+            IO.emptyDirectory(fidDir);
+
+            return false;
+        }
+
+
+        // write Fid File Header (FFH) (Fid Descriptor) file
+        isDone  = FidIO.createAndSaveFfhFile(procpar, ffhDst);
+        if (isDone == false){
+            DisplayText.popupMessage("Failed to write ffh file.");
+
+            // delete previously written files
+            IO.emptyDirectory(fidDir);
+
+            return false;
+        }
+
+         // write Fid File Header (FFH) (Fid Descriptor) file
+         String str = String.format("Created from text file %s",  sourceFile.getAbsolutePath());
+         isDone     = IO.writeFileFromString(str, textFile );
+        if (isDone == false){
+            DisplayText.popupMessage("Failed to text file.");
+
+            // delete previously written files
+            IO.emptyDirectory(fidDir);
+
+            return false;
+        }
+
+        return true;
+    }
+     public static Procpar BrukerReader2Procpar(  BrukerDataInfo breader ){
+        Procpar procpar = new  Procpar();
+
+        int np              =   breader.getNp();
+        double sw_hertz     =   breader.getSweepWidthHERTZ();
+        float at            =   (float)(np/2/sw_hertz);
+        float sfrq          =   (float)breader.getSpectrometerFrequency();
+        procpar.updateProcpar(at, sfrq, np);
+        procpar.setLb(1f);
+        procpar.setArraydim(breader.getNumberOfRepetions());
+
+
+        return procpar;
+    }
+
+}

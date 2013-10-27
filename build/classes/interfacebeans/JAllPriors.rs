@@ -1,0 +1,4 @@
+interfacebeans.PriorTypeCellRenderer
+interfacebeans.JAllPriorsCellRenderer
+interfacebeans.JAllPriors
+interfacebeans.FrequencyComparator

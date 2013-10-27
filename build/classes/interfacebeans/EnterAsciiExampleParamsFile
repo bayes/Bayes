@@ -1,0 +1,9 @@
+  1   Number of Abscissa
+  0   Number of model vectors
+  1   Number of data cols
+  3   Number of Priors
+DecayRate             0.000e+00  1.000e+00  5.000e+00    1.000e+00   Positive(e)  LowHigh(ne)     NonLinear
+MzInit               -3.000e+02  0.000e+00  0.00000e+00  1.000e+02   Gaussian(e)  NotOrdered(ne)  NonLinear
+MzInfty               0.000e+00  0.000e+00  3.00000e+02  1.000e+02   Gaussian(e)  NotOrdered(ne)  NonLinear
+  1   Number of Derived parameters
+DecayTime

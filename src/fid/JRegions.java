@@ -1,0 +1,383 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/*
+ * JRegions.java
+ *
+ * Created on Mar 2, 2010, 10:14:04 PM
+ */
+
+package fid;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
+import utilities.ClipboardManager;
+import bayes.DirectoryManager;
+import utilities.IO;
+
+/**
+ *
+ * @author apple
+ */
+public class JRegions extends javax.swing.JDialog {
+
+    private JRegions(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+    }
+    private static final long serialVersionUID          =   7526372295622516127L;
+    private static JRegions  instance                   =   null;
+    StyledDocument document;
+
+
+       {
+        StyleContext context    = new StyleContext();
+        document                = new DefaultStyledDocument(context);
+
+        Style style = context.getStyle(StyleContext.DEFAULT_STYLE);
+        StyleConstants.setAlignment(style, StyleConstants.ALIGN_LEFT);
+
+
+    }
+
+    private static JRegions getInstance( ) {
+      if(instance == null) {
+         instance = new JRegions(null, false);
+
+      }
+
+      return instance;
+   }
+    public static  JRegions showDialog( ){
+        getInstance( ). update();
+        /*
+        if ( getInstance( ).isShowing() == false){
+            getInstance( ).setLocation(MouseInfo.getPointerInfo().getLocation());
+        }
+        */
+        getInstance( ).setVisible(true);
+        getInstance( ).toFront();
+
+       return instance;
+    }
+
+
+    public void update(){
+             File   file     =  DirectoryManager.getRegionsFile();
+             String content  =  IO.readFileToString(file);
+             if (content!=null){
+                 int length = this.getTextPane().getDocument().getLength();
+                 setText(content,length);
+             }
+             else {
+                setText("");
+             }
+    }
+    public String getText(){
+        if ( getTextPane() == null) {return "";}
+        return getTextPane().getText();
+    }
+    private void setText(String text, int caretPosition){
+        if (text == null) {text = "";}
+        getTextPane().setText(text);
+        getTextPane().setCaretPosition(caretPosition);
+
+    }
+    public void setText(String txt){
+         setText( txt, 0);
+    }
+
+     public JPopupMenu makePopupMenu(){
+
+
+        JPopupMenu popup            =    new JPopupMenu();
+
+        JMenuItem copyMenuItem     =     new JMenuItem("Copy All");
+        copyMenuItem.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                 copy();
+            }
+        });
+        popup.add(  copyMenuItem);
+
+
+        JMenuItem saveMenuItem     =     new JMenuItem("Save");
+        saveMenuItem.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                 save();
+            }
+        });
+        popup.add( saveMenuItem);
+
+
+
+        JMenuItem printMenuItem     =     new JMenuItem("Print");
+        printMenuItem.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                print ();
+            }
+        });
+        popup.add( printMenuItem);
+
+
+        return popup;
+    }
+     public static void close (){
+            getInstance( ).setVisible(false);
+            getInstance( ).dispose();
+    }
+     public void copy(){
+          ClipboardManager.putIntoClipboard(getText());
+    }
+    public void saveToArbitrary (){
+        JFileChooser fc  = new JFileChooser();
+        fc.setFileSelectionMode(javax.swing.JFileChooser.FILES_ONLY);
+        fc.setMultiSelectionEnabled(true);
+
+
+         int returnVal = fc.showSaveDialog(fc);
+
+         if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File   file     =   fc.getSelectedFile ();
+            IO.writeFileFromString(getText(), file);
+        } else {
+            return;
+        }
+    }
+    public void save (){
+      File   file     =  DirectoryManager.getRegionsFile();
+      IO.writeFileFromString(getText(), file);
+    }
+    public void delete (){
+      File   file     =  DirectoryManager.getRegionsFile();
+      file.delete();
+      update();
+    }
+    public void print (){
+        try{
+            getTextPane().print();
+        }
+        catch (Exception e){e.printStackTrace();}
+    }
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        copyToClipboardButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        masterPane = new javax.swing.JPanel();
+        jScrollPane = new javax.swing.JScrollPane();
+        textPane =  new interfacebeans.AntiAliasedTextPane(document);
+        closeButton = new javax.swing.JButton();
+        markButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+
+        copyToClipboardButton.setBackground(new java.awt.Color(204, 204, 204));
+        copyToClipboardButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        copyToClipboardButton.setText("Copy  All");
+        copyToClipboardButton.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n\nCopy  entire text to clipboard.\n\n\n</font></p><html>\n\n\n"); // NOI18N
+        copyToClipboardButton.setName("copyToClipboardButton"); // NOI18N
+        copyToClipboardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyToClipboardButtonActionPerformed(evt);
+            }
+        });
+
+        saveButton.setBackground(new java.awt.Color(204, 204, 204));
+        saveButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        saveButton.setText("Save ");
+        saveButton.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nSave to bayes.regions file.\n\n</font></p><html>\n\n\n"); // NOI18N
+        saveButton.setName("saveButton"); // NOI18N
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Bayes Regions");
+        setAlwaysOnTop(true);
+        setName("Form"); // NOI18N
+
+        masterPane.setName("masterPane"); // NOI18N
+
+        jScrollPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jScrollPane.setName("jScrollPane"); // NOI18N
+
+        //javax.swing.JTextPan
+        textPane.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        textPane.setMargin(new java.awt.Insets(20, 20, 10, 10));
+        textPane.setName("textPane"); // NOI18N
+        textPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                textPaneMousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textPaneMouseClicked(evt);
+            }
+        });
+        textPane.getDocument().addDocumentListener(new DocumentListener(){
+            public void insertUpdate(DocumentEvent e) {
+                save();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                save();
+            }
+            public void changedUpdate(DocumentEvent e) {
+                //Plain text components do not fire these events
+            }
+
+        });
+        jScrollPane.setViewportView(textPane);
+
+        closeButton.setBackground(new java.awt.Color(204, 204, 204));
+        closeButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        closeButton.setText("Close "); // NOI18N
+        closeButton.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n Close  the window.\n\n</font></p><html>\n\n\n"); // NOI18N
+        closeButton.setName("closeButton"); // NOI18N
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
+        markButton.setBackground(new java.awt.Color(204, 204, 204));
+        markButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        markButton.setForeground(new java.awt.Color(102, 0, 0));
+        markButton.setText("Mark");
+        markButton.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n\nMark  a new frequency region<br>\nfrom cursors in FidViewer.\n\n</font></p><html>\n\n\n"); // NOI18N
+        markButton.setName("markButton"); // NOI18N
+        markButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                markButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setBackground(new java.awt.Color(204, 204, 204));
+        deleteButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        deleteButton.setText("Clear All");
+        deleteButton.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nClear text pane and delete<br>\nbayes.regions file\n</font></p><html>\n\n\n"); // NOI18N
+        deleteButton.setName("deleteButton"); // NOI18N
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout masterPaneLayout = new org.jdesktop.layout.GroupLayout(masterPane);
+        masterPane.setLayout(masterPaneLayout);
+        masterPaneLayout.setHorizontalGroup(
+            masterPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(masterPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(masterPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(masterPaneLayout.createSequentialGroup()
+                        .add(deleteButton)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(markButton)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(closeButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 99, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(masterPaneLayout.createSequentialGroup()
+                        .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                        .add(22, 22, 22)))
+                .addContainerGap())
+        );
+
+        masterPaneLayout.linkSize(new java.awt.Component[] {closeButton, deleteButton, markButton}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        masterPaneLayout.setVerticalGroup(
+            masterPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, masterPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(masterPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(deleteButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(markButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(closeButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        getContentPane().add(masterPane, java.awt.BorderLayout.CENTER);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void textPaneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textPaneMousePressed
+        if(!SwingUtilities.isRightMouseButton(evt) )  { return;}
+        makePopupMenu().show(evt.getComponent(), evt.getX(), evt.getY());
+}//GEN-LAST:event_textPaneMousePressed
+
+    private void textPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textPaneMouseClicked
+
+}//GEN-LAST:event_textPaneMouseClicked
+    private void copyToClipboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyToClipboardButtonActionPerformed
+        copy();
+    }//GEN-LAST:event_copyToClipboardButtonActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        save ();
+    }//GEN-LAST:event_saveButtonActionPerformed
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+
+        close();
+}//GEN-LAST:event_closeButtonActionPerformed
+
+    private void markButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_markButtonActionPerformed
+       FidViewer.getInstance().addRegions();
+       update();
+    }//GEN-LAST:event_markButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+      delete();
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    /**
+    * @param args the command line arguments
+    */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JRegions dialog = new JRegions(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton closeButton;
+    private javax.swing.JButton copyToClipboardButton;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JButton markButton;
+    private javax.swing.JPanel masterPane;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JTextPane textPane;
+    // End of variables declaration//GEN-END:variables
+    public javax.swing.JTextPane getTextPane () {
+        return textPane;
+    }
+}
