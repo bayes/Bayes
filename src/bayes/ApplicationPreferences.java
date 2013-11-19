@@ -5,6 +5,7 @@
 
 package bayes;
 
+import fid.FidViewerPreferences;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -176,6 +177,7 @@ public class ApplicationPreferences {
          refreshEnableTooltips();
          refreshTooltipTime();
          refreshScreenShotFormat();
+         refreshFidPreferences();
     }
   
     public static void  refreshEnableTooltips(){
@@ -193,11 +195,14 @@ public class ApplicationPreferences {
         String format   =     ApplicationPreferences.getScreenShotFormat();
         Screenshot.setDefaultType(format);
     }
+    public static void  refreshFidPreferences(){
+         FidViewerPreferences.refreshCursorValueFormat();
+    }
  
 
 
 
-  
+
     public static String getLookAndFeel(){
       return  prefs.get(LOOK_AND_FEEL_NAME_KEY  , LOOK_AND_FEEL_NAME_NIMBUS ).toString();
     }
