@@ -1260,8 +1260,13 @@ private void plotJListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
         plot.setDomainGridlinePaint(Color.white); 
         plot.setRangeGridlinePaint(Color.white); 
         
-      
-        chart.setTitle( getSelectedPlotInfo().getTitle());
+        String title        =    getSelectedPlotInfo().getTitle();
+        EXTRA_TYPE extra    =    getSelectedPlotInfo().getExtra();
+        if (extra == EXTRA_TYPE.MEAN){
+            title = title +"\n" + getSelectedPlotInfo().getDataInfo();
+        }
+        chart.setTitle( title);
+       
         y_axis.setLabel ( getSelectedPlotInfo().getY_label());
         x_axis.setLabel ( getSelectedPlotInfo().getX_label());
         
