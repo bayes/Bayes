@@ -118,7 +118,6 @@ public class BayesView extends FrameView implements
         getFrame().setIconImage(img);
 
         initComponents();
-
         initModelDesciptons();
 
         setAcitveLoadButtons(false);

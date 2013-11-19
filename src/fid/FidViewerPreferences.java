@@ -57,7 +57,7 @@ public class FidViewerPreferences {
        }
     }
 
-    public static void refreshCursorValueFormat(){
+     public static void refreshCursorValueFormat(){
             int val                     =  FID_CURSOfR_PRESISION_DEF;
             try{
                 val                     =    getFidCursorPresision();
