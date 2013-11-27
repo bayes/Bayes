@@ -819,7 +819,6 @@ public class BayesAnalyze   extends     javax.swing.JPanel
                 IO.copyFile (file, new File ( distDir , file.getName ()));
             }
         
-       
         // overwrie units if necessary and copy fid procar file
         UNITS currentUnits      =   FidViewer.getInstance().getUnits();    
         File procpar            =   DirectoryManager.getProcparFile();
