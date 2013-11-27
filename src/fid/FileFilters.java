@@ -29,10 +29,7 @@ public class FileFilters {
   }
    static public class   FileNameStartsWithBayes  implements   FileFilter{
         public boolean accept(File file) {
-            String str1    = "Bayes"; //"Bayes";
-            String str2    = "bayes"; //"bayes";
-            if (file.getName().startsWith( str1 )  == true) { return true;}
-            if (file.getName().startsWith( str2 )  == true) { return true;}
+            if (file.getName().toLowerCase().startsWith("bayes" )  == true) { return true;}
             return false;
         }
 }

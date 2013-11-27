@@ -818,6 +818,16 @@ public class BayesAnalyze   extends     javax.swing.JPanel
             for (File file : children) {
                 IO.copyFile (file, new File ( distDir , file.getName ()));
             }
+        
+            
+        UNITS currentUnits      =   FidViewer.getInstance().getUnits();    
+        File procpar            =   DirectoryManager.getProcparFile();
+        if (currentUnits!= null && procpar != null){
+            File dstProcparFile     =   DirectoryManager.getProcparFile(distDir);
+            Procpar.overwriteUnits(procpar, dstProcparFile, currentUnits);
+        }
+    
+        
         }
     }//GEN-LAST:event_saveExp_buttonActionPerformed
     private void phaseComboBoxActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phaseComboBoxActionPerformed

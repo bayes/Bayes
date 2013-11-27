@@ -840,7 +840,50 @@ public class Procpar implements Serializable, ProcparConstants {
 
       return result;
     }
+    public static boolean overwriteUnits (File src, File dst, UNITS units){
+        String content               =   IO.readFileToString( src);
+        StringBuilder newContent     =   new StringBuilder();
 
+        Scanner scanner              =   new Scanner(content);
+        Pattern p                    =   Pattern.compile("\\s+");
+        boolean matchFound           =   false;
+
+       while(scanner.hasNextLine()== true ){
+        String line            =  scanner.nextLine();
+        if(line == null) { break;}
+
+        String tmp                   =    line.trim();
+        matchFound                   =    tmp.startsWith(AXIS_KEY + " ");
+
+        newContent.append(line);
+        newContent.append("\n");
+
+        if (matchFound ){
+               line                  =   scanner.nextLine().trim();
+               String [] strs        =   line.split (regex);
+               if (strs.length < 2) {
+                   newContent.append(line);
+                   newContent.append("\n");
+                   break;
+               }
+               String unitValue  = (units == UNITS.PPM)?"p":"h";
+               String newLine       = strs[0] + " \""+unitValue+"\"";
+               
+               newContent.append(newLine);
+               newContent.append("\n");
+
+        }
+       
+       
+      }
+
+
+
+      scanner.close();
+
+      boolean writeFile = IO.writeFileFromString(newContent.toString(), dst);
+      return writeFile;
+    }
 
     public static String [] readValue (String content, String key){
       String [] str         =   null; // data for abscissa
