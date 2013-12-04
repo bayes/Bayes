@@ -516,7 +516,7 @@ public class Ascii2FidDialog extends javax.swing.JDialog {
         while(scanner.hasNextLine()){
             line                =    scanner.nextLine();
             coutnLine           =    coutnLine + 1;
-            tmp                 =    line.split( regex);
+            tmp                 =    line.trim().split( regex);
             if (tmp.length == 0 ||tmp.length != parametercount ){
                 errMessage = String.format("Error when parsing abscissa file.\n"
                                            +"Line number %d is not valid.\n"
