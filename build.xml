@@ -85,9 +85,10 @@
 
           <signjar
             destDir="${sign.dir}"
-            alias="jsign"
-            keystore="/Users/apple/.keystore"
-            storepass="mukulia"
+            alias="bayeskey"
+            keystore="/home/larry/.keystore"
+            storepass="PissOff22"
+            keypass="PissOff22"
             preservelastmodified="true"
             verbose="true"
             executable="/usr/bin/jarsigner"
@@ -101,9 +102,10 @@
          <signjar
 
             destDir="${signLibDirName}"
-            alias="jsign"
-            keystore="/Users/apple/.keystore"
-            storepass="mukulia"
+            alias="bayeskey"
+            keystore="/home/larry/.keystore"
+            storepass="PissOff22"
+            keypass="PissOff22"
             preservelastmodified="true"
             verbose="true"
             executable="/usr/bin/jarsigner"
