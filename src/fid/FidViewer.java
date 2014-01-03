@@ -1116,7 +1116,7 @@ public FidPopupMenu getPopupMenu(){
         // bayesparams files exist and loaded correctly
         // load and set resonances from bayes.model.file
         // with lowest available index ( modelNumbers.from)
-        FidModelNumbers modelNumbers = getModelNumbers();
+        FidModelNumbers modelNumbers = getModelNumbers();   
 
         if (modelNumbers.isLoaded() == true){
             int modelIndex                  =   getFidModelIndex(curTrace,  modelNumbers);
@@ -1271,6 +1271,12 @@ public FidPopupMenu getPopupMenu(){
         pane.add(this);
         pane.revalidate();
         pane.repaint();
+    }
+    
+    public  void updatePlotAndBayesAnalyzeParameters() {
+         this.updateFromBayesAnalyzeFiles();
+         this.updatePlot();
+    
     }
     public static void createAndShowGUI() {
 
@@ -1611,8 +1617,8 @@ public FidPopupMenu getPopupMenu(){
     }
     public BayesParamsReader getParamsReader () {
         return paramsReader;
-    }
-    public static int getFidModelIndex ( int curFidModel, FidModelNumbers modelNumbers) {
+    }  
+     public static int getFidModelIndex ( int curFidModel, FidModelNumbers modelNumbers) {
         int firstFid    =    modelNumbers.getFrom();
         int lastFid     =    modelNumbers.getTo();
         int byFid       =    modelNumbers.getBy();

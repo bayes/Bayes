@@ -314,11 +314,8 @@ public class BayesAnalyze   extends     javax.swing.JPanel
     }
  
     public void     updateParametersAfterJobWasRetreivedFromServer(){
-         FidViewer  fv                  =  FidViewer.getInstance();
-       
-         fv.updateFromBayesAnalyzeFiles();
+         FidViewer.getInstance().updatePlotAndBayesAnalyzeParameters();
          updateResonancesMessage ();
-         fv.updatePlot();
   
     } 
     public void     updateParametersOnFidLoad(){

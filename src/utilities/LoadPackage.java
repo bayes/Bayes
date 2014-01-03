@@ -5,11 +5,10 @@
 
 package utilities;
 import bayes.DirectoryManager;
-import java.io.*;
 import fid.Resonance;
 import applications.model.*;
 import applications.bayesAnalyze.BayesAnalyze;
-import utilities.*;
+import applications.bayesFindResonances.BayesFindResonances;
 /**
  *
  * @author apple
@@ -21,7 +20,8 @@ public class LoadPackage {
 
 
         if (model instanceof FidModel){
-            if((model instanceof BayesAnalyze) == false){
+            if((model instanceof BayesAnalyze) == false && 
+                    (model instanceof BayesFindResonances) == false ){
                 IO.emptyDirectory(DirectoryManager.getBayesAnalyzeDir());
                 Resonance.getResonanceList().clear();
             }

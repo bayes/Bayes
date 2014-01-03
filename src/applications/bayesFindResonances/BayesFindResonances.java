@@ -713,6 +713,7 @@ private void nMaxRes_ftPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN
         String property =  evt.getPropertyName();
 
         if(property.equals(BayesManager.JRUN_JOB_END)  ){
+                FidViewer.getInstance().updatePlotAndBayesAnalyzeParameters();
                 setActive(true);
                 AllViewers.showResultsViewer();
                 return;
