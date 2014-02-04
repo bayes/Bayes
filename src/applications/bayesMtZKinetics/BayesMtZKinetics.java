@@ -126,6 +126,7 @@ public class BayesMtZKinetics extends javax.swing.JPanel implements AsciiModel,b
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jSplitPane1 = new javax.swing.JSplitPane();
         tool_pane = new javax.swing.JPanel();
@@ -134,7 +135,7 @@ public class BayesMtZKinetics extends javax.swing.JPanel implements AsciiModel,b
         jSetTemp = new javax.swing.JFormattedTextField();
         tempUncertainityLabel = new javax.swing.JLabel();
         jSetTempSigma = new JFormattedTextField(new DecimalFormat("##0.0#"));
-        jPanel1 = new javax.swing.JPanel();
+        jViscotiyTablePane = new javax.swing.JPanel();
         jLoadVis = new javax.swing.JButton();
         showVis_btn = new javax.swing.JButton();
         jRun = new run.JRun();
@@ -157,7 +158,7 @@ public class BayesMtZKinetics extends javax.swing.JPanel implements AsciiModel,b
         temp_pane.setPreferredSize(new java.awt.Dimension(142, 60));
         temp_pane.setLayout(new java.awt.GridLayout(2, 2));
 
-        tempSetLabel.setFont(new java.awt.Font("Dialog", 1, 13));
+        tempSetLabel.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         tempSetLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         tempSetLabel.setText("Set "); // NOI18N
         tempSetLabel.setName("tempSetLabel"); // NOI18N
@@ -193,11 +194,11 @@ public class BayesMtZKinetics extends javax.swing.JPanel implements AsciiModel,b
         });
         temp_pane.add(jSetTempSigma);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Viscosity Table"));
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setLayout(new java.awt.GridLayout(2, 1, 0, 4));
+        jViscotiyTablePane.setBorder(javax.swing.BorderFactory.createTitledBorder("Viscosity Table"));
+        jViscotiyTablePane.setName("jViscotiyTablePane"); // NOI18N
+        jViscotiyTablePane.setLayout(new java.awt.GridBagLayout());
 
-        jLoadVis.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        jLoadVis.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLoadVis.setText(" Load "); // NOI18N
         jLoadVis.setToolTipText("Navigate to and load a non-water viscosity table."); // NOI18N
         jLoadVis.setName("jLoadVis"); // NOI18N
@@ -206,9 +207,15 @@ public class BayesMtZKinetics extends javax.swing.JPanel implements AsciiModel,b
                 jLoadVisActionPerformed(evt);
             }
         });
-        jPanel1.add(jLoadVis);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
+        jViscotiyTablePane.add(jLoadVis, gridBagConstraints);
 
-        showVis_btn.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        showVis_btn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         showVis_btn.setText(" Show"); // NOI18N
         showVis_btn.setToolTipText("Navigate to and load a non-water viscosity table."); // NOI18N
         showVis_btn.setName("showVis_btn"); // NOI18N
@@ -217,7 +224,13 @@ public class BayesMtZKinetics extends javax.swing.JPanel implements AsciiModel,b
                 showVis_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(showVis_btn);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
+        jViscotiyTablePane.add(showVis_btn, gridBagConstraints);
 
         jRun.setName("jRun"); // NOI18N
 
@@ -236,23 +249,25 @@ public class BayesMtZKinetics extends javax.swing.JPanel implements AsciiModel,b
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(temp_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 207, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 125, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jViscotiyTablePane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 142, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(193, 193, 193))
+                .add(298, 298, 298))
         );
         tool_paneLayout.setVerticalGroup(
             tool_paneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(temp_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .add(jRun, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
             .add(tool_paneLayout.createSequentialGroup()
                 .add(jserver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(jResetSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jViscotiyTablePane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .add(tool_paneLayout.createSequentialGroup()
+                .add(jResetSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        tool_paneLayout.linkSize(new java.awt.Component[] {jPanel1, jResetSave, jRun, jserver, temp_pane}, org.jdesktop.layout.GroupLayout.VERTICAL);
+        tool_paneLayout.linkSize(new java.awt.Component[] {jResetSave, jRun, jViscotiyTablePane, jserver, temp_pane}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
         jSplitPane1.setTopComponent(tool_pane);
 
@@ -581,12 +596,12 @@ private void showVis_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel graph_panel;
     private javax.swing.JButton jLoadVis;
-    private javax.swing.JPanel jPanel1;
     private interfacebeans.JResetSave jResetSave;
     private run.JRun jRun;
     protected javax.swing.JFormattedTextField jSetTemp;
     protected javax.swing.JFormattedTextField jSetTempSigma;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel jViscotiyTablePane;
     private interfacebeans.JServer jserver;
     private javax.swing.JButton showVis_btn;
     private javax.swing.JLabel tempSetLabel;
