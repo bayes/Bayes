@@ -69,9 +69,9 @@
                           <Component id="jPanel2" min="-2" pref="245" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="processSlice" min="-2" pref="126" max="-2" attributes="1"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="SettingsPane" min="-2" pref="314" max="-2" attributes="1"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="SettingsPane" min="-2" pref="360" max="-2" attributes="1"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jResetSave" min="-2" pref="133" max="-2" attributes="0"/>
                           <EmptySpace pref="245" max="32767" attributes="0"/>
                       </Group>
@@ -82,9 +82,12 @@
                       <Component id="jRun" linkSize="20" alignment="0" min="-2" max="-2" attributes="1"/>
                       <Component id="jResetSave" linkSize="20" alignment="0" max="32767" attributes="1"/>
                       <Component id="processSlice" linkSize="20" alignment="0" min="-2" max="-2" attributes="1"/>
-                      <Component id="SettingsPane" linkSize="20" alignment="0" min="-2" max="-2" attributes="1"/>
                       <Component id="jPanel2" linkSize="20" alignment="0" pref="94" max="32767" attributes="1"/>
                       <Component id="jserver" linkSize="20" alignment="0" pref="94" max="32767" attributes="1"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="SettingsPane" linkSize="20" min="-2" max="-2" attributes="1"/>
+                          <EmptySpace pref="44" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -386,6 +389,12 @@
                         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                           <Insets value="[0, 0, 0, 0]"/>
                         </Property>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[160, 23]"/>
+                        </Property>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[150, 23]"/>
+                        </Property>
                         <Property name="name" type="java.lang.String" value="useMaxLiklihoodRadioButton" noResource="true"/>
                         <Property name="rolloverEnabled" type="boolean" value="true"/>
                         <Property name="rolloverIcon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -416,12 +425,15 @@
                         <Property name="text" type="java.lang.String" value="Find Outliers    " noResource="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;&lt;font color=&quot;red&quot; size = &quot;+1&quot;&gt;&lt;bold&gt; &#xa;Enable outlier detection.&lt;/font&gt;&lt;/bold&gt;&lt;br&gt;  &#xa;(i.e., look for residual&lt;br&gt;&#xa;values that are larger than 3 standard deviations &lt;br&gt;&#xa; and remove these outliers from the analysis.)&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;&#xa;&#xa;&#xa;" noResource="true"/>
                         <Property name="contentAreaFilled" type="boolean" value="false"/>
-                        <Property name="horizontalAlignment" type="int" value="11"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="2"/>
                         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/bayes/resources/buttons/rb.gif"/>
                         </Property>
                         <Property name="iconTextGap" type="int" value="16"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[2, 2, 2, 2]"/>
+                        </Property>
                         <Property name="name" type="java.lang.String" value="findOutliersCheckBox" noResource="true"/>
                         <Property name="rolloverEnabled" type="boolean" value="true"/>
                         <Property name="rolloverIcon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -460,6 +472,9 @@
                         <Property name="iconTextGap" type="int" value="16"/>
                         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                           <Insets value="[0, 0, 0, 0]"/>
+                        </Property>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[160, 150]"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="useGaussianCheckBox" noResource="true"/>
                         <Property name="rolloverEnabled" type="boolean" value="true"/>

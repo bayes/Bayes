@@ -227,9 +227,9 @@ public class AnalyzeImagePixels extends javax.swing.JPanel
         SettingsPane.setLayout(new java.awt.GridLayout(2, 2, 6, 6));
 
         jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel1.setLayout(new java.awt.GridLayout());
 
-        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         noiseStdDevLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         noiseStdDevLabel.setLabelFor(stdDevField);
         noiseStdDevLabel.setText("Noise SD");
@@ -251,7 +251,7 @@ public class AnalyzeImagePixels extends javax.swing.JPanel
 
         SettingsPane.add(jPanel1);
 
-        useMaxLiklihoodRadioButton.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        useMaxLiklihoodRadioButton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         useMaxLiklihoodRadioButton.setSelected(this.isUseMaximumLikelihood ());
         useMaxLiklihoodRadioButton.setText("Max Probability"); // NOI18N
         useMaxLiklihoodRadioButton.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nUse a searching routine to locate the maximum<br>\nof the posterior probability, this runs much faster.<br>\n\n</font></p><html>\n"); // NOI18N
@@ -261,6 +261,8 @@ public class AnalyzeImagePixels extends javax.swing.JPanel
         useMaxLiklihoodRadioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bayes/resources/buttons/rb.gif"))); // NOI18N
         useMaxLiklihoodRadioButton.setIconTextGap(16);
         useMaxLiklihoodRadioButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        useMaxLiklihoodRadioButton.setMaximumSize(new java.awt.Dimension(160, 23));
+        useMaxLiklihoodRadioButton.setMinimumSize(new java.awt.Dimension(150, 23));
         useMaxLiklihoodRadioButton.setName("useMaxLiklihoodRadioButton"); // NOI18N
         useMaxLiklihoodRadioButton.setRolloverEnabled(true);
         useMaxLiklihoodRadioButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/bayes/resources/buttons/rbr.gif"))); // NOI18N
@@ -269,15 +271,16 @@ public class AnalyzeImagePixels extends javax.swing.JPanel
         useMaxLiklihoodRadioButton.addActionListener(formListener);
         SettingsPane.add(useMaxLiklihoodRadioButton);
 
-        findOutliersCheckBox.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        findOutliersCheckBox.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         findOutliersCheckBox.setSelected(isOutliers());
         findOutliersCheckBox.setText("Find Outliers    "); // NOI18N
         findOutliersCheckBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n<font color=\"red\" size = \"+1\"><bold> \nEnable outlier detection.</font></bold><br>  \n(i.e., look for residual<br>\nvalues that are larger than 3 standard deviations <br>\n and remove these outliers from the analysis.)\n</font></p><html>\n\n\n"); // NOI18N
         findOutliersCheckBox.setContentAreaFilled(false);
-        findOutliersCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        findOutliersCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         findOutliersCheckBox.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         findOutliersCheckBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bayes/resources/buttons/rb.gif"))); // NOI18N
         findOutliersCheckBox.setIconTextGap(16);
+        findOutliersCheckBox.setMargin(new java.awt.Insets(2, 2, 2, 2));
         findOutliersCheckBox.setName("findOutliersCheckBox"); // NOI18N
         findOutliersCheckBox.setRolloverEnabled(true);
         findOutliersCheckBox.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/bayes/resources/buttons/rbr.gif"))); // NOI18N
@@ -296,6 +299,7 @@ public class AnalyzeImagePixels extends javax.swing.JPanel
         useGaussianCheckBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bayes/resources/buttons/rb.gif"))); // NOI18N
         useGaussianCheckBox.setIconTextGap(16);
         useGaussianCheckBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        useGaussianCheckBox.setMaximumSize(new java.awt.Dimension(160, 150));
         useGaussianCheckBox.setName("useGaussianCheckBox"); // NOI18N
         useGaussianCheckBox.setRolloverEnabled(true);
         useGaussianCheckBox.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/bayes/resources/buttons/rbr.gif"))); // NOI18N
@@ -320,7 +324,7 @@ public class AnalyzeImagePixels extends javax.swing.JPanel
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(processSlice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 126, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 314, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 360, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(245, Short.MAX_VALUE))
@@ -330,9 +334,11 @@ public class AnalyzeImagePixels extends javax.swing.JPanel
             .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(jResetSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(processSlice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
             .add(jserver, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .add(toolsLayout.createSequentialGroup()
+                .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         toolsLayout.linkSize(new java.awt.Component[] {SettingsPane, jPanel2, jResetSave, jRun, jserver, processSlice}, org.jdesktop.layout.GroupLayout.VERTICAL);

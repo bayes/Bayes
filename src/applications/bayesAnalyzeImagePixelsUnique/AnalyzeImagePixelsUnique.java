@@ -247,7 +247,7 @@ public class AnalyzeImagePixelsUnique extends javax.swing.JPanel
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         noiseStdDevLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         noiseStdDevLabel.setLabelFor(stdDevField);
         noiseStdDevLabel.setText("Noise SD");
@@ -269,7 +269,7 @@ public class AnalyzeImagePixelsUnique extends javax.swing.JPanel
 
         SettingsPane.add(jPanel1);
 
-        findOutliersCheckBox.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        findOutliersCheckBox.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         findOutliersCheckBox.setSelected(isOutliers());
         findOutliersCheckBox.setText("Find Outliers    "); // NOI18N
         findOutliersCheckBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n<font color=\"red\" size = \"+1\"><bold> \nEnable outlier detection.</font></bold><br>  \n(i.e., look for residual<br>\nvalues that are larger than 3 standard deviations <br>\n and remove these outliers from the analysis.)\n</font></p><html>\n\n\n"); // NOI18N
@@ -286,16 +286,15 @@ public class AnalyzeImagePixelsUnique extends javax.swing.JPanel
         findOutliersCheckBox.addActionListener(formListener);
         SettingsPane.add(findOutliersCheckBox);
 
-        useGaussianCheckBox.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        useGaussianCheckBox.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         useGaussianCheckBox.setSelected(this.isUseGaussian());
         useGaussianCheckBox.setText("Use Gaussian   "); // NOI18N
         useGaussianCheckBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nWhen the number of parameters is near the number  <br>\nof data values, Students' t-distribution is nearly singular.<br>\nSwitch to using a Gaussian distribution to stabilize the calculation.\n\n</font></p><html>\n\n"); // NOI18N
         useGaussianCheckBox.setContentAreaFilled(false);
-        useGaussianCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         useGaussianCheckBox.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         useGaussianCheckBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bayes/resources/buttons/rb.gif"))); // NOI18N
-        useGaussianCheckBox.setIconTextGap(16);
-        useGaussianCheckBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        useGaussianCheckBox.setIconTextGap(5);
+        useGaussianCheckBox.setMargin(new java.awt.Insets(2, 2, 2, 2));
         useGaussianCheckBox.setName("useGaussianCheckBox"); // NOI18N
         useGaussianCheckBox.setRolloverEnabled(true);
         useGaussianCheckBox.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/bayes/resources/buttons/rbr.gif"))); // NOI18N
@@ -320,7 +319,7 @@ public class AnalyzeImagePixelsUnique extends javax.swing.JPanel
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(processSlice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 126, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 314, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 377, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(245, Short.MAX_VALUE))
@@ -330,9 +329,11 @@ public class AnalyzeImagePixelsUnique extends javax.swing.JPanel
             .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(jResetSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(processSlice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
             .add(jserver, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .add(toolsLayout.createSequentialGroup()
+                .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         toolsLayout.linkSize(new java.awt.Component[] {SettingsPane, jPanel2, jResetSave, jRun, jserver, processSlice}, org.jdesktop.layout.GroupLayout.VERTICAL);
@@ -367,14 +368,14 @@ public class AnalyzeImagePixelsUnique extends javax.swing.JPanel
             else if (evt.getSource() == savePriorsButton) {
                 AnalyzeImagePixelsUnique.this.savePriorsButtonActionPerformed(evt);
             }
-            else if (evt.getSource() == useMaxLiklihoodRadioButton) {
-                AnalyzeImagePixelsUnique.this.useMaxLiklihoodRadioButtonActionPerformed(evt);
-            }
             else if (evt.getSource() == findOutliersCheckBox) {
                 AnalyzeImagePixelsUnique.this.findOutliersCheckBoxActionPerformed(evt);
             }
             else if (evt.getSource() == useGaussianCheckBox) {
                 AnalyzeImagePixelsUnique.this.useGaussianCheckBoxActionPerformed(evt);
+            }
+            else if (evt.getSource() == useMaxLiklihoodRadioButton) {
+                AnalyzeImagePixelsUnique.this.useMaxLiklihoodRadioButtonActionPerformed(evt);
             }
         }
 
