@@ -3,3 +3,6 @@
 /build/test/
 test/
 /build/
+/build/**
+**/build/**
+build/**

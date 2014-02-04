@@ -1,2 +1,0 @@
-utilities.DisplayModeModel
-utilities.DisplayModeTest
