@@ -359,12 +359,12 @@ public class BayesDensityEstimation extends javax.swing.JPanel  implements appli
                 .addContainerGap()
                 .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jserver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 172, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jserver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 211, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(modelPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 126, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1391, Short.MAX_VALUE))
+                .addContainerGap(1352, Short.MAX_VALUE))
         );
         setup_panelLayout.setVerticalGroup(
             setup_panelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
