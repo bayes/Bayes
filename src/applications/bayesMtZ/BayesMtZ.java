@@ -129,8 +129,8 @@ public class BayesMtZ extends javax.swing.JPanel implements applications.model.A
             setup_panelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jResetSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(analysOptionPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-            .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 72, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(jserver, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 72, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
 
         setup_panelLayout.linkSize(new java.awt.Component[] {analysOptionPane, jResetSave, jRun, jserver}, org.jdesktop.layout.GroupLayout.VERTICAL);

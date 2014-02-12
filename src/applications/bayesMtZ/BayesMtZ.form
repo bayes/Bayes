@@ -62,8 +62,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jResetSave" linkSize="2" alignment="0" max="32767" attributes="1"/>
                   <Component id="analysOptionPane" linkSize="2" alignment="0" pref="94" max="32767" attributes="1"/>
-                  <Component id="jRun" linkSize="2" alignment="3" min="-2" pref="72" max="-2" attributes="1"/>
                   <Component id="jserver" linkSize="2" alignment="0" pref="94" max="32767" attributes="1"/>
+                  <Component id="jRun" linkSize="2" alignment="3" min="-2" pref="72" max="-2" attributes="1"/>
               </Group>
             </DimensionLayout>
           </Layout>

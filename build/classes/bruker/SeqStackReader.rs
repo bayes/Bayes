@@ -1,2 +1,0 @@
-bruker.SeqStackReader
-bruker.FileNumberNameComparator
