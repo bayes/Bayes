@@ -51,7 +51,7 @@ public class BayesFindResonances extends    javax.swing.JPanel
 
 
         
-        FidModelViewer.getInstance().setVisibleModelBuild(false);
+       // FidModelViewer.getInstance().setVisibleModelBuild(false);
         initComponents();
         
         
