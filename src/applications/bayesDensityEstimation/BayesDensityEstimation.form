@@ -47,15 +47,15 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jRun" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jserver" min="-2" pref="211" max="-2" attributes="1"/>
+                      <Component id="jRun" min="-2" pref="214" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jserver" min="-2" pref="227" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="modelPanel" min="-2" pref="209" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jResetSave" min="-2" pref="126" max="-2" attributes="0"/>
-                      <EmptySpace pref="1352" max="32767" attributes="0"/>
+                      <EmptySpace pref="1322" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
