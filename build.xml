@@ -115,6 +115,5 @@
           </path>
           <flattenmapper />
         </signjar>
-
     </target>
 </project>
