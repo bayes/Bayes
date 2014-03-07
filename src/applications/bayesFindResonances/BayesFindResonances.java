@@ -93,9 +93,6 @@ public class BayesFindResonances extends    javax.swing.JPanel
         jOutputConstantSelected = new javax.swing.JCheckBox();
         constantLabel = new javax.swing.JLabel();
         jResetSave = new interfacebeans.JResetSave();
-        setModel_pane1 = new javax.swing.JPanel();
-        buildModelButton = new javax.swing.JButton();
-        dummyButton = new javax.swing.JButton();
         jserver = new interfacebeans.JServer();
         graph_pane = AllViewers.getInstance();
 
@@ -300,37 +297,6 @@ public class BayesFindResonances extends    javax.swing.JPanel
 
         jResetSave.setName("jResetSave"); // NOI18N
 
-        setModel_pane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Output"));
-        setModel_pane1.setName("setModel_pane1"); // NOI18N
-        setModel_pane1.setLayout(new java.awt.GridBagLayout());
-
-        buildModelButton.setFont(new java.awt.Font("Lucida Grande", 1, 13));
-        buildModelButton.setText("Build FID  Model");
-        buildModelButton.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\nClick to list available model files.<br>\nNote, the number in the file name is the number<br>\nof resonances in the model.</html>\n\n"); // NOI18N
-        buildModelButton.setName("buildModelButton"); // NOI18N
-        buildModelButton.addActionListener(formListener);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        setModel_pane1.add(buildModelButton, gridBagConstraints);
-
-        dummyButton.setFont(new java.awt.Font("Lucida Grande", 1, 13));
-        dummyButton.setText("  ");
-        dummyButton.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\nClick to list available model files.<br>\nNote, the number in the file name is the number<br>\nof resonances in the model.</html>\n\n"); // NOI18N
-        dummyButton.setBorderPainted(false);
-        dummyButton.setContentAreaFilled(false);
-        dummyButton.setName("dummyButton"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        setModel_pane1.add(dummyButton, gridBagConstraints);
-
         jserver.setName("jserver"); // NOI18N
 
         org.jdesktop.layout.GroupLayout tool_paneLayout = new org.jdesktop.layout.GroupLayout(tool_pane);
@@ -348,25 +314,24 @@ public class BayesFindResonances extends    javax.swing.JPanel
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(setting_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 208, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(setModel_pane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 160, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         tool_paneLayout.setVerticalGroup(
             tool_paneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(setModel_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(setTraces_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(tool_paneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 105, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(jserver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 105, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-            .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(tool_paneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                .add(org.jdesktop.layout.GroupLayout.LEADING, setModel_pane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                .add(org.jdesktop.layout.GroupLayout.LEADING, setting_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            .add(tool_paneLayout.createSequentialGroup()
+                .add(tool_paneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(setModel_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(setTraces_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(tool_paneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 105, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jserver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 105, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(setting_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        tool_paneLayout.linkSize(new java.awt.Component[] {jResetSave, jRun, jserver, setModel_pane, setModel_pane1, setTraces_pane, setting_pane}, org.jdesktop.layout.GroupLayout.VERTICAL);
+        tool_paneLayout.linkSize(new java.awt.Component[] {jResetSave, jRun, jserver, setModel_pane, setTraces_pane, setting_pane}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
         toolsScrollPane.setViewportView(tool_pane);
 
@@ -389,9 +354,6 @@ public class BayesFindResonances extends    javax.swing.JPanel
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             if (evt.getSource() == jOutputConstantSelected) {
                 BayesFindResonances.this.jOutputConstantSelectedActionPerformed(evt);
-            }
-            else if (evt.getSource() == buildModelButton) {
-                BayesFindResonances.this.buildModelButtonActionPerformed(evt);
             }
         }
 
@@ -485,20 +447,6 @@ if (evt.getPropertyName().equalsIgnoreCase("value")){
         
    }
 }//GEN-LAST:event_modelFid_ftPropertyChange
-private void buildModelButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildModelButtonActionPerformed
-   
-     JPopupMenu popup               =   new JPopupMenu ();
-     File[]   files                 =   getModelFiles();
-
-     if (files == null){DisplayText.popupMessage("No model files are present.");}
-
-        for (File file :   files   ) {
-                BuildModelMenuItem menuItem   = new BuildModelMenuItem(file);
-                popup.add( menuItem );
-        }
-
-        popup.show ( getBuildModelButton (),  getBuildModelButton ().getWidth()/2, getBuildModelButton().getHeight()/2);
-}//GEN-LAST:event_buildModelButtonActionPerformed
 private void jOutputConstantSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOutputConstantSelectedActionPerformed
      clearPreviousRun();
 }//GEN-LAST:event_jOutputConstantSelectedActionPerformed
@@ -707,7 +655,6 @@ private void nMaxRes_ftPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN
         jResetSave.setActive(isActive);
         modelFid_ft.setEnabled(isActive);
         modelFid_lbl.setEnabled(isActive);
-        buildModelButton.setEnabled(isActive);
     }
     public void              propertyChange(java.beans.PropertyChangeEvent evt){
         String property =  evt.getPropertyName();
@@ -825,9 +772,7 @@ private void nMaxRes_ftPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buildModelButton;
     private javax.swing.JLabel constantLabel;
-    private javax.swing.JButton dummyButton;
     private javax.swing.JLabel firstFid_lbl;
     private javax.swing.JFormattedTextField fistFid_ft;
     private javax.swing.JPanel graph_pane;
@@ -844,7 +789,6 @@ private void nMaxRes_ftPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN
     private javax.swing.JComboBox phaseModel_cb;
     private javax.swing.JLabel phaseModel_lbl;
     private javax.swing.JPanel setModel_pane;
-    private javax.swing.JPanel setModel_pane1;
     private javax.swing.JPanel setTraces_pane;
     private javax.swing.JPanel setting_pane;
     private javax.swing.JSplitPane splitPane;
@@ -869,9 +813,6 @@ private void nMaxRes_ftPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN
     }
     public javax.swing.JComboBox            getPhaseModel_cb () {
         return phaseModel_cb;
-    }
-    public javax.swing.JButton              getBuildModelButton () {
-        return buildModelButton;
     }
     public javax.swing.JCheckBox            getOutputConstantCheckBox() {
         return jOutputConstantSelected;

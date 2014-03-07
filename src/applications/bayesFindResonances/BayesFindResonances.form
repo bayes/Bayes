@@ -68,25 +68,25 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="setting_pane" min="-2" pref="208" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="setModel_pane1" min="-2" max="-2" attributes="1"/>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jResetSave" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace pref="241" max="32767" attributes="0"/>
+                          <EmptySpace pref="409" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="setModel_pane" linkSize="17" alignment="0" min="-2" pref="73" max="-2" attributes="1"/>
-                      <Component id="setTraces_pane" linkSize="17" alignment="0" min="-2" max="-2" attributes="1"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jRun" linkSize="17" alignment="3" min="-2" pref="105" max="-2" attributes="1"/>
-                          <Component id="jserver" linkSize="17" alignment="3" min="-2" pref="105" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jResetSave" linkSize="17" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="setModel_pane1" linkSize="17" alignment="0" pref="105" max="32767" attributes="1"/>
-                          <Component id="setting_pane" linkSize="17" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="setModel_pane" linkSize="17" alignment="0" min="-2" pref="73" max="-2" attributes="1"/>
+                              <Component id="setTraces_pane" linkSize="17" alignment="0" min="-2" max="-2" attributes="1"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="jRun" linkSize="17" alignment="3" min="-2" pref="105" max="-2" attributes="1"/>
+                                  <Component id="jserver" linkSize="17" alignment="3" min="-2" pref="105" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="setting_pane" linkSize="17" alignment="0" min="-2" max="-2" attributes="1"/>
+                              <Component id="jResetSave" linkSize="17" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -398,55 +398,6 @@
                     <Property name="name" type="java.lang.String" value="jResetSave" noResource="true"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="setModel_pane1">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Output"/>
-                      </Border>
-                    </Property>
-                    <Property name="name" type="java.lang.String" value="setModel_pane1" noResource="true"/>
-                  </Properties>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JButton" name="buildModelButton">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Lucida Grande" size="13" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Build FID  Model"/>
-                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;Click to list available model files.&lt;br&gt;&#xa;Note, the number in the file name is the number&lt;br&gt;&#xa;of resonances in the model.&lt;/html&gt;&#xa;&#xa;" noResource="true"/>
-                        <Property name="name" type="java.lang.String" value="buildModelButton" noResource="true"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buildModelButtonActionPerformed"/>
-                      </Events>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="2" insetsLeft="2" insetsBottom="2" insetsRight="2" anchor="10" weightX="1.0" weightY="0.0"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="dummyButton">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Lucida Grande" size="13" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="  "/>
-                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;Click to list available model files.&lt;br&gt;&#xa;Note, the number in the file name is the number&lt;br&gt;&#xa;of resonances in the model.&lt;/html&gt;&#xa;&#xa;" noResource="true"/>
-                        <Property name="borderPainted" type="boolean" value="false"/>
-                        <Property name="contentAreaFilled" type="boolean" value="false"/>
-                        <Property name="name" type="java.lang.String" value="dummyButton" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="2" insetsLeft="2" insetsBottom="2" insetsRight="2" anchor="10" weightX="1.0" weightY="0.0"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Component class="interfacebeans.JServer" name="jserver">
                   <Properties>
                     <Property name="name" type="java.lang.String" value="jserver" noResource="true"/>
