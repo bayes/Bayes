@@ -10,8 +10,9 @@ package applications.bayesEnterAsciiModel;
  * @author apple
  */
 public interface BayesEneterAsciiConstants {
-     public static final int        TOTAL_NUMBER_OF_MODELS      = 10;
+     public static final int        TOTAL_NUMBER_OF_MODELS     = 10;
      public static final String     MODEL                      = "Model";
+     public static final String     C_MODEL_PREFIX             = "model_";
      public static final String     DUMMY_FORTRAN               =
                              "         Subroutine Model(CurSet," +"\n"
                             +"     C                   NoOfParams,"+"\n"

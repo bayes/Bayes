@@ -26,6 +26,15 @@ public class Files  implements  BayesEneterAsciiConstants{
         File file                       = new File(dir, fileName);
         IO.writeFileFromString(newContent, file);
      }
+    public static void     overwriteAndCopyFortanOrCFile(File src,File dst, int index){
+         if(src.getName().toLowerCase().endsWith(".f")){
+             overwriteAndCopyFortanFile(src, dst, index);
+         }
+         else{
+             overwriteAndCopyCFile(src, dst, index);
+         }
+         
+     }
      public static void     overwriteAndCopyFortanFile(File src,File dst, int index){
          String oldContent              = IO.readFileToString(src);
          String newContent              =  overwriteFortanText(oldContent, index);
@@ -55,12 +64,20 @@ public class Files  implements  BayesEneterAsciiConstants{
                 sb.append(BayesManager.EOL);
             }
          }
-
-
-        
-         
          return sb.toString();
      }
+       public static void     overwriteAndCopyCFile(File src,File dst, int index){
+         String oldContent              = IO.readFileToString(src);
+         String newContent              =  overwriteCText(oldContent, index);
+         IO.writeFileFromString(newContent, dst);
+     }
+      public static String   overwriteCText(String content, int index){
+         String modelName               =   getModelName(index);
+         return  content.replace(C_MODEL_PREFIX,modelName.toLowerCase()+"_" );
+      
+     }
+     
+      
      
      private static String  getModelName(int index){
          String name   = String.format(MODEL +ASCII_MODEL_FORMAT, index);
