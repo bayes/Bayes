@@ -928,7 +928,7 @@ public class ImageModelSelection extends javax.swing.JPanel
         File src                        =   model.getModelFile();
         File dst                        =   new File (asciiDir, asciiModelName );
 
-        Files.overwriteAndCopyFortanFile(src, dst ,index);
+        Files.overwriteAndCopyFortanOrCFile(src, dst ,index);
         isSuccess               =   true;
         return isSuccess;
     }
