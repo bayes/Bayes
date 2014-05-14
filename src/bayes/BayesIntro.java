@@ -127,7 +127,7 @@ public class BayesIntro extends javax.swing.JPanel {
         jTextArea1.setBackground(new java.awt.Color(238, 238, 238));
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("Lucida Grande", 1, 14));
+        jTextArea1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(0, 0, 153));
         jTextArea1.setRows(5);
         jTextArea1.setTabSize(2);
@@ -137,11 +137,11 @@ public class BayesIntro extends javax.swing.JPanel {
         jTextArea2.setBackground(new java.awt.Color(238, 238, 238));
         jTextArea2.setColumns(20);
         jTextArea2.setEditable(false);
-        jTextArea2.setFont(new java.awt.Font("Lucida Grande", 1, 14));
+        jTextArea2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jTextArea2.setForeground(new java.awt.Color(0, 0, 153));
         jTextArea2.setRows(5);
         jTextArea2.setTabSize(2);
-        jTextArea2.setText("\t\n\tJava Interface developed by\n \tKaren Marutyan, Ph.D.\n  \tPost-doctoral Researcher\n  \tWashington University St. Louis, MO\n  \tmarutyan@wustl.edu"); // NOI18N
+        jTextArea2.setText("\t\n\tJava Interface developed by\n \tKaren Marutyan, Ph.D. \n\tPlease direct all questions concerning the interface \n\tand the Bayesian Calculations to Larry Bretthorst.\n  \t"); // NOI18N
         jTextArea2.setBorder(null);
         jTextArea2.setOpaque(false);
 
@@ -158,7 +158,7 @@ public class BayesIntro extends javax.swing.JPanel {
         jLabel2.setText("Developed at Washington University in St. Louis");
         title_pane.add(jLabel2);
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 28));
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 28)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 153));
         jLabel4.setText("Mallinckrodt Institute of Radiology");
         title_pane.add(jLabel4);
@@ -197,13 +197,11 @@ public class BayesIntro extends javax.swing.JPanel {
                         .add(IconLinkButton))
                     .add(restore_btn)
                     .add(layout.createSequentialGroup()
-                        .add(jTextArea1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 346, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(jTextArea2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 331, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(jTextArea1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 379, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextArea2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 429, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
-
-        layout.linkSize(new java.awt.Component[] {jTextArea1, jTextArea2}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
 
         layout.linkSize(new java.awt.Component[] {curWorkDirLabel, jLabel5}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
 
@@ -217,14 +215,14 @@ public class BayesIntro extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(curWorkDirLabel))
                     .add(IconLinkButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 117, Short.MAX_VALUE)
                 .add(restore_btn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(107, 107, 107)
                 .add(title_pane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jTextArea1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextArea2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+                    .add(jTextArea2))
                 .add(640, 640, 640))
         );
 

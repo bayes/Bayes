@@ -36,9 +36,9 @@
                   </Group>
                   <Component id="restore_btn" min="-2" max="-2" attributes="2"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jTextArea1" linkSize="4" min="-2" pref="346" max="-2" attributes="1"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextArea2" linkSize="4" min="-2" pref="331" max="-2" attributes="0"/>
+                      <Component id="jTextArea1" min="-2" pref="379" max="-2" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextArea2" min="-2" pref="429" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="54" max="32767" attributes="0"/>
@@ -57,14 +57,14 @@
                   </Group>
                   <Component id="IconLinkButton" alignment="0" min="-2" max="-2" attributes="1"/>
               </Group>
-              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <EmptySpace pref="117" max="32767" attributes="0"/>
               <Component id="restore_btn" min="-2" pref="37" max="-2" attributes="1"/>
               <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
               <Component id="title_pane" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextArea1" alignment="3" min="-2" max="-2" attributes="1"/>
-                  <Component id="jTextArea2" alignment="3" pref="212" max="32767" attributes="1"/>
+                  <Component id="jTextArea2" alignment="3" max="32767" attributes="1"/>
               </Group>
               <EmptySpace min="-2" pref="640" max="-2" attributes="0"/>
           </Group>
@@ -108,7 +108,7 @@
         </Property>
         <Property name="rows" type="int" value="5"/>
         <Property name="tabSize" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;Java Interface developed by&#xa; &#x9;Karen Marutyan, Ph.D.&#xa;  &#x9;Post-doctoral Researcher&#xa;  &#x9;Washington University St. Louis, MO&#xa;  &#x9;marutyan@wustl.edu" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="&#x9;&#xa;&#x9;Java Interface developed by&#xa; &#x9;Karen Marutyan, Ph.D. &#xa;&#x9;Please direct all questions concerning the interface &#xa;&#x9;and the Bayesian Calculations to Larry Bretthorst.&#xa;  &#x9;" noResource="true"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
