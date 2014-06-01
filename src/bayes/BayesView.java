@@ -44,6 +44,7 @@ import applications.bayesAnalyzeImagePixelsUnique.AnalyzeImagePixelsUnique;
 import applications.bayesBinnedHistogram.BayesBinnedHistogram;
 import applications.bayesDensityEstimation.BayesDensityEstimation;
 import applications.bayesImageModelSelection.ImageModelSelection;
+import applications.bayesTestData.BayesTestData;
 import applications.bayesTestModel.BayesTestModel;
 import applications.model.*;
 
@@ -295,6 +296,7 @@ public class BayesView extends FrameView implements
         analyzeImagePixelMenuItem = new javax.swing.JRadioButtonMenuItem();
         imageModelSelectionMenuItem = new javax.swing.JRadioButtonMenuItem();
         imagePixelsUniqueMenuItem = new javax.swing.JRadioButtonMenuItem();
+        bayesTestDataMenuItem = new javax.swing.JRadioButtonMenuItem();
         workDirMenu = new javax.swing.JMenu();
         optionsMenu = new javax.swing.JMenu();
         mcmcMenuItem = new javax.swing.JMenuItem();
@@ -666,6 +668,11 @@ public class BayesView extends FrameView implements
         imagePixelsUniqueMenuItem.addActionListener(formListener);
         packageMenu.add(imagePixelsUniqueMenuItem);
 
+        bayesTestDataMenuItem.setText("Bayes Test Data"); // NOI18N
+        bayesTestDataMenuItem.setName("bayesTestDataMenuItem"); // NOI18N
+        bayesTestDataMenuItem.addActionListener(formListener);
+        packageMenu.add(bayesTestDataMenuItem);
+
         menuBar.add(packageMenu);
 
         workDirMenu.setText("WorkDir"); // NOI18N
@@ -1030,6 +1037,9 @@ public class BayesView extends FrameView implements
                 BayesView.this.currentViewerScreenShotActionPerformed(evt);
             }
             else if (evt.getSource() == contactTimeMenuItem) {
+                BayesView.this.packageMenuActionPerformed(evt);
+            }
+            else if (evt.getSource() == bayesTestDataMenuItem) {
                 BayesView.this.packageMenuActionPerformed(evt);
             }
         }
@@ -1806,6 +1816,7 @@ private void expMenuItemStateChanged(java.awt.event.ItemEvent evt) {
     private javax.swing.JRadioButtonMenuItem bayesMetaboliteMenuItem;
     private javax.swing.JRadioButtonMenuItem bayesPhaseMenuItem;
     private javax.swing.JRadioButtonMenuItem bayesPhaseNonLinearMenuItem;
+    private javax.swing.JRadioButtonMenuItem bayesTestDataMenuItem;
     private javax.swing.JRadioButtonMenuItem bayesWaterMenuItem;
     private javax.swing.JRadioButtonMenuItem behrensFisherMenuItem;
     private javax.swing.JRadioButtonMenuItem binnedHistogramMenuItem;
@@ -1987,6 +1998,9 @@ private void expMenuItemStateChanged(java.awt.event.ItemEvent evt) {
 
     public javax.swing.JRadioButtonMenuItem getImagePixelUniqueRadioButtonMenuItem() {
         return imagePixelsUniqueMenuItem;
+    }
+     public javax.swing.JRadioButtonMenuItem getBayesTestDataRadioButtonMenuItem() {
+        return bayesTestDataMenuItem;
     } 
     
     
@@ -2253,6 +2267,13 @@ private void expMenuItemStateChanged(java.awt.event.ItemEvent evt) {
         md.setModelTitle("Analyze Image Pixels Unique");
         md.setConstrArg(null);
         getModelDescrptorMap().put(getImagePixelUniqueRadioButtonMenuItem(), md);
+        
+        
+        md = new ModelDescriptor();
+        md.setModelClass(BayesTestData.class);
+        md.setModelTitle("Bayes Test Data");
+        md.setConstrArg(null);
+        getModelDescrptorMap().put(getBayesTestDataRadioButtonMenuItem(), md);
     }
     /**
      * @return the mcmcMenuItem
