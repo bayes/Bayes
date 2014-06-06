@@ -412,7 +412,33 @@ public class Enums {
    
     }
     
+       public static enum ABSCISSA{  
+        UNIFORM         (   "Uniform"  ),
+        NONUNIFORM      (   "NonUniform"  ),
+        READ            (   "Read"  );
+        
      
+        private final String name;
+       ABSCISSA (String aname) {this.name       = aname;}
+        public String getName() {return name;}
+        public static String listAll (){
+            String str = "("+   UNIFORM.getName()         + ","
+                            +   NONUNIFORM.getName()    + ","
+                            +   READ.getName()      +  ".)";
+            return str;
+            
+                    
+        }
+        public static ABSCISSA   getTypeByName(String aName)
+                throws IllegalArgumentException{
+            
+            for (ABSCISSA   m : ABSCISSA .values()) {
+                    if(aName.equalsIgnoreCase(m.name)){return m;}
+            }
+             throw new IllegalArgumentException();
+        }   
+    
+    }    
   
      
      
