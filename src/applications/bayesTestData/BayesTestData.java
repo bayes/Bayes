@@ -557,6 +557,17 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
         sb.append("No"); 
         sb.append(EOL);
         
+        sb.append( IO.pad("Abscissa", -PADLEN, PADCHAR )); 
+        sb.append(" = ") ;
+        sb.append(getAbscissa()); 
+        sb.append(EOL);
+        
+        
+        sb.append( IO.pad("Maximum Abscissa Value", -PADLEN, PADCHAR )); 
+        sb.append(" = ") ;
+        sb.append(""+getMaxAbacissaValue()); 
+        sb.append(EOL);
+        
         str     =  this.getAsciiModelName() ;
         sb.append( IO.pad("Model Name", -PADLEN, PADCHAR )); 
         sb.append(" = ") ;
@@ -640,13 +651,15 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
 
     }
     public Collection <File> getFilesToTar(){
-        List<File> imageFiles   =   image.ImageViewer.getInstance().getSelectedImgAndIfhFiles();
+       
         List<File> tarFiles     =   new  ArrayList<File>();
+        File imageDir = DirectoryManager.getImageDir();
+        if(!imageDir.exists()){
+            imageDir.mkdirs();
+        }
         tarFiles.add(DirectoryManager.getBayesOtherAnalysisDir()); // asciiDIR
-        tarFiles.addAll(imageFiles);
+        tarFiles.add(imageDir);
    
-
-
         return tarFiles ;
     }
    
@@ -809,12 +822,20 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
         return savePriorsButton;
     }
 
+    private String abscissa                            =   "Read";
     public String message                              =   "";
     private int endSliceIndex                          =   1;
     private int startSliceIndex                        =   1;
+    private double maxAbacissaValue                    =   1.0;
 
 
-
+    
+    public String getAbscissa() {
+        return abscissa;
+    }
+    public double getMaxAbacissaValue() {
+        return maxAbacissaValue;
+    }
      public String      getMessage      ( String aMessage ) { return message; }
      public EnterAsciiModel  getAsciiModel () {
         return JShowModels.getInstance().getSingleModel();
@@ -840,6 +861,15 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
     }
      public void        setStartSliceIndex ( int astartSliceIndex ) {
         this.startSliceIndex        =   astartSliceIndex;
+    }
+
+
+    public void setAbscissa(String abscissa) {
+        this.abscissa = abscissa;
+    }
+
+    public void setMaxAbacissaValue(double maxAbacissaValue) {
+        this.maxAbacissaValue = maxAbacissaValue;
     }
   
 
