@@ -92,6 +92,11 @@ public class BayesTestData extends javax.swing.JPanel
         buildModelButton = new javax.swing.JButton();
         savePriorsButton = new javax.swing.JButton();
         jResetSave = new interfacebeans.JResetSave();
+        processSlice1 = new javax.swing.JPanel();
+        startLabel1 = new javax.swing.JLabel();
+        abscissaComboBox = new javax.swing.JComboBox(ABSCISSA.values());
+        endLabel1 = new javax.swing.JLabel();
+        endFormattedTextField1 = new javax.swing.JFormattedTextField();
         graph_panel = AllViewers.getInstance ();
 
         FormListener formListener = new FormListener();
@@ -116,7 +121,7 @@ public class BayesTestData extends javax.swing.JPanel
         processSlice.setName("processSlice"); // NOI18N
         processSlice.setLayout(new java.awt.GridLayout(2, 4, 0, 6));
 
-        startLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        startLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         startLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         startLabel.setText("  Start");
         startLabel.setName("startLabel"); // NOI18N
@@ -135,7 +140,7 @@ public class BayesTestData extends javax.swing.JPanel
         startFormatetedTextField.addPropertyChangeListener(formListener);
         processSlice.add(startFormatetedTextField);
 
-        endLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        endLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         endLabel.setText("  End");
         endLabel.setName("endLabel"); // NOI18N
         processSlice.add(endLabel);
@@ -217,6 +222,38 @@ public class BayesTestData extends javax.swing.JPanel
 
         jResetSave.setName("jResetSave"); // NOI18N
 
+        processSlice1.setBorder(javax.swing.BorderFactory.createTitledBorder("Process Slice"));
+        processSlice1.setName("processSlice1"); // NOI18N
+        processSlice1.setLayout(new java.awt.GridLayout(2, 4, 0, 6));
+
+        startLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        startLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        startLabel1.setText("Abscissa");
+        startLabel1.setName("startLabel1"); // NOI18N
+        processSlice1.add(startLabel1);
+
+        abscissaComboBox.setSelectedItem(abscissa);
+        abscissaComboBox.setName("abscissaComboBox"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${abscissa}"), abscissaComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        processSlice1.add(abscissaComboBox);
+
+        endLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        endLabel1.setText("Max Abscissa Val");
+        endLabel1.setName("endLabel1"); // NOI18N
+        processSlice1.add(endLabel1);
+
+        endFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
+        endFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        endFormattedTextField1.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nEnter the last slice to process. <br>\nThe default is the number of slices.\n\n</font></p><html>\n\n"); // NOI18N
+        endFormattedTextField1.setInputVerifier(new PositiveIntegerInputVerifier());
+        endFormattedTextField1.setName("endFormattedTextField1"); // NOI18N
+        endFormattedTextField1.setValue(endSliceIndex);
+        endFormattedTextField1.addPropertyChangeListener(formListener);
+        processSlice1.add(endFormattedTextField1);
+
         org.jdesktop.layout.GroupLayout toolsLayout = new org.jdesktop.layout.GroupLayout(tools);
         tools.setLayout(toolsLayout);
         toolsLayout.setHorizontalGroup(
@@ -229,23 +266,30 @@ public class BayesTestData extends javax.swing.JPanel
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(processSlice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 126, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(processSlice1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 261, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(processSlice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 215, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(605, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
         toolsLayout.setVerticalGroup(
             toolsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(processSlice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
             .add(jserver, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
             .add(toolsLayout.createSequentialGroup()
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .add(toolsLayout.createSequentialGroup()
+                .add(processSlice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .add(toolsLayout.createSequentialGroup()
+                .add(processSlice1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        toolsLayout.linkSize(new java.awt.Component[] {jPanel2, jResetSave, jRun, jserver, processSlice}, org.jdesktop.layout.GroupLayout.VERTICAL);
+        toolsLayout.linkSize(new java.awt.Component[] {jPanel2, jResetSave, jRun, jserver, processSlice, processSlice1}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
         jScrollPane1.setViewportView(tools);
 
@@ -286,6 +330,9 @@ public class BayesTestData extends javax.swing.JPanel
             else if (evt.getSource() == endFormattedTextField) {
                 BayesTestData.this.endFormattedTextFieldPropertyChange(evt);
             }
+            else if (evt.getSource() == endFormattedTextField1) {
+                BayesTestData.this.endFormattedTextField1PropertyChange(evt);
+            }
         }
     }// </editor-fold>//GEN-END:initComponents
 
@@ -321,6 +368,15 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
     setEndSliceIndex ( val);
     clearPreviousRun();
 }//GEN-LAST:event_endFormattedTextFieldPropertyChange
+
+private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                               
+   // abscissa     = (ABSCISSA)abscissaComboBox.getSelectedItem();
+    clearPreviousRun();
+} 
+
+    private void endFormattedTextField1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_endFormattedTextField1PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_endFormattedTextField1PropertyChange
     
     public void              propertyChange(java.beans.PropertyChangeEvent evt){
       if (evt.getPropertyName().equals(bayes.BayesManager.JRUN_JOB_START)){
@@ -559,7 +615,7 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
         
         sb.append( IO.pad("Abscissa", -PADLEN, PADCHAR )); 
         sb.append(" = ") ;
-        sb.append(getAbscissa()); 
+        sb.append(getAbscissa().getName()); 
         sb.append(EOL);
         
         
@@ -790,9 +846,12 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox abscissaComboBox;
     private javax.swing.JButton buildModelButton;
     private javax.swing.JFormattedTextField endFormattedTextField;
+    private javax.swing.JFormattedTextField endFormattedTextField1;
     private javax.swing.JLabel endLabel;
+    private javax.swing.JLabel endLabel1;
     private javax.swing.JPanel graph_panel;
     private javax.swing.JPanel jPanel2;
     private interfacebeans.JResetSave jResetSave;
@@ -803,9 +862,11 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
     private javax.swing.JButton jUserModel;
     private interfacebeans.JServer jserver;
     private javax.swing.JPanel processSlice;
+    private javax.swing.JPanel processSlice1;
     private javax.swing.JButton savePriorsButton;
     private javax.swing.JFormattedTextField startFormatetedTextField;
     private javax.swing.JLabel startLabel;
+    private javax.swing.JLabel startLabel1;
     private javax.swing.JPanel tools;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
@@ -822,7 +883,7 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
         return savePriorsButton;
     }
 
-    private String abscissa                            =   "Read";
+    private ABSCISSA abscissa                         =   ABSCISSA.READ;
     public String message                              =   "";
     private int endSliceIndex                          =   1;
     private int startSliceIndex                        =   1;
@@ -830,7 +891,7 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
 
 
     
-    public String getAbscissa() {
+    public ABSCISSA getAbscissa() {
         return abscissa;
     }
     public double getMaxAbacissaValue() {
@@ -864,11 +925,12 @@ private void endFormattedTextFieldPropertyChange(java.beans.PropertyChangeEvent 
     }
 
 
-    public void setAbscissa(String abscissa) {
+    public void setAbscissa(ABSCISSA abscissa) {
         this.abscissa = abscissa;
     }
 
     public void setMaxAbacissaValue(double maxAbacissaValue) {
+        
         this.maxAbacissaValue = maxAbacissaValue;
     }
   

@@ -421,6 +421,7 @@ public class Enums {
         private final String name;
        ABSCISSA (String aname) {this.name       = aname;}
         public String getName() {return name;}
+        public String toString() {return name;}
         public static String listAll (){
             String str = "("+   UNIFORM.getName()         + ","
                             +   NONUNIFORM.getName()    + ","
