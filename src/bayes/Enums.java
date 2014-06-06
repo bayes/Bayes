@@ -697,16 +697,16 @@ public class Enums {
      
      
      
-      BAYES_TEST_DATA          ( sp +  "To use the Bayes Test Data package: \n\n"
-                                + sp +   "1.  Load the Fortran or C model function from the system or\n"
-                                + sp +   "    user model directory.\n"
-                                +"\n"
-                                + sp +   "2.  If the model is not build, build the model using the\n"
-                                + sp +   "    \"Build\" button.\n\n"
-                                + sp +   "3.  ?????.\n\n"
-                                + sp +   "4.  ?????\n"
-                                + sp +   "5.  Run the analysis using the \"Run\" button.\n\n"
-                                + sp +   "6.  Use \"Get Job\" to get the results from the server."  ),
+      BAYES_TEST_DATA          ( sp  +  "To use the Bayes Test Data package: \n\n"
+                                + sp +   "1.  Load the Fortran or C model that describes the model equation\n"
+                                + sp +   "    from either the user or system libraries.\n\n"
+                                + sp +   "2.  If the model is not built, build the model using \n"
+                                + sp +   "    the\"Build\" button.\n\n"
+                                + sp +   "3.  Use the \"Prior Viewer\" to set the prior ranges on allof the parameters.\n\n"
+                                + sp +   "4.  Run the analysis on the selected server.\n\n"
+                                + sp +   "5.  Use \"Get Job\" button to fetch the results from the server.\n\n"
+                                + sp +   "6.  The generated test data may be view using the \"Image Viewer\".\n"
+                                + sp +   "    The test data is named using the name of your loaded model."  ),
                                 ;  
             
             
