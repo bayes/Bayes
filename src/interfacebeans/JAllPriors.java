@@ -68,7 +68,7 @@ public class JAllPriors extends javax.swing.JPanel
     private JAllPriors () {
         initComponents ();
         updateGUI ();
-         BayesManager.pcs.addPropertyChangeListener(this);
+        BayesManager.pcs.addPropertyChangeListener(this);
     }
     public static void reset () {
          if (instance == null) {return;}
@@ -652,7 +652,7 @@ public class JAllPriors extends javax.swing.JPanel
 
 
 
-        if (curParam.getParameterType()  == PARAMETER_TYPE.Amplitude ){
+        if (isShowAmplitudePriors()== false && curParam.getParameterType()  == PARAMETER_TYPE.Amplitude ){
             String message  = String.format("%s will be marginalized. Can not be modified" ,curParam.name);
             setMessage(message);
              showPriorSetters(false);
@@ -740,7 +740,7 @@ public class JAllPriors extends javax.swing.JPanel
 
         
 
-        if (curParam.getParameterType()  == PARAMETER_TYPE.Amplitude ){
+        if (isShowAmplitudePriors() == false && curParam.getParameterType()  == PARAMETER_TYPE.Amplitude ){
             x_axis.setTickLabelsVisible(false);
             y_axis.setTickLabelsVisible(false);
         }
@@ -1660,6 +1660,7 @@ public class JAllPriors extends javax.swing.JPanel
     private final ChartPanel chartPanel                 =   createChartPanel();   
     public boolean  ignoreEvents                        =   false;
     private boolean  allowDeleteParameters              =   false;
+    private boolean  showAmplitudePriors                =   false;
 
   
     //************* getters and setters
@@ -1744,7 +1745,7 @@ public class JAllPriors extends javax.swing.JPanel
         Vector < ParameterPrior> dispayedParams = new Vector < ParameterPrior> ();
         for (ParameterPrior pp : params) {
 
-            if (pp.getParameterType() == PARAMETER_TYPE.Amplitude)  { /*do nothing */}
+            if (pp.getParameterType() == PARAMETER_TYPE.Amplitude && isShowAmplitudePriors() == false)  { /*do nothing */}
             else    {dispayedParams.add(pp);}
         }
 
@@ -1795,6 +1796,14 @@ public class JAllPriors extends javax.swing.JPanel
     }
     public void setAllowDeleteParameters(boolean allowDeleteParameters) {
         this.allowDeleteParameters = allowDeleteParameters;
+    }
+
+    public boolean isShowAmplitudePriors() {
+        return showAmplitudePriors;
+    }
+
+    public void setShowAmplitudePriors(boolean showAmplitudePriors) {
+        this.showAmplitudePriors = showAmplitudePriors;
     }
 
 
