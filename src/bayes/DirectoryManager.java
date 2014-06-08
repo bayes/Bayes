@@ -48,8 +48,9 @@ public class DirectoryManager  implements ApplicationConstants  {
                 BayesManager.shutDownApplication();
     } 
     public static void leaveExperiment(){
-            /****** Prepare direcotry to leave previous
-       *            directory and clear data imnformation;*/
+     /****** Prepare directory to leave previous
+      *directory and clear data information
+      */
        
         // get reference to directory we are switching from
         File oldDir =  getExperimentDir();
