@@ -535,6 +535,7 @@ public class BayesEnterAscii extends javax.swing.JPanel
        setIncludeOutliers(false);
        getIncludeOutliersCheckBox ().setSelected(isIncludeOutliers());
     }
+    public void              destroy(){};
 
     
  

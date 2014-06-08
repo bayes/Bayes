@@ -461,6 +461,7 @@ public class BayesTestModel extends javax.swing.JPanel   implements AsciiModel, 
 
 
      }
+    public void              destroy(){};
 
 
 

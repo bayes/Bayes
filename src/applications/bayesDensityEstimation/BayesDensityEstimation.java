@@ -201,7 +201,7 @@ public class BayesDensityEstimation extends javax.swing.JPanel  implements appli
         setHistogramSize(""+SIZE_START);
         setHistogramOrder(""+AUTOMATIC_ORDER );
     }
-
+    public void              destroy(){};
     public void              propertyChange(java.beans.PropertyChangeEvent evt){
 
       if (evt.getPropertyName().equals(bayes.BayesManager.JRUN_JOB_START)){

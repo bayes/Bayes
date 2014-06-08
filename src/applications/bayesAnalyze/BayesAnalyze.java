@@ -295,7 +295,7 @@ public class BayesAnalyze   extends     javax.swing.JPanel
       
        
    }
-
+    public void              destroy(){};
 
     public static void cleanBayesAnalyzeDir(boolean keepProbFiles){
         File baDir                          =   DirectoryManager.getBayesAnalyzeDir();

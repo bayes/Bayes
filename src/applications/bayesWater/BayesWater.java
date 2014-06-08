@@ -386,6 +386,7 @@ public class BayesWater extends     javax.swing.JPanel
         addSolvnt_btn.setEnabled(enabled);
 
     }
+    public void              destroy(){};
     
     public  void addPrameter ( boolean isWaterResonance  ) {                                               
         JAllPriors priors           =  JAllPriors.getInstance();

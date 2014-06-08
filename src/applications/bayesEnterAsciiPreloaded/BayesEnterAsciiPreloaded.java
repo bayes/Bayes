@@ -399,6 +399,7 @@ private void includeOutliersCheckBoxActionPerformed (java.awt.event.ActionEvent 
           includeOutliersCheckBox.setEnabled(enabled);
 
      }
+    public void              destroy(){};
 
     public  boolean loadSysModel(String modelFileName){
         String systemModelDir       =   DirectoryManager. getSystemModelURL( );

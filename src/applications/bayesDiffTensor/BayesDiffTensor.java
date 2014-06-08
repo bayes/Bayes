@@ -49,7 +49,7 @@ public class BayesDiffTensor extends javax.swing.JPanel
     private ParameterPrior ConstantPrior = null; //11
     public static final int GYRIMAGNETIC_RATIO_WATER = 26752;
     public List<ParameterPrior> priors      = new ArrayList <ParameterPrior>();
-
+    
 
 
   
@@ -753,10 +753,10 @@ private void includeOutliersCheckBoxItemStateChanged(java.awt.event.ItemEvent ev
     public String               getInstructions() {
         return PACKAGE_INTSRUCTIONS.DIFFUSION_TESNOR.getInstruction();
     }
-    public boolean              isOutliers() {
+    public boolean           isOutliers() {
         return  isIncludeOutliers();
     }
-    public void                 reset() {
+    public void              reset() {
         setDefaults();
 
         clearPreviousRun();
@@ -789,7 +789,7 @@ private void includeOutliersCheckBoxItemStateChanged(java.awt.event.ItemEvent ev
         getConstantCheckBox().setSelected(constantIsSelected);
     }
 
-    public void                 setActive(boolean enabled) {
+    public void              setActive(boolean enabled) {
         AllViewers.getInstance().setActive(enabled);
         getTensorComboBox().setEnabled(enabled);
         getConstantCheckBox().setEnabled(enabled);
@@ -808,7 +808,7 @@ private void includeOutliersCheckBoxItemStateChanged(java.awt.event.ItemEvent ev
         tensorNumberLabel.setEnabled(enabled);
 
     }
-    public void                 propertyChange(java.beans.PropertyChangeEvent evt) {
+    public void              propertyChange(java.beans.PropertyChangeEvent evt) {
 
         if (evt.getPropertyName().equals(bayes.BayesManager.JRUN_JOB_START)) {
             setActive(false);
@@ -820,7 +820,7 @@ private void includeOutliersCheckBoxItemStateChanged(java.awt.event.ItemEvent ev
         }
 
     }
-
+    public void              destroy(){};
 
     public void setFromProcpar() {
         if (getPriors() == null){return;}

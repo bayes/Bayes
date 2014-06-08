@@ -35,4 +35,5 @@ public interface Model {
    public void                     setActive(boolean enabled);
    public void                     setDefaults();
    public void                     clearPreviousRun();
+   public void                     destroy();
 }

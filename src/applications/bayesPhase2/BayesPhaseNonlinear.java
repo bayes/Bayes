@@ -452,6 +452,7 @@ public class BayesPhaseNonlinear extends javax.swing.JPanel
              setProcess(IMAGE_PROCESS.All);
              getProcessComboBox().setSelectedItem(getProcess());
     }
+    public void              destroy(){};
 
     @Override
     public void             setActive(boolean enabled){
@@ -484,6 +485,7 @@ public class BayesPhaseNonlinear extends javax.swing.JPanel
     
 
    }
+    
  
     @Override
      public Collection <File> getFilesToTar(){

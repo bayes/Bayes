@@ -388,6 +388,7 @@ public class BayesMtZ extends javax.swing.JPanel implements applications.model.A
 
 
     }
+    public void              destroy(){};
 
     public void propertyChange(java.beans.PropertyChangeEvent evt){
 

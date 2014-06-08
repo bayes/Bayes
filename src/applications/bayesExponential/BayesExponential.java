@@ -543,6 +543,7 @@ private void includeOutliersCheckBoxActionPerformed(java.awt.event.ActionEvent e
           setIncludeOutliers(false);
           expNumber_jComboBox.setEnabled(true);
     }
+    public void              destroy(){};
 
     public void              propertyChange(java.beans.PropertyChangeEvent evt){
         

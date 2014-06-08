@@ -476,6 +476,7 @@ private void includeOutliersCheckBoxActionPerformed (java.awt.event.ActionEvent 
 
 
    }
+    public void              destroy(){};
     @Override
     public void              setActive(boolean enabled){
           AllViewers.getInstance().setActive(enabled);

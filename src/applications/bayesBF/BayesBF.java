@@ -323,6 +323,7 @@ public class BayesBF extends javax.swing.JPanel implements AsciiModel,    bayes.
        Prior.add(pr);
         return null;
     } 
+    public void              destroy(){};
     
     public static void createAndShowGUI() {
 

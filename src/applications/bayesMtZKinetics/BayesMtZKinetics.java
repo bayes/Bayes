@@ -495,6 +495,7 @@ private void showVis_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
           tempSetLabel.setEnabled(isEnabled);
           tempUncertainityLabel.setEnabled(isEnabled);
     }
+    public void              destroy(){};
     
     
     private static void     createAndShowGUI () {

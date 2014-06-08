@@ -430,6 +430,7 @@ public void propertyChange(java.beans.PropertyChangeEvent evt){
           dataTypeComboBoxLabel.setEnabled(enabled);
           orderLabel.setEnabled(enabled);
     }
+    public void              destroy(){};
 
     public static void      createAndShowGUI() {
         JFrame frame = new JFrame ("Fit A Given Polynomial with Errors In Both Variables");

@@ -907,6 +907,7 @@ private void useGaussianCheckBoxActionPerformed (java.awt.event.ActionEvent evt)
 
         return tarFiles ;
     }
+    public void              destroy(){};
    
     
     public void             savePriors(){

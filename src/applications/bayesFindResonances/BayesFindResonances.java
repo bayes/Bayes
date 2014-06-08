@@ -680,7 +680,7 @@ private void nMaxRes_ftPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN
       } 
     
    }
-  
+    public void              destroy(){};
     
     
     

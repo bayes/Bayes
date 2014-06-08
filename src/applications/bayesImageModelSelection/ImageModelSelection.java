@@ -735,6 +735,7 @@ public class ImageModelSelection extends javax.swing.JPanel
 
 
    }
+    public void              destroy(){};
 
 
     public boolean verifyProcessSlices( Collection<File> imageFiles){

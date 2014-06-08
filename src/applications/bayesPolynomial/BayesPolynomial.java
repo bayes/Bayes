@@ -374,6 +374,7 @@ public class BayesPolynomial extends javax.swing.JPanel implements
         getOrderSpinner().setEnabled(enableOrder );
               ;
     }
+    public void              destroy(){};
     
     public static void      createAndShowGUI() {
 

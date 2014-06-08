@@ -289,6 +289,7 @@ public class RunHistogram  implements Runnable{
         public void              setActive(boolean enabled){}
         public void              setDefaults(){};
         public void              clearPreviousRun(){};
+        public void              destroy(){};
         
     }
 

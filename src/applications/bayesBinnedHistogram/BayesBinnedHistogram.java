@@ -260,7 +260,7 @@ public class BayesBinnedHistogram extends javax.swing.JPanel  implements applica
       }
 
    }
-
+    public void              destroy(){};
 
    public  List <ParameterPrior>  initializePriors(){
         List <ParameterPrior> thepriors             =   new ArrayList<ParameterPrior>();

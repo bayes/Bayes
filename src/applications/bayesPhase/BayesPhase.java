@@ -583,6 +583,7 @@ private void generateAbscissaComboBoxActionPerformed(java.awt.event.ActionEvent 
 
         return files;
     }
+   public void              destroy(){};
 
     public int getCurrentElementNumberInPreProcessedFid(int elem){
 

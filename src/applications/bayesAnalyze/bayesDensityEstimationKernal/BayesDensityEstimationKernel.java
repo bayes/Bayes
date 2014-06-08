@@ -249,7 +249,7 @@ public class BayesDensityEstimationKernel extends javax.swing.JPanel  implements
       }
 
    }
-
+    public void              destroy(){};
 
 
 
