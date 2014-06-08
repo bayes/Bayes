@@ -429,13 +429,14 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
     public void              setPackageParameters(ObjectInputStream ois) throws Exception{
          EnterAsciiModel theModel           =   (EnterAsciiModel)ois.readObject();
          String     msg                     =   (String)ois.readObject();
+         ABSCISSA    abscissa               =   (ABSCISSA)ois.readObject();
+         double     maxAbsValue             =   (Double)ois.readObject();
          int        start                   =   (Integer)ois.readObject();
          int        end                     =   (Integer)ois.readObject();
-         double     sdev                    =   (Double)ois.readObject();
-         boolean    isMaxL                  =   (Boolean)ois.readObject();
-         boolean    useGaus                 =   (Boolean)ois.readObject();
-         boolean    isOultiers              =   (Boolean)ois.readObject();
+        
          this.setMessage( msg);
+         this.setMaxAbscissaValue(maxAbsValue);
+         this.setAbscissa(abscissa);
          this.setStartSliceIndex(start);
          this.setEndSliceIndex(end);
        
@@ -448,6 +449,8 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
         try{
              oos.writeObject( getAsciiModel());
              oos.writeObject(message);
+             oos.writeObject(this.getAbscissa());
+             oos.writeObject(this.getMaxAbscissaValue());
              oos.writeObject(this.getStartSliceIndex());
              oos.writeObject(this.getEndSliceIndex());
            
@@ -475,7 +478,13 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
                 "using the \"Build Model\" button.");
           return false;
        }
-
+       
+        // make sure that abscissa was loaded
+        File abscissaFile           =   DirectoryManager.getAbscissaFile();
+        if (!abscissaFile.exists()) {
+          DisplayText.popupMessage("Abscissa file doesn't exist.\nExiting run.");
+           return false;
+        }
 
 
        // write the parameter file
@@ -621,7 +630,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
         
         sb.append( IO.pad("Maximum Abscissa Value", -PADLEN, PADCHAR )); 
         sb.append(" = ") ;
-        sb.append(""+getMaxAbacissaValue()); 
+        sb.append(""+getMaxAbscissaValue()); 
         sb.append(EOL);
         
         str     =  this.getAsciiModelName() ;
@@ -887,15 +896,15 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
     public String message                              =   "";
     private int endSliceIndex                          =   1;
     private int startSliceIndex                        =   1;
-    private double maxAbacissaValue                    =   1.0;
+    private double maxAbscissaValue                    =   1.0;
 
 
     
     public ABSCISSA getAbscissa() {
         return abscissa;
     }
-    public double getMaxAbacissaValue() {
-        return maxAbacissaValue;
+    public double getMaxAbscissaValue() {
+        return maxAbscissaValue;
     }
      public String      getMessage      ( String aMessage ) { return message; }
      public EnterAsciiModel  getAsciiModel () {
@@ -929,9 +938,9 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
         this.abscissa = abscissa;
     }
 
-    public void setMaxAbacissaValue(double maxAbacissaValue) {
+    public void setMaxAbscissaValue(double maxAbacissaValue) {
         
-        this.maxAbacissaValue = maxAbacissaValue;
+        this.maxAbscissaValue = maxAbacissaValue;
     }
   
 
