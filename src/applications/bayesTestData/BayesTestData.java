@@ -54,7 +54,7 @@ public class BayesTestData extends javax.swing.JPanel
         BayesManager.pcs.addPropertyChangeListener(this);
         JShowModels.getInstance().addPropertyChangeListener(this);
         ImageViewer.getInstance().addPropertyChangeListener(this);
-
+        JAllPriors.getInstance().setShowAmplitudePriors(true);
         
         if(isDeseralized){
             AllViewers.showImageViewer();
@@ -727,7 +727,10 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
    
         return tarFiles ;
     }
-   
+    public void              destroy(){
+         // make sure we set JAllPriors viiewer settings to defaults
+         JAllPriors.getInstance().setShowAmplitudePriors(false);
+    };
     
     public void             savePriors(){
         getAsciiModel().overwriteOriginalParamsFile();

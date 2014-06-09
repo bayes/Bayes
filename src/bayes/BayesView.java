@@ -1443,6 +1443,9 @@ private void expMenuItemStateChanged(java.awt.event.ItemEvent evt) {
         Model oldModel = PackageManager.getCurrentApplication();
         if (oldModel != null) {
             DirectoryManager.leaveExperiment();
+           
+            //execute models cleanup
+            oldModel.destroy();
         }
 
         loadDir(newdir);
@@ -1475,6 +1478,10 @@ private void expMenuItemStateChanged(java.awt.event.ItemEvent evt) {
             if (model == null) {
                 return;
             }
+           
+            //execute models cleanup
+            model.destroy();
+            
             if (model instanceof java.beans.PropertyChangeListener) {
                 PropertyChangeListener listener = (PropertyChangeListener) model;
                 BayesManager.pcs.removePropertyChangeListener(listener);
