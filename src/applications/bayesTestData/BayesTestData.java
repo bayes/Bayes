@@ -101,6 +101,10 @@ public class BayesTestData extends javax.swing.JPanel
         abscissaComboBox = new javax.swing.JComboBox(ABSCISSA.values());
         absmaxValueLabel = new javax.swing.JLabel();
         maxValueTextField = new javax.swing.JFormattedTextField();
+        SettingsPane = new javax.swing.JPanel();
+        noiseStdDevLabel = new javax.swing.JLabel();
+        stdDevField = new javax.swing.JFormattedTextField();
+        emptyPlaceHolderLabel = new javax.swing.JLabel();
         graph_panel = AllViewers.getInstance ();
 
         FormListener formListener = new FormListener();
@@ -127,7 +131,7 @@ public class BayesTestData extends javax.swing.JPanel
 
         numImageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         numImageLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        numImageLabel.setText("Number Of Images");
+        numImageLabel.setText("# Images");
         numImageLabel.setName("numImageLabel"); // NOI18N
         modelaImagePane.add(numImageLabel, new java.awt.GridBagConstraints());
 
@@ -166,7 +170,7 @@ public class BayesTestData extends javax.swing.JPanel
         modelaImagePane.add(numPhaseEncodePixelTextField, gridBagConstraints);
 
         numReadoutPixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        numReadoutPixelLabel.setText("No. Readout Pixels");
+        numReadoutPixelLabel.setText("Readout");
         numReadoutPixelLabel.setName("numReadoutPixelLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -180,7 +184,7 @@ public class BayesTestData extends javax.swing.JPanel
         numReadoutPixelTextField.setName("numReadoutPixelTextField"); // NOI18N
         numReadoutPixelTextField.setValue(endSliceIndex);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${numberPhaseEncodePixels}"), numReadoutPixelTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${numberReadoutPixels}"), numReadoutPixelTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         numReadoutPixelTextField.addPropertyChangeListener(formListener);
@@ -192,7 +196,7 @@ public class BayesTestData extends javax.swing.JPanel
         modelaImagePane.add(numReadoutPixelTextField, gridBagConstraints);
 
         numPhaseEncodePixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        numPhaseEncodePixelLabel.setText("No. Phase Encodes");
+        numPhaseEncodePixelLabel.setText(" PhaseEncode");
         numPhaseEncodePixelLabel.setName("numPhaseEncodePixelLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -200,7 +204,7 @@ public class BayesTestData extends javax.swing.JPanel
         modelaImagePane.add(numPhaseEncodePixelLabel, gridBagConstraints);
 
         arrayDimensionLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        arrayDimensionLabel.setText("Array Dimension");
+        arrayDimensionLabel.setText("Array Dim");
         arrayDimensionLabel.setName("arrayDimensionLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -307,6 +311,7 @@ public class BayesTestData extends javax.swing.JPanel
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${abscissa}"), abscissaComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
+        abscissaComboBox.addItemListener(formListener);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 2.0;
@@ -338,12 +343,53 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.weightx = 2.0;
         abscissaPane.add(maxValueTextField, gridBagConstraints);
 
+        SettingsPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Settings"));
+        SettingsPane.setName("SettingsPane"); // NOI18N
+        SettingsPane.setLayout(new java.awt.GridBagLayout());
+
+        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        noiseStdDevLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        noiseStdDevLabel.setText("Noise SD");
+        noiseStdDevLabel.setName("noiseStdDevLabel"); // NOI18N
+        SettingsPane.add(noiseStdDevLabel, new java.awt.GridBagConstraints());
+
+        stdDevField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        stdDevField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nEnter the standard deviation of the noise.<br>\nNote this is threshold the image and it is <br>\nused when \"Use Gaussian\" is selected.\n</htm>\n\n\n"); // NOI18N
+        stdDevField.setInputVerifier(new PositiveFloatInputVerifier());
+        stdDevField.setName("stdDevField"); // NOI18N
+        stdDevField.setValue(this.standardDeviation);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${standardDeviation}"), stdDevField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        stdDevField.addPropertyChangeListener(formListener);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 3.0;
+        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
+        SettingsPane.add(stdDevField, gridBagConstraints);
+
+        emptyPlaceHolderLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        emptyPlaceHolderLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        emptyPlaceHolderLabel.setText(" ");
+        emptyPlaceHolderLabel.setName("emptyPlaceHolderLabel"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
+        SettingsPane.add(emptyPlaceHolderLabel, gridBagConstraints);
+
         org.jdesktop.layout.GroupLayout toolsLayout = new org.jdesktop.layout.GroupLayout(tools);
         tools.setLayout(toolsLayout);
         toolsLayout.setHorizontalGroup(
             toolsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(toolsLayout.createSequentialGroup()
-                .add(15, 15, 15)
+                .addContainerGap()
                 .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 199, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jserver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -352,28 +398,31 @@ public class BayesTestData extends javax.swing.JPanel
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(abscissaPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(modelaImagePane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 401, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(modelaImagePane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 325, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 187, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(542, Short.MAX_VALUE))
+                .addContainerGap(426, Short.MAX_VALUE))
         );
         toolsLayout.setVerticalGroup(
             toolsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jRun, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
             .add(jserver, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .add(abscissaPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(toolsLayout.createSequentialGroup()
-                .add(abscissaPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(modelaImagePane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(toolsLayout.createSequentialGroup()
+                .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .add(toolsLayout.createSequentialGroup()
                 .add(jResetSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .add(toolsLayout.createSequentialGroup()
-                .add(modelaImagePane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
 
-        toolsLayout.linkSize(new java.awt.Component[] {abscissaPane, jPanel2, jResetSave, jRun, jserver, modelaImagePane}, org.jdesktop.layout.GroupLayout.VERTICAL);
+        toolsLayout.linkSize(new java.awt.Component[] {SettingsPane, abscissaPane, jPanel2, jResetSave, jRun, jserver, modelaImagePane}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
         jScrollPane1.setViewportView(tools);
 
@@ -390,7 +439,7 @@ public class BayesTestData extends javax.swing.JPanel
 
     // Code for dispatching events from components to event handlers.
 
-    private class FormListener implements java.awt.event.ActionListener, java.beans.PropertyChangeListener {
+    private class FormListener implements java.awt.event.ActionListener, java.awt.event.ItemListener, java.beans.PropertyChangeListener {
         FormListener() {}
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             if (evt.getSource() == jSystemModel) {
@@ -404,6 +453,12 @@ public class BayesTestData extends javax.swing.JPanel
             }
             else if (evt.getSource() == savePriorsButton) {
                 BayesTestData.this.savePriorsButtonActionPerformed(evt);
+            }
+        }
+
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            if (evt.getSource() == abscissaComboBox) {
+                BayesTestData.this.abscissaComboBoxItemStateChanged(evt);
             }
         }
 
@@ -422,6 +477,9 @@ public class BayesTestData extends javax.swing.JPanel
             }
             else if (evt.getSource() == arrayDimensionTextField) {
                 BayesTestData.this.arrayDimensionTextFieldPropertyChange(evt);
+            }
+            else if (evt.getSource() == stdDevField) {
+                BayesTestData.this.stdDevFieldPropertyChange(evt);
             }
         }
     }// </editor-fold>//GEN-END:initComponents
@@ -448,32 +506,39 @@ if(     getAsciiModel().isLoaded() == false){
 }//GEN-LAST:event_savePriorsButtonActionPerformed
 private void numberOutputImagesTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_numberOutputImagesTextFieldPropertyChange
     if (evt.getPropertyName().equalsIgnoreCase("value") == false) {return;}
-     int val = ((Number)numberOutputImagesTextField.getValue()).intValue();
-     setNumberOutputImages( val);
      clearPreviousRun();
 }//GEN-LAST:event_numberOutputImagesTextFieldPropertyChange
 private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_numPhaseEncodePixelTextFieldPropertyChange
     if (evt.getPropertyName().equalsIgnoreCase("value") == false) {return;}
-    int val = ((Number)numPhaseEncodePixelTextField.getValue()).intValue();
+   // int val = ((Number)numPhaseEncodePixelTextField.getValue()).intValue();
     clearPreviousRun();
 }//GEN-LAST:event_numPhaseEncodePixelTextFieldPropertyChange
 
-private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                               
-   // abscissa     = (ABSCISSA)abscissaComboBox.getSelectedItem();
-    clearPreviousRun();
-} 
 
     private void maxValueTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_maxValueTextFieldPropertyChange
-        // TODO add your handling code here:
+        if (evt.getPropertyName().equalsIgnoreCase("value") == false) {return;} 
+        clearPreviousRun();
     }//GEN-LAST:event_maxValueTextFieldPropertyChange
 
     private void numReadoutPixelTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_numReadoutPixelTextFieldPropertyChange
-        // TODO add your handling code here:
+         if (evt.getPropertyName().equalsIgnoreCase("value") == false) {return;}  
+        clearPreviousRun();
     }//GEN-LAST:event_numReadoutPixelTextFieldPropertyChange
 
     private void arrayDimensionTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_arrayDimensionTextFieldPropertyChange
-        // TODO add your handling code here:
+         if (evt.getPropertyName().equalsIgnoreCase("value") == false) {return;} 
+        clearPreviousRun();
     }//GEN-LAST:event_arrayDimensionTextFieldPropertyChange
+
+    private void stdDevFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_stdDevFieldPropertyChange
+        if (evt.getPropertyName().equalsIgnoreCase("value") == false) {return;} 
+        clearPreviousRun();
+    }//GEN-LAST:event_stdDevFieldPropertyChange
+
+    private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_abscissaComboBoxItemStateChanged
+    // abscissa     = (ABSCISSA)abscissaComboBox.getSelectedItem();
+        clearPreviousRun();
+    }//GEN-LAST:event_abscissaComboBoxItemStateChanged
     
     public void              propertyChange(java.beans.PropertyChangeEvent evt){
       if (evt.getPropertyName().equals(bayes.BayesManager.JRUN_JOB_START)){
@@ -532,6 +597,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
          int        arrayDimension          =   (Integer)ois.readObject();
          int        noReadouPixels          =   (Integer)ois.readObject();
          int        noPhaseEncodeixels      =   (Integer)ois.readObject();
+         double     sdev                    =   (Double)ois.readObject();
         
          this.setMessage( msg);
          this.setMaxAbscissaValue(maxAbsValue);
@@ -541,6 +607,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
          this.setArrayDimension(arrayDimension);
          this.setNumberReadoutPixels(noReadouPixels);
          this.setNumberPhaseEncodePixels(noPhaseEncodeixels);
+         this.setStandardDeviation(sdev);
       
        
          JShowModels.getInstance().addModel(theModel);
@@ -558,6 +625,8 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
              oos.writeObject(this.getArrayDimension());
              oos.writeObject(this.getNumberReadoutPixels());
              oos.writeObject(this.getNumberPhaseEncodePixels());
+             oos.writeObject(this.getStandardDeviation());
+             
            
              
         } catch (IOException exp){
@@ -703,7 +772,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
               
         sb.append( IO.pad("Noise Std Dev", -PADLEN, PADCHAR )); 
         sb.append(" = ") ;
-        sb.append(0.5); 
+        sb.append(this.getStandardDeviation()); 
         sb.append(EOL);
         
         sb.append( IO.pad("Abscissa", -PADLEN, PADCHAR )); 
@@ -956,6 +1025,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel SettingsPane;
     private javax.swing.JComboBox abscissaComboBox;
     private javax.swing.JLabel abscissaLabel;
     private javax.swing.JPanel abscissaPane;
@@ -963,6 +1033,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
     private javax.swing.JLabel arrayDimensionLabel;
     private javax.swing.JFormattedTextField arrayDimensionTextField;
     private javax.swing.JButton buildModelButton;
+    private javax.swing.JLabel emptyPlaceHolderLabel;
     private javax.swing.JPanel graph_panel;
     private javax.swing.JPanel jPanel2;
     private interfacebeans.JResetSave jResetSave;
@@ -974,6 +1045,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
     private interfacebeans.JServer jserver;
     private javax.swing.JFormattedTextField maxValueTextField;
     private javax.swing.JPanel modelaImagePane;
+    private javax.swing.JLabel noiseStdDevLabel;
     private javax.swing.JLabel numImageLabel;
     private javax.swing.JLabel numPhaseEncodePixelLabel;
     private javax.swing.JFormattedTextField numPhaseEncodePixelTextField;
@@ -981,6 +1053,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
     private javax.swing.JFormattedTextField numReadoutPixelTextField;
     private javax.swing.JFormattedTextField numberOutputImagesTextField;
     private javax.swing.JButton savePriorsButton;
+    private javax.swing.JFormattedTextField stdDevField;
     private javax.swing.JPanel tools;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
@@ -1005,6 +1078,7 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
     private int numberPhaseEncodePixels                =   16;
     private int arrayDimension                         =   1;
     private double maxAbscissaValue                    =   1.0;
+    private double standardDeviation                   =   1.0;
 
 
     
@@ -1034,7 +1108,10 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
     public int getArrayDimension() {
         return arrayDimension;
     }
- 
+    
+    public double getStandardDeviation() {
+        return standardDeviation;
+    }
    
 
      public void        setMessage      ( String aMessage ) {
@@ -1060,6 +1137,11 @@ private void abscissaComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {
     }
     public void setArrayDimension(int arrayDimension) {
         this.arrayDimension = arrayDimension;
+    }
+
+
+    public void setStandardDeviation(double standardDeviation) {
+        this.standardDeviation = standardDeviation;
     }
   
 
