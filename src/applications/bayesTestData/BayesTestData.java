@@ -129,7 +129,7 @@ public class BayesTestData extends javax.swing.JPanel
         modelaImagePane.setName("modelaImagePane"); // NOI18N
         modelaImagePane.setLayout(new java.awt.GridBagLayout());
 
-        numImageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        numImageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         numImageLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         numImageLabel.setText("# Images");
         numImageLabel.setName("numImageLabel"); // NOI18N
@@ -137,7 +137,7 @@ public class BayesTestData extends javax.swing.JPanel
 
         numberOutputImagesTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         numberOutputImagesTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        numberOutputImagesTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nEnter the first slice to be processed.<br>\nThe default is 1.\n\n</font></p><html>\n\n"); // NOI18N
+        numberOutputImagesTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nNumber of output model images\n\n</font></p><html>\n\n"); // NOI18N
         numberOutputImagesTextField.setInputVerifier(new PositiveIntegerInputVerifier());
         numberOutputImagesTextField.setName("numberOutputImagesTextField"); // NOI18N
         numberOutputImagesTextField.setValue(numberOutputImages);
@@ -153,7 +153,7 @@ public class BayesTestData extends javax.swing.JPanel
 
         numPhaseEncodePixelTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         numPhaseEncodePixelTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        numPhaseEncodePixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nEnter the last slice to process. <br>\nThe default is the number of slices.\n\n</font></p><html>\n\n"); // NOI18N
+        numPhaseEncodePixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe number of pixels in the phase encode (horizontal) direction\n</font></p><html>\n\n"); // NOI18N
         numPhaseEncodePixelTextField.setInputVerifier(new PositiveIntegerInputVerifier());
         numPhaseEncodePixelTextField.setName("numPhaseEncodePixelTextField"); // NOI18N
         numPhaseEncodePixelTextField.setValue(endSliceIndex);
@@ -169,7 +169,7 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.weightx = 1.0;
         modelaImagePane.add(numPhaseEncodePixelTextField, gridBagConstraints);
 
-        numReadoutPixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        numReadoutPixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         numReadoutPixelLabel.setText("Readout");
         numReadoutPixelLabel.setName("numReadoutPixelLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -179,7 +179,7 @@ public class BayesTestData extends javax.swing.JPanel
 
         numReadoutPixelTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         numReadoutPixelTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        numReadoutPixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nEnter the last slice to process. <br>\nThe default is the number of slices.\n\n</font></p><html>\n\n"); // NOI18N
+        numReadoutPixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe number of pixels in read out (vertical) direction\n</font></p><html>\n\n"); // NOI18N
         numReadoutPixelTextField.setInputVerifier(new PositiveIntegerInputVerifier());
         numReadoutPixelTextField.setName("numReadoutPixelTextField"); // NOI18N
         numReadoutPixelTextField.setValue(endSliceIndex);
@@ -195,7 +195,7 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.weightx = 1.0;
         modelaImagePane.add(numReadoutPixelTextField, gridBagConstraints);
 
-        numPhaseEncodePixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        numPhaseEncodePixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         numPhaseEncodePixelLabel.setText(" PhaseEncode");
         numPhaseEncodePixelLabel.setName("numPhaseEncodePixelLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -203,7 +203,7 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.gridy = 1;
         modelaImagePane.add(numPhaseEncodePixelLabel, gridBagConstraints);
 
-        arrayDimensionLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        arrayDimensionLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         arrayDimensionLabel.setText("Array Dim");
         arrayDimensionLabel.setName("arrayDimensionLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -213,7 +213,7 @@ public class BayesTestData extends javax.swing.JPanel
 
         arrayDimensionTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         arrayDimensionTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        arrayDimensionTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nEnter the first slice to be processed.<br>\nThe default is 1.\n\n</font></p><html>\n\n"); // NOI18N
+        arrayDimensionTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe array dimension of the generated data and abscissa\n</font></p><html>\n\n"); // NOI18N
         arrayDimensionTextField.setInputVerifier(new PositiveIntegerInputVerifier());
         arrayDimensionTextField.setName("arrayDimensionTextField"); // NOI18N
         arrayDimensionTextField.setValue(numberOutputImages);
@@ -297,7 +297,7 @@ public class BayesTestData extends javax.swing.JPanel
         abscissaPane.setName("abscissaPane"); // NOI18N
         abscissaPane.setLayout(new java.awt.GridBagLayout());
 
-        abscissaLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        abscissaLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         abscissaLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         abscissaLabel.setText("Abscissa");
         abscissaLabel.setName("abscissaLabel"); // NOI18N
@@ -306,6 +306,7 @@ public class BayesTestData extends javax.swing.JPanel
         abscissaPane.add(abscissaLabel, gridBagConstraints);
 
         abscissaComboBox.setSelectedItem(abscissa);
+        abscissaComboBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nRead  or generate a Uniform or NonUniform abscissa\n</font></p><html>"); // NOI18N
         abscissaComboBox.setName("abscissaComboBox"); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${abscissa}"), abscissaComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
@@ -317,7 +318,7 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.weightx = 2.0;
         abscissaPane.add(abscissaComboBox, gridBagConstraints);
 
-        absmaxValueLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        absmaxValueLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         absmaxValueLabel.setText("Max Value");
         absmaxValueLabel.setName("absmaxValueLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -327,7 +328,7 @@ public class BayesTestData extends javax.swing.JPanel
 
         maxValueTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         maxValueTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        maxValueTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nEnter the last slice to process. <br>\nThe default is the number of slices.\n\n</font></p><html>\n\n"); // NOI18N
+        maxValueTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nMax Value is the absolute value of the maximum abscissa generated\n</font></p><html>\n\n"); // NOI18N
         maxValueTextField.setInputVerifier(new PositiveFloatInputVerifier ());
         maxValueTextField.setName("maxValueTextField"); // NOI18N
         maxValueTextField.setValue(endSliceIndex);
@@ -347,14 +348,14 @@ public class BayesTestData extends javax.swing.JPanel
         SettingsPane.setName("SettingsPane"); // NOI18N
         SettingsPane.setLayout(new java.awt.GridBagLayout());
 
-        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         noiseStdDevLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         noiseStdDevLabel.setText("Noise SD");
         noiseStdDevLabel.setName("noiseStdDevLabel"); // NOI18N
         SettingsPane.add(noiseStdDevLabel, new java.awt.GridBagConstraints());
 
         stdDevField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        stdDevField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nEnter the standard deviation of the noise.<br>\nNote this is threshold the image and it is <br>\nused when \"Use Gaussian\" is selected.\n</htm>\n\n\n"); // NOI18N
+        stdDevField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe standard deviation of the Gaussian noise added <br>\nto the each pixel in the generated images\n</htm>\n\n\n"); // NOI18N
         stdDevField.setInputVerifier(new PositiveFloatInputVerifier());
         stdDevField.setName("stdDevField"); // NOI18N
         stdDevField.setValue(this.standardDeviation);
@@ -371,7 +372,7 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         SettingsPane.add(stdDevField, gridBagConstraints);
 
-        emptyPlaceHolderLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        emptyPlaceHolderLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         emptyPlaceHolderLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emptyPlaceHolderLabel.setText(" ");
         emptyPlaceHolderLabel.setName("emptyPlaceHolderLabel"); // NOI18N
@@ -413,7 +414,7 @@ public class BayesTestData extends javax.swing.JPanel
             .add(abscissaPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(toolsLayout.createSequentialGroup()
                 .add(modelaImagePane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
             .add(toolsLayout.createSequentialGroup()
                 .add(SettingsPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -469,14 +470,14 @@ public class BayesTestData extends javax.swing.JPanel
             else if (evt.getSource() == numPhaseEncodePixelTextField) {
                 BayesTestData.this.numPhaseEncodePixelTextFieldPropertyChange(evt);
             }
-            else if (evt.getSource() == maxValueTextField) {
-                BayesTestData.this.maxValueTextFieldPropertyChange(evt);
-            }
             else if (evt.getSource() == numReadoutPixelTextField) {
                 BayesTestData.this.numReadoutPixelTextFieldPropertyChange(evt);
             }
             else if (evt.getSource() == arrayDimensionTextField) {
                 BayesTestData.this.arrayDimensionTextFieldPropertyChange(evt);
+            }
+            else if (evt.getSource() == maxValueTextField) {
+                BayesTestData.this.maxValueTextFieldPropertyChange(evt);
             }
             else if (evt.getSource() == stdDevField) {
                 BayesTestData.this.stdDevFieldPropertyChange(evt);
