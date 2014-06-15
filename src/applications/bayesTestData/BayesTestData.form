@@ -448,7 +448,7 @@
                     </Component>
                     <Component class="javax.swing.JComboBox" name="abscissaComboBox">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;Read&lt;/font&gt;&lt;/bold&gt; - causes the loaded abscissa to be used in generating the images &lt;br&gt;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;Uniform&lt;/font&gt;&lt;/bold&gt; -:causes a uniformly sampled abscissa to be generated&lt;br&gt;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;NonUniform&lt;/font&gt;&lt;/bold&gt; - cause a nonuniformly sampled abscissa to be generated&#xa;&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;" noResource="true"/>
+                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;Read&lt;/font&gt;&lt;/bold&gt; - causes the loaded abscissa to be used in generating the images &lt;br&gt;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;Uniform&lt;/font&gt;&lt;/bold&gt; -causes a uniformly sampled abscissa to be generated&lt;br&gt;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;NonUniform&lt;/font&gt;&lt;/bold&gt; - cause a nonuniformly sampled abscissa to be generated&#xa;&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;" noResource="true"/>
                         <Property name="name" type="java.lang.String" value="abscissaComboBox" noResource="true"/>
                       </Properties>
                       <BindingProperties>
@@ -487,7 +487,7 @@
                           <Format format="##0" subtype="-1" type="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;Max Value is the absolute value of the maximum abscissa generated&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;&#xa;&#xa;" noResource="true"/>
+                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;Max Value is the absolute value of the maximum&lt;br&gt;&#xa;abscissa generated&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;&#xa;&#xa;" noResource="true"/>
                         <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new PositiveFloatInputVerifier ()" type="code"/>
                         </Property>

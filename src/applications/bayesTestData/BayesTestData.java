@@ -19,6 +19,7 @@ import run.JRun;
 import java.util.List;
 import applications.model.ImageModel;
 import bayes.BayesView;
+import bayes.Enums;
 import javax.swing.*;
 import java.io.*;
 import utilities.*;
@@ -308,7 +309,7 @@ public class BayesTestData extends javax.swing.JPanel
         abscissaPane.add(abscissaLabel, gridBagConstraints);
 
         abscissaComboBox.setSelectedItem(abscissa);
-        abscissaComboBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n<font color=\"blue\" size = \"+1\"><bold>Read</font></bold> - causes the loaded abscissa to be used in generating the images <br>\n<font color=\"blue\" size = \"+1\"><bold>Uniform</font></bold> -:causes a uniformly sampled abscissa to be generated<br>\n<font color=\"blue\" size = \"+1\"><bold>NonUniform</font></bold> - cause a nonuniformly sampled abscissa to be generated\n\n</font></p><html>"); // NOI18N
+        abscissaComboBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n<font color=\"blue\" size = \"+1\"><bold>Read</font></bold> - causes the loaded abscissa to be used in generating the images <br>\n<font color=\"blue\" size = \"+1\"><bold>Uniform</font></bold> -causes a uniformly sampled abscissa to be generated<br>\n<font color=\"blue\" size = \"+1\"><bold>NonUniform</font></bold> - cause a nonuniformly sampled abscissa to be generated\n\n</font></p><html>"); // NOI18N
         abscissaComboBox.setName("abscissaComboBox"); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${abscissa}"), abscissaComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
@@ -330,7 +331,7 @@ public class BayesTestData extends javax.swing.JPanel
 
         maxValueTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         maxValueTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        maxValueTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nMax Value is the absolute value of the maximum abscissa generated\n</font></p><html>\n\n"); // NOI18N
+        maxValueTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nMax Value is the absolute value of the maximum<br>\nabscissa generated\n</font></p><html>\n\n"); // NOI18N
         maxValueTextField.setInputVerifier(new PositiveFloatInputVerifier ());
         maxValueTextField.setName("maxValueTextField"); // NOI18N
         maxValueTextField.setValue(endSliceIndex);
@@ -640,8 +641,7 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
     public boolean           isReadyToRun(){
       // make sure data has been loaded
        File dir        =   DirectoryManager.getBayesOtherAnalysisDir();
-
-
+       
        // make sure the asciiModel has been loaded
        if(getAsciiModel().isLoaded() == false){
            DisplayText.popupMessage("Model is not loaded.");
@@ -656,13 +656,51 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
           return false;
        }
        
-        // make sure that abscissa was loaded
-        File abscissaFile           =   DirectoryManager.getAbscissaFile();
-        if (!abscissaFile.exists()) {
-          DisplayText.popupMessage("Abscissa file doesn't exist.\nExiting run.");
-           return false;
-        }
-
+       
+        
+        // do we need to care about absicssa checks
+        boolean isReadAbscissa      =   (getAbscissa() ==  ABSCISSA.READ);
+        // if yes, do abscissa-model compatability check
+        if(isReadAbscissa){
+           // get reference to abscissa
+           File abscissaFile           =   DirectoryManager.getAbscissaFile();
+           List <String>abscissaValues  = new <String>ArrayList();
+           // make sure absicssa file was loaded
+           if (!abscissaFile.exists()) {
+                DisplayText.popupMessage("Abscissa file doesn't exist.\nExiting run.");
+                return false;
+           }
+            try {
+                int nAbscissaColumns     =   IO.getNumberOfColumns(abscissaFile) ;
+                if ( nAbscissaColumns < 1){throw new IOException();}
+                int modelAbscissa        =   getNumberOfAbscissa();
+                abscissaValues           =   IO.ASCII2String(abscissaFile);
+                if (nAbscissaColumns !=  modelAbscissa) {
+                     message     =  "Number of abscissa for the model "+ "("+ modelAbscissa+")\n";
+                     message     += "is different from the number of\n";
+                     message     += "abscissa in the abscisaa file"+ "("+ nAbscissaColumns +")\n" ;
+                     message     += "Exiting run.";
+                     DisplayText.popupMessage(message);
+                     return false;
+                }
+            }
+            catch (IOException ex) {
+                DisplayText.popupMessage("Abscissa file is not valid.\n\nExiting run.");
+                return false;
+            }
+            
+                 
+            int abscisaaLength  =  abscissaValues.size();
+            int expecetdAbscLength = getArrayDimension() ;
+            if ( expecetdAbscLength != abscisaaLength){
+                    message     =  "Number of array dimension "+ "("+ expecetdAbscLength+")\n";
+                    message     += "is different from\n";
+                    message     += "number of rows in abscissa file"+ "("+abscisaaLength +")\n" ;
+                    DisplayText.popupMessage(message);
+                    return false;
+             }
+        } 
+       
 
        // write the parameter file
        boolean bl  =  WriteBayesParams.writeParamsFile(this, dir);
