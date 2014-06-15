@@ -70,12 +70,12 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abscissaPane" min="-2" pref="226" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="modelaImagePane" min="-2" pref="325" max="-2" attributes="1"/>
+                          <Component id="modelaImagePane" min="-2" pref="213" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="SettingsPane" min="-2" pref="187" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jResetSave" min="-2" pref="133" max="-2" attributes="0"/>
-                          <EmptySpace pref="426" max="32767" attributes="0"/>
+                          <EmptySpace pref="538" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -199,12 +199,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="13" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Readout"/>
+                        <Property name="text" type="java.lang.String" value="Ro"/>
                         <Property name="name" type="java.lang.String" value="numReadoutPixelLabel" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="2" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                          <GridBagConstraints gridX="2" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="6" insetsBottom="0" insetsRight="2" anchor="10" weightX="0.0" weightY="0.0"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -242,12 +242,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="13" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value=" PhaseEncode"/>
+                        <Property name="text" type="java.lang.String" value="Pe"/>
                         <Property name="name" type="java.lang.String" value="numPhaseEncodePixelLabel" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="2" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                          <GridBagConstraints gridX="2" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="6" insetsBottom="0" insetsRight="2" anchor="10" weightX="0.0" weightY="0.0"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -256,7 +256,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="13" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Array Dim"/>
+                        <Property name="text" type="java.lang.String" value="ArrayDim"/>
                         <Property name="name" type="java.lang.String" value="arrayDimensionLabel" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -271,7 +271,7 @@
                           <Format format="##0" subtype="-1" type="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;The array dimension of the generated data and abscissa&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;&#xa;&#xa;" noResource="true"/>
+                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;The array dimension of the generated&lt;be&gt;&#xa;image data and abscissa&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;&#xa;&#xa;" noResource="true"/>
                         <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new PositiveIntegerInputVerifier()" type="code"/>
                         </Property>
@@ -448,7 +448,7 @@
                     </Component>
                     <Component class="javax.swing.JComboBox" name="abscissaComboBox">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;Read  or generate a Uniform or NonUniform abscissa&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;" noResource="true"/>
+                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;Read&lt;/font&gt;&lt;/bold&gt; - causes the loaded abscissa to be used in generating the images &lt;br&gt;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;Uniform&lt;/font&gt;&lt;/bold&gt; -:causes a uniformly sampled abscissa to be generated&lt;br&gt;&#xa;&lt;font color=&quot;blue&quot; size = &quot;+1&quot;&gt;&lt;bold&gt;NonUniform&lt;/font&gt;&lt;/bold&gt; - cause a nonuniformly sampled abscissa to be generated&#xa;&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;" noResource="true"/>
                         <Property name="name" type="java.lang.String" value="abscissaComboBox" noResource="true"/>
                       </Properties>
                       <BindingProperties>
@@ -542,7 +542,7 @@
                     <Component class="javax.swing.JFormattedTextField" name="stdDevField">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;The standard deviation of the Gaussian noise added &lt;br&gt;&#xa;to the each pixel in the generated images&#xa;&lt;/htm&gt;&#xa;&#xa;&#xa;" noResource="true"/>
+                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;The standard deviation of the Gaussian noise &lt;br&gt;&#xa;added to each pixel in the generated images&#xa;&lt;/htm&gt;&#xa;&#xa;&#xa;" noResource="true"/>
                         <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new PositiveFloatInputVerifier()" type="code"/>
                         </Property>
