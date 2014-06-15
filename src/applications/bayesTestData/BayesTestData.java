@@ -139,7 +139,7 @@ public class BayesTestData extends javax.swing.JPanel
         numberOutputImagesTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         numberOutputImagesTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         numberOutputImagesTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nNumber of output model images\n\n</font></p><html>\n\n"); // NOI18N
-        numberOutputImagesTextField.setInputVerifier(new PositiveIntegerInputVerifier());
+        numberOutputImagesTextField.setInputVerifier(new RangeIntegerInputVerifier(1,Integer.MAX_VALUE));
         numberOutputImagesTextField.setName("numberOutputImagesTextField"); // NOI18N
         numberOutputImagesTextField.setValue(numberOutputImages);
 
@@ -154,8 +154,8 @@ public class BayesTestData extends javax.swing.JPanel
 
         numPhaseEncodePixelTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         numPhaseEncodePixelTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        numPhaseEncodePixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe number of pixels in the phase encode (horizontal) direction\n</font></p><html>\n\n"); // NOI18N
-        numPhaseEncodePixelTextField.setInputVerifier(new PositiveIntegerInputVerifier());
+        numPhaseEncodePixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe number of pixels in the phase encode (horizontal) direction.<br>\nValid values are integers from 5 to 25.\n</font></p><html>\n\n"); // NOI18N
+        numPhaseEncodePixelTextField.setInputVerifier(new RangeIntegerInputVerifier(5,25));
         numPhaseEncodePixelTextField.setName("numPhaseEncodePixelTextField"); // NOI18N
         numPhaseEncodePixelTextField.setValue(endSliceIndex);
 
@@ -181,8 +181,8 @@ public class BayesTestData extends javax.swing.JPanel
 
         numReadoutPixelTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         numReadoutPixelTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        numReadoutPixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe number of pixels in read out (vertical) direction\n</font></p><html>\n\n"); // NOI18N
-        numReadoutPixelTextField.setInputVerifier(new PositiveIntegerInputVerifier());
+        numReadoutPixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe number of pixels in read out (vertical) direction.<br>\nValid values are integers from 5 to 25.\n</font></p><html>\n\n"); // NOI18N
+        numReadoutPixelTextField.setInputVerifier(new RangeIntegerInputVerifier(5,25));
         numReadoutPixelTextField.setName("numReadoutPixelTextField"); // NOI18N
         numReadoutPixelTextField.setValue(endSliceIndex);
 
@@ -216,8 +216,8 @@ public class BayesTestData extends javax.swing.JPanel
 
         arrayDimensionTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         arrayDimensionTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        arrayDimensionTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe array dimension of the generated<be>\nimage data and abscissa\n</font></p><html>\n\n"); // NOI18N
-        arrayDimensionTextField.setInputVerifier(new PositiveIntegerInputVerifier());
+        arrayDimensionTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe array dimension of the generated<br>\nimage data and abscissa.<br>\nValid values are any positive non-zero integers.\n\n</font></p><html>\n\n"); // NOI18N
+        arrayDimensionTextField.setInputVerifier(new RangeIntegerInputVerifier(1,Integer.MAX_VALUE));
         arrayDimensionTextField.setName("arrayDimensionTextField"); // NOI18N
         arrayDimensionTextField.setValue(numberOutputImages);
 
@@ -711,6 +711,7 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
 
        // save the priors
        savePriors();
+  
 
        //  write "job.directions" file
        bl  =  JobDirections.writeFromProperties(JobDirections.BAYES_SUBMIT_IMAGE);
