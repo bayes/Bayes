@@ -774,16 +774,6 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
         sb.append(" = ") ;
         sb.append(this.getNumberOutputImages());
         sb.append(EOL);
-
-        for (File file : imageFiles) {
-            str  = imgDir.getName()+ separator +  file.getName() ;
-            sb.append( IO.pad("Input Image Name", -PADLEN, PADCHAR ));
-            sb.append(" = ") ;
-            sb.append(str);
-            sb.append(EOL);
-        }
- 
-       
         
         str     = imgDir.getName() ;
         sb.append( IO.pad("Output Image Directory", -PADLEN, PADCHAR )); 
@@ -949,95 +939,8 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
         setMessage(msg);
     }
 
-/*
-     public boolean verifyProcessSlices( Collection<File> imageFiles){
-
-      String error                   =   null;
-         if (getNumberOutputImages() < 1){
-               error               =   String.format(
-                    "Start slice number (%s) must be larger than 0\n"
-                    + "Exiting...", getNumberOutputImages());
-
-            DisplayText.popupErrorMessage(error);
-            return false;
-        }
-        if (getEndSliceIndex() < 1){
-               error               =   String.format(
-                    "End slice number (%s) must be larger than 0\n"
-                    + "Exiting...", getNumberOutputImages());
-
-            DisplayText.popupErrorMessage(error);
-            return false;
-        }
-
-        if (getEndSliceIndex() < getNumberOutputImages()){
-               error               =   String.format(
-                    "End slice number (%s) must be larger than\n"
-                    + "start slice number (%s))"
-                    + "Exiting...", getEndSliceIndex(), getNumberOutputImages());
-
-            DisplayText.popupErrorMessage(error);
-            return false;
-        }
-
-         for (File file : imageFiles) {
-             boolean isvalid = verifyProcessSlices(file);
-             if (isvalid){continue;}
-             else{ return false;}
-         }
 
 
-      return true;
-
-     }
-     * *
-     */
-    /*
-     public boolean verifyProcessSlices(File  imgfile){
-         String error                   =   null;
-         File ifhfile                = DirectoryManager.getIfhFileForImage(imgfile);
-
-         if (ifhfile == null || ifhfile.exists() == false){
-            error               =   String.format(
-                    "No image descriptor file\n"
-                    + "is found for image %s\n"
-                    + "Exiting...",  imgfile.getPath());
-
-            DisplayText.popupErrorMessage(error);
-            return false;
-        }
-        ImageDescriptor id  = ImageIO.loadFromDisk(ifhfile);
-        if  (id.isLoaded() == false){
-            error               =   String.format(
-                    "Failed to load image descriptor file\n"
-                    + "%s\n"
-                    + "Exiting...",  ifhfile.getPath());
-
-            DisplayText.popupErrorMessage(error);
-            return false;
-
-        }
-        int nsclies         =   id.getNumberOfSlices();
-
-
-        if (getEndSliceIndex() > nsclies){
-             error               =   String.format(
-                     "End slice number (%s) must be smaller\n"
-                    + "than number of slices in the image (%s).\n"
-                    + "Error is encountered while processing image\n"
-                    + "%s.\n"
-                    + "Exiting...", getEndSliceIndex() , nsclies, imgfile.getPath());
-
-            DisplayText.popupErrorMessage(error);
-            return false;
-        }
-
-
-        return true;
-
-    }
-     * 
-     */
 
     public static void createAndShowGUI() {
 
