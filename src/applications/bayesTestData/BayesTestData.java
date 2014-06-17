@@ -29,6 +29,7 @@ import bayes.Enums.*;
 import interfacebeans.AllViewers;
 import image.ImageViewer;
 import image.ImageDescriptor;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -104,7 +105,7 @@ public class BayesTestData extends javax.swing.JPanel
         maxValueTextField = new javax.swing.JFormattedTextField();
         SettingsPane = new javax.swing.JPanel();
         noiseStdDevLabel = new javax.swing.JLabel();
-        stdDevField = new javax.swing.JFormattedTextField();
+        stdDevField = new javax.swing.JFormattedTextField(new DecimalFormat("#.#####"));
         emptyPlaceHolderLabel = new javax.swing.JLabel();
         graph_panel = AllViewers.getInstance ();
 
@@ -130,7 +131,7 @@ public class BayesTestData extends javax.swing.JPanel
         modelaImagePane.setName("modelaImagePane"); // NOI18N
         modelaImagePane.setLayout(new java.awt.GridBagLayout());
 
-        numImageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        numImageLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         numImageLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         numImageLabel.setText("# Images");
         numImageLabel.setName("numImageLabel"); // NOI18N
@@ -170,7 +171,7 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.weightx = 1.0;
         modelaImagePane.add(numPhaseEncodePixelTextField, gridBagConstraints);
 
-        numReadoutPixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        numReadoutPixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         numReadoutPixelLabel.setText("Ro");
         numReadoutPixelLabel.setName("numReadoutPixelLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -197,7 +198,7 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.weightx = 1.0;
         modelaImagePane.add(numReadoutPixelTextField, gridBagConstraints);
 
-        numPhaseEncodePixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        numPhaseEncodePixelLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         numPhaseEncodePixelLabel.setText("Pe");
         numPhaseEncodePixelLabel.setName("numPhaseEncodePixelLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -206,7 +207,7 @@ public class BayesTestData extends javax.swing.JPanel
         gridBagConstraints.insets = new java.awt.Insets(0, 6, 0, 2);
         modelaImagePane.add(numPhaseEncodePixelLabel, gridBagConstraints);
 
-        arrayDimensionLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        arrayDimensionLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         arrayDimensionLabel.setText("ArrayDim");
         arrayDimensionLabel.setName("arrayDimensionLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -358,8 +359,8 @@ public class BayesTestData extends javax.swing.JPanel
         SettingsPane.add(noiseStdDevLabel, new java.awt.GridBagConstraints());
 
         stdDevField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        stdDevField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe standard deviation of the Gaussian noise <br>\nadded to each pixel in the generated images\n</htm>\n\n\n"); // NOI18N
-        stdDevField.setInputVerifier(new PositiveFloatInputVerifier());
+        stdDevField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe standard deviation of the Gaussian noise <br>\nadded to each pixel in the generated images.<br>\nValid values are floats from 0.0001 to 100.\n\n</htm>\n\n\n"); // NOI18N
+        stdDevField.setInputVerifier(new utilities.RangeDoubleInputVerifier(0.0001,100));
         stdDevField.setName("stdDevField"); // NOI18N
         stdDevField.setValue(this.standardDeviation);
 
@@ -875,6 +876,8 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
         getEndFormattedTextField().setEditable(isActive);
         getStartFormatetedTextField().setEnabled(isActive);
         getEndFormattedTextField ().setEnabled(isActive);
+        noiseStdDevLabel.setEnabled(isActive);
+        stdDevField.setEnabled(isActive);
         numImageLabel.setEnabled(isActive);
         numberOutputImagesTextField.setEnabled(isActive);
         arrayDimensionLabel.setEnabled(isActive);
