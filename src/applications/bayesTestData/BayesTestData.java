@@ -26,6 +26,7 @@ import utilities.*;
 import interfacebeans.*;
 import load.*;
 import bayes.Enums.*;
+import bayes.ParameterPrior.PARAMETER_TYPE;
 import interfacebeans.AllViewers;
 import image.ImageViewer;
 import image.ImageDescriptor;
@@ -310,7 +311,7 @@ public class BayesTestData extends javax.swing.JPanel
         abscissaPane.add(abscissaLabel, gridBagConstraints);
 
         abscissaComboBox.setSelectedItem(abscissa);
-        abscissaComboBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n<font color=\"blue\" size = \"+1\"><bold>Read</font></bold> - causes the loaded abscissa to be used in generating the images <br>\n<font color=\"blue\" size = \"+1\"><bold>Uniform</font></bold> -causes a uniformly sampled abscissa to be generated<br>\n<font color=\"blue\" size = \"+1\"><bold>NonUniform</font></bold> - cause a nonuniformly sampled abscissa to be generated\n\n</font></p><html>"); // NOI18N
+        abscissaComboBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\n<font color=\"blue\" size = \"+1\"><bold>Read</font></bold> - causes the loaded abscissa to be used in generating the images <br>\n<font color=\"blue\" size = \"+1\"><bold>Uniform</font></bold> - causes a uniformly sampled abscissa to be generated<br>\n<font color=\"blue\" size = \"+1\"><bold>NonUniform</font></bold> - cause a nonuniformly sampled abscissa to be generated\n\n</font></p><html>"); // NOI18N
         abscissaComboBox.setName("abscissaComboBox"); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${abscissa}"), abscissaComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
@@ -491,10 +492,12 @@ public class BayesTestData extends javax.swing.JPanel
 
 private void jSystemModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSystemModelActionPerformed
         JShowModels.getInstance().loadSysModel();
+        overwriteAmplitudePriors();
         clearPreviousRun();
 }//GEN-LAST:event_jSystemModelActionPerformed
 private void jUserModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserModelActionPerformed
          JShowModels.getInstance().loadUserModel();
+         overwriteAmplitudePriors();
          clearPreviousRun();
 }//GEN-LAST:event_jUserModelActionPerformed
 private void buildModelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildModelButtonActionPerformed
@@ -929,6 +932,32 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
          JAllPriors.getInstance().setShowAmplitudePriors(false);
     };
     
+    public void             overwriteAmplitudePriors(){
+        List<ParameterPrior> priors = getAsciiModel().getPriors();
+        boolean isOverwritten = false;
+      
+          for (ParameterPrior parameterPrior : priors) {
+           if (parameterPrior.getParameterType() == PARAMETER_TYPE.Amplitude){
+                if(parameterPrior.high >= +1E6){
+                   parameterPrior.high =100; 
+                   isOverwritten=true;
+                }
+                if(parameterPrior.low >= -1E6){
+                   parameterPrior.low =-100; 
+                   isOverwritten=true;
+                }
+                if(parameterPrior.sdev >= 3E5){
+                   parameterPrior.sdev = 30; 
+                     isOverwritten=true;
+                }
+           }    
+         
+       }
+        
+        savePriors();   
+        setMessage(getAsciiModel().getName() + ". "+" Amplitude priors have been overwritten"); 
+      
+    }   
     public void             savePriors(){
         getAsciiModel().overwriteOriginalParamsFile();
         setMessage(getAsciiModel().getName() + ". "+"Priors have been saved"); 

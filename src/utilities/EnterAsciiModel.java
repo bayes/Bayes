@@ -493,7 +493,7 @@ public class EnterAsciiModel implements java.io.Serializable {
        sb.append(pad +  this.getNumberOfDataCols()      + pad + "Number of data cols"+EOL);
        sb.append(pad +  this.getNumberOfPriors()        + pad + "Number of Priors"+EOL);
 
-       sb.append(wrteParameterPrior(getPriors()));
+       sb.append(writeParameterPrior(getPriors()));
 
 
        sb.append(pad +  this.getNumberOfDerived()       + pad +  "Number of Derived parameters"+EOL);
@@ -535,7 +535,7 @@ public class EnterAsciiModel implements java.io.Serializable {
       sb.append(utilities.IO.pad(paramType,15,padChar));
      return sb;
     }
-    private static StringBuilder wrteParameterPrior(List<ParameterPrior> priors ) {
+    private static StringBuilder writeParameterPrior(List<ParameterPrior> priors ) {
       StringBuilder sb                  =   new StringBuilder();
       
       // write non-Amplitude paraeters first
@@ -553,6 +553,7 @@ public class EnterAsciiModel implements java.io.Serializable {
        }
      return sb;
     }
+    
     public void overwriteOriginalParamsFile(  ){
            File dst                        =    getParamsFile();
            String content                  =    writeParamsContent().toString();
