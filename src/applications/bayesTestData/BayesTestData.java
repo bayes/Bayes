@@ -140,10 +140,9 @@ public class BayesTestData extends javax.swing.JPanel
 
         numberOutputImagesTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
         numberOutputImagesTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        numberOutputImagesTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nNumber of output model images\n\n</font></p><html>\n\n"); // NOI18N
-        numberOutputImagesTextField.setInputVerifier(new RangeIntegerInputVerifier(1,Integer.MAX_VALUE));
+        numberOutputImagesTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nNumber of output model images must be<br>\ngreater than 1 and less than or equal to 10\n\n</font></p><html>\n\n"); // NOI18N
+        numberOutputImagesTextField.setInputVerifier(new RangeIntegerInputVerifier(1,10));
         numberOutputImagesTextField.setName("numberOutputImagesTextField"); // NOI18N
-        numberOutputImagesTextField.setValue(numberOutputImages);
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${numberOutputImages}"), numberOutputImagesTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -159,7 +158,6 @@ public class BayesTestData extends javax.swing.JPanel
         numPhaseEncodePixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe number of pixels in the phase encode (horizontal) direction.<br>\nValid values are integers from 5 to 25.\n</font></p><html>\n\n"); // NOI18N
         numPhaseEncodePixelTextField.setInputVerifier(new RangeIntegerInputVerifier(5,25));
         numPhaseEncodePixelTextField.setName("numPhaseEncodePixelTextField"); // NOI18N
-        numPhaseEncodePixelTextField.setValue(endSliceIndex);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${numberPhaseEncodePixels}"), numPhaseEncodePixelTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -186,7 +184,6 @@ public class BayesTestData extends javax.swing.JPanel
         numReadoutPixelTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe number of pixels in read out (vertical) direction.<br>\nValid values are integers from 5 to 25.\n</font></p><html>\n\n"); // NOI18N
         numReadoutPixelTextField.setInputVerifier(new RangeIntegerInputVerifier(5,25));
         numReadoutPixelTextField.setName("numReadoutPixelTextField"); // NOI18N
-        numReadoutPixelTextField.setValue(endSliceIndex);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${numberReadoutPixels}"), numReadoutPixelTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -336,7 +333,6 @@ public class BayesTestData extends javax.swing.JPanel
         maxValueTextField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nMax Value is the absolute value of the maximum<br>\nabscissa generated\n</font></p><html>\n\n"); // NOI18N
         maxValueTextField.setInputVerifier(new PositiveFloatInputVerifier ());
         maxValueTextField.setName("maxValueTextField"); // NOI18N
-        maxValueTextField.setValue(endSliceIndex);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${maxAbscissaValue}"), maxValueTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -353,7 +349,7 @@ public class BayesTestData extends javax.swing.JPanel
         SettingsPane.setName("SettingsPane"); // NOI18N
         SettingsPane.setLayout(new java.awt.GridBagLayout());
 
-        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        noiseStdDevLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         noiseStdDevLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         noiseStdDevLabel.setText("Noise SD");
         noiseStdDevLabel.setName("noiseStdDevLabel"); // NOI18N
@@ -886,13 +882,15 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
         AllViewers.getInstance().setActive(isActive);
     }
     public void              reset(){
-
+            
+           
+           
             JShowModels.getInstance().removeAllModels();
             generateLoadMessage( );
             LoadAsciiModels.cleanModelFiles();
 
+         
             setDefaults();
-
             clearPreviousRun();
 
 
@@ -910,8 +908,13 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
 
     }
     public void              setDefaults(){
-        getStartFormatetedTextField().setValue(1);
-        getEndFormattedTextField ().setValue(ImageViewer.getInstance().getNSlices());
+        abscissaComboBox.setSelectedItem(BayesTestData.ABSCISSA_DEFAULT_VALUE);
+        numberOutputImagesTextField.setValue(BayesTestData.NUMBER_OUTPUT_IMAGES_DEFAULT_VALUE);
+        arrayDimensionTextField.setValue(BayesTestData.ARRAYDIM_DEFAULT_VALUE);
+        numReadoutPixelTextField.setValue(BayesTestData.NUMBER_READOUT_PIXELS_DEFAULT_VALUE);
+        numPhaseEncodePixelTextField.setValue(BayesTestData.NUMBER_PHASE_ENCODE_DEFAULT_VALUE);
+        stdDevField.setValue(BayesTestData.NUMBER_PHASE_ENCODE_DEFAULT_VALUE);
+        maxValueTextField.setValue(BayesTestData.MAX_ABSCISSA_DEFAULT_VALUE);
         setMessage("");
 
     }
@@ -946,9 +949,9 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
                    parameterPrior.low =-100; 
                    isOverwritten=true;
                 }
-                if(parameterPrior.sdev >= 3E5){
+                if(parameterPrior.sdev >= +3E5){
                    parameterPrior.sdev = 30; 
-                     isOverwritten=true;
+                    isOverwritten=true;
                 }
            }    
          
@@ -1047,15 +1050,21 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
         return savePriorsButton;
     }
 
-    private ABSCISSA abscissa                          =   ABSCISSA.READ;
+    public final static ABSCISSA ABSCISSA_DEFAULT_VALUE             =   ABSCISSA.NONUNIFORM;
+    public final static  int NUMBER_OUTPUT_IMAGES_DEFAULT_VALUE     =   1;
+    public final static  int NUMBER_READOUT_PIXELS_DEFAULT_VALUE    =   16;
+    public final static  int NUMBER_PHASE_ENCODE_DEFAULT_VALUE      =   16;
+    public final static  int ARRAYDIM_DEFAULT_VALUE                 =   1;
+    public final static  double MAX_ABSCISSA_DEFAULT_VALUE          =   1.0;
+    public final static  double SDEV_DEFAULT_VALUE                  =   1.0;
+    private ABSCISSA abscissa                          =   ABSCISSA_DEFAULT_VALUE;
     public String message                              =   "";
-    private int endSliceIndex                          =   1;
-    private int numberOutputImages                     =   1;
-    private int numberReadoutPixels                    =   16;
-    private int numberPhaseEncodePixels                =   16;
-    private int arrayDimension                         =   1;
-    private double maxAbscissaValue                    =   1.0;
-    private double standardDeviation                   =   1.0;
+    private int numberOutputImages                     =   NUMBER_OUTPUT_IMAGES_DEFAULT_VALUE;
+    private int numberReadoutPixels                    =   NUMBER_READOUT_PIXELS_DEFAULT_VALUE;
+    private int numberPhaseEncodePixels                =   NUMBER_PHASE_ENCODE_DEFAULT_VALUE;
+    private int arrayDimension                         =   ARRAYDIM_DEFAULT_VALUE;
+    private double maxAbscissaValue                    =   MAX_ABSCISSA_DEFAULT_VALUE ;
+    private double standardDeviation                   =   SDEV_DEFAULT_VALUE;
 
 
     

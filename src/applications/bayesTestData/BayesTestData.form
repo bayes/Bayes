@@ -142,14 +142,11 @@
                           <Format format="##0" subtype="-1" type="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;Number of output model images&#xa;&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;&#xa;&#xa;" noResource="true"/>
+                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&#xa;Number of output model images must be&lt;br&gt;&#xa;greater than 1 and less than or equal to 10&#xa;&#xa;&lt;/font&gt;&lt;/p&gt;&lt;html&gt;&#xa;&#xa;" noResource="true"/>
                         <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new RangeIntegerInputVerifier(1,Integer.MAX_VALUE)" type="code"/>
+                          <Connection code="new RangeIntegerInputVerifier(1,10)" type="code"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="numberOutputImagesTextField" noResource="true"/>
-                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="numberOutputImages" type="code"/>
-                        </Property>
                       </Properties>
                       <BindingProperties>
                         <BindingProperty name="text" source="Form" sourcePath="${numberOutputImages}" target="numberOutputImagesTextField" targetPath="text" updateStrategy="0" immediately="false">
@@ -176,9 +173,6 @@
                           <Connection code="new RangeIntegerInputVerifier(5,25)" type="code"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="numPhaseEncodePixelTextField" noResource="true"/>
-                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="endSliceIndex" type="code"/>
-                        </Property>
                       </Properties>
                       <BindingProperties>
                         <BindingProperty name="text" source="Form" sourcePath="${numberPhaseEncodePixels}" target="numPhaseEncodePixelTextField" targetPath="text" updateStrategy="0" immediately="false">
@@ -219,9 +213,6 @@
                           <Connection code="new RangeIntegerInputVerifier(5,25)" type="code"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="numReadoutPixelTextField" noResource="true"/>
-                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="endSliceIndex" type="code"/>
-                        </Property>
                       </Properties>
                       <BindingProperties>
                         <BindingProperty name="text" source="Form" sourcePath="${numberReadoutPixels}" target="numReadoutPixelTextField" targetPath="text" updateStrategy="0" immediately="false">
@@ -492,9 +483,6 @@
                           <Connection code="new PositiveFloatInputVerifier ()" type="code"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="maxValueTextField" noResource="true"/>
-                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="endSliceIndex" type="code"/>
-                        </Property>
                       </Properties>
                       <BindingProperties>
                         <BindingProperty name="text" source="Form" sourcePath="${maxAbscissaValue}" target="maxValueTextField" targetPath="text" updateStrategy="0" immediately="false">
