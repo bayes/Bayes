@@ -924,16 +924,15 @@ public class JAllPriors extends javax.swing.JPanel
         for (double y : plotY) { max = max(y, max);}
 
         max              =  abs (max);
-        for (int i = 0; i < plotY.length; i++) {
-           plotY[i]   =   plotY[i]/max ;
-
-        }
-
-
-
-
-
-
+    
+       if(max == 0 &&  plotY.length ==1){
+            plotY[0]   =   1;
+       }
+       else{
+            for (int i = 0; i < plotY.length; i++) {
+              plotY[i]   =   plotY[i]/max ;
+            }
+       }
         return plotY;
     }
 
