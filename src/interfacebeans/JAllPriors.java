@@ -200,6 +200,7 @@ public class JAllPriors extends javax.swing.JPanel
         setPriorType(curParam.priorType);
         comboBox_PriorType.setDoubleBuffered(true);
         comboBox_PriorType.setRenderer(new PriorTypeCellRenderer());
+        comboBox_PriorType.addItemListener(formListener);
         comboBox_PriorType.addActionListener(formListener);
         PriorTypePane.add(comboBox_PriorType);
 
@@ -371,7 +372,7 @@ public class JAllPriors extends javax.swing.JPanel
 
     // Code for dispatching events from components to event handlers.
 
-    private class FormListener implements java.awt.event.ActionListener, java.awt.event.KeyListener, java.awt.event.MouseListener, java.beans.PropertyChangeListener, javax.swing.event.ListSelectionListener {
+    private class FormListener implements java.awt.event.ActionListener, java.awt.event.ItemListener, java.awt.event.KeyListener, java.awt.event.MouseListener, java.beans.PropertyChangeListener, javax.swing.event.ListSelectionListener {
         FormListener() {}
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             if (evt.getSource() == comboBox_PriorType) {
@@ -385,6 +386,12 @@ public class JAllPriors extends javax.swing.JPanel
             }
             else if (evt.getSource() == HighLow) {
                 JAllPriors.this.HighLowActionPerformed(evt);
+            }
+        }
+
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            if (evt.getSource() == comboBox_PriorType) {
+                JAllPriors.this.comboBox_PriorTypeItemStateChanged(evt);
             }
         }
 
@@ -511,9 +518,9 @@ public class JAllPriors extends javax.swing.JPanel
         resetModel();
     }//GEN-LAST:event_textFieldChanged
     private void comboBox_PriorTypeActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_PriorTypeActionPerformed
-        if (ignoreEvents ) {return;}
+       /* if (ignoreEvents ) {return;}
         ignoreEvents = true;
-        
+     
         ParameterPrior curParam = getSelectedParameter();
         if (curParam == null)  { return;}
         
@@ -532,6 +539,8 @@ public class JAllPriors extends javax.swing.JPanel
         
         // reset package.
         resetModel();
+         * 
+         */
     }//GEN-LAST:event_comboBox_PriorTypeActionPerformed
     private void NotOrderedActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotOrderedActionPerformed
         ParameterPrior curParam = getSelectedParameter();
@@ -601,6 +610,40 @@ public class JAllPriors extends javax.swing.JPanel
 
     }//GEN-LAST:event_meanFieldKeyTyped
 
+    private void comboBox_PriorTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBox_PriorTypeItemStateChanged
+        if (ignoreEvents ) {return;}
+        ignoreEvents = true;
+     
+        if (evt.getStateChange() == ItemEvent.DESELECTED){
+             prevParam = getSelectedParameter();
+             ignoreEvents = false;
+             return;
+        }
+        else if (evt.getStateChange() == ItemEvent.SELECTED){
+             ParameterPrior curParam = getSelectedParameter();
+            if (curParam == null)  { return;}
+
+            priorType               =   getGuiPriorType();
+            curParam.priorType      =   priorType ;
+
+            if (priorType  == PRIOR_TYPE.FIXED_PARAMETER ){
+                curParam.low       =    curParam.mean;
+                curParam.high      =    curParam.mean;
+                getLowField().setValue       ( curParam.mean);
+                getHighField().setValue      ( curParam.mean);
+            } 
+
+            update ();
+            ignoreEvents = false;
+
+            // reset package.
+            resetModel();
+            return;
+        }
+        
+       
+    }//GEN-LAST:event_comboBox_PriorTypeItemStateChanged
+
     public void resetModel(){
          Model model         = PackageManager.getCurrentApplication();
          if (model != null){ model.clearPreviousRun(); }
@@ -615,8 +658,6 @@ public class JAllPriors extends javax.swing.JPanel
     }
   //********** update and check for constraints ************//
     public  void  update (){
-
-        
          setMessage("");
          setConstraints();
          updatePlot();
@@ -856,16 +897,6 @@ public class JAllPriors extends javax.swing.JPanel
                     miny             =  min(miny,logy);
 
                     plotY[i]         =  exp(logy) ;
-
-                    /*
-                    double x         = plotX [i];
-                   
-                    double exponent  =  exp(-pow(x - param.mean, 2)/(2*pow(param.sdev, 2)));
-                    double prefactor =  exp(param.norm)* 1/param.sdev;
-                    double y         =  exponent * prefactor;
-                     plotY[i]         =  y;
-
-                     */
                 }
 
               
@@ -972,16 +1003,13 @@ public class JAllPriors extends javax.swing.JPanel
 
         if (!curParam.isPriorTypeEditable){
             comboBox_PriorType.setEnabled(false);
-            //comboBox_PriorType.setVisible(false);
         } else {
             comboBox_PriorType.setEnabled(true);
-           // comboBox_PriorType.setVisible(true);
         }
 
 
        getSdevField().setVisible(false);
        getSdevLabel().setText("");
-     //  getSdevLabel().setVisible(false);
 
         PRIOR_TYPE type =  this.getPriorType();
        
@@ -999,18 +1027,6 @@ public class JAllPriors extends javax.swing.JPanel
                 getSdevLabel().setEnabled(true);
                 getSdevField().setVisible(true);
                 getSdevLabel().setText("SDEV");
-
-                /*
-                getLowField().setVisible(true);
-                getLowLabel().setVisible(true);
-                getMeanField().setVisible(true);
-                getMeanLabel().setVisible(true);
-                getHighField().setVisible(true);
-                getHighLabel().setVisible(true);
-                getSdevField().setVisible(true);
-                getSdevLabel().setVisible(true);
-                */
-
                 getMeanLabel().setText("MEAN");
                 if(curParam.mean > curParam.high){
                   setMessage("MEAN greater than HIGH");
@@ -1036,22 +1052,6 @@ public class JAllPriors extends javax.swing.JPanel
                 getHighLabel().setEnabled(true);
                 getSdevField().setEnabled(false);
                 getSdevLabel().setEnabled(false);
-
-
-               // getMeanField().setVisible(false);
-                //getMeanLabel().setVisible(false);
-                /*
-                getLowField().setVisible(true);
-                getLowLabel().setVisible(true);
-                getMeanField().setVisible(false);
-                getMeanLabel().setVisible(false);
-                getHighField().setVisible(true);
-                getHighLabel().setVisible(true);
-                getSdevField().setVisible(false);
-                getSdevLabel().setVisible(false);
-                */
-
-
                 getMeanLabel().setText("MEAN");
 
 
@@ -1072,18 +1072,6 @@ public class JAllPriors extends javax.swing.JPanel
                 getHighLabel().setEnabled(true);
                 getSdevField().setEnabled(false);
                 getSdevLabel().setEnabled(false);
-
-                /*
-                getLowField().setVisible(true);
-                getLowLabel().setVisible(true);
-                getMeanField().setVisible(true);
-                getMeanLabel().setVisible(true);
-                getHighField().setVisible(true);
-                getHighLabel().setVisible(true);
-                getSdevField().setVisible(false);
-                getSdevLabel().setVisible(false);
-                */
-
                 getMeanLabel().setText("RATE");
                 if(curParam.mean <= 0.0){
                    setMessage("RATE is less or equal to zero");
@@ -1106,17 +1094,6 @@ public class JAllPriors extends javax.swing.JPanel
                 getHighLabel().setEnabled(true);
                 getSdevField().setEnabled(false);
                 getSdevLabel().setEnabled(false);
-
-                /*
-                getLowField().setVisible(true);
-                getLowLabel().setVisible(true);
-                getMeanField().setVisible(true);
-                getMeanLabel().setVisible(true);
-                getHighField().setVisible(true);
-                getHighLabel().setVisible(true);
-                getSdevField().setVisible(false);
-                getSdevLabel().setVisible(false);
-                */
                 getMeanLabel().setText("PEAK");
 
                 if(curParam.mean < curParam.low){
@@ -1142,19 +1119,7 @@ public class JAllPriors extends javax.swing.JPanel
                 getHighLabel().setEnabled(false);
                 getSdevField().setEnabled(false);
                 getSdevLabel().setEnabled(false);
-                /*
-                getLowField().setVisible(false);
-                getLowLabel().setVisible(false);
-                getMeanField().setVisible(true);
-                getMeanLabel().setVisible(true);
-                getHighField().setVisible(false);
-                getHighLabel().setVisible(false);
-                getSdevField().setVisible(false);
-                getSdevLabel().setVisible(false);
-                 */
-
                 getMeanLabel().setText("PARAM");
-
                 if(curParam.norm > 0.0){
                   setMessage("NORM greater than zero");
                 }
@@ -1647,6 +1612,7 @@ public class JAllPriors extends javax.swing.JPanel
     
     private java.util.List < ParameterPrior>  params    =   new Vector < ParameterPrior> ();//AllPriors.makeDummieParamsForTesting(45);
     public PRIOR_TYPE priorType                        =   PRIOR_TYPE.UNIFORM;
+    private ParameterPrior prevParam                    =   null;
     public final static String     FREQ_PARAM_NAME      =   "Freq";
     public final static String     RATE_PARAM_NAME      =   "Rate";
     public final static String     SOLVENT_FREQ_NAME    =   "SolventFreq";
