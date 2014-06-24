@@ -112,6 +112,7 @@ public class DataLoader {
         dataFileChooser.setMultiSelectionEnabled(false);
         dataFileChooser.setFileSelectionMode (javax.swing.JFileChooser.FILES_ONLY);
         dataFileChooser.setAcceptAllFileFilterUsed(true);
+        dataFileChooser.setFileFilter(dataFileChooser.getAcceptAllFileFilter());
         dataFileChooser.setDialogTitle("Load Abscissa File");
 
         return dataFileChooser ;
