@@ -365,7 +365,7 @@ public class BayesTestData extends javax.swing.JPanel
         noiseStdDevLabel.setName("noiseStdDevLabel"); // NOI18N
         SettingsPane.add(noiseStdDevLabel, new java.awt.GridBagConstraints());
 
-        stdDevField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        stdDevField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         stdDevField.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nThe standard deviation of the Gaussian noise <br>\nadded to each pixel in the generated images.<br>\nValid values are floats from 0.0001 to 100.\n\n</htm>\n\n\n"); // NOI18N
         stdDevField.setInputVerifier(new utilities.RangeDoubleInputVerifier(0.0001,100));
         stdDevField.setName("stdDevField"); // NOI18N
