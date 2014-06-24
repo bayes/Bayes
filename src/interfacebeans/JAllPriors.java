@@ -626,13 +626,7 @@ public class JAllPriors extends javax.swing.JPanel
             priorType               =   getGuiPriorType();
             curParam.priorType      =   priorType ;
 
-            if (priorType  == PRIOR_TYPE.FIXED_PARAMETER ){
-                curParam.low       =    curParam.mean;
-                curParam.high      =    curParam.mean;
-                getLowField().setValue       ( curParam.mean);
-                getHighField().setValue      ( curParam.mean);
-            } 
-
+            updatePriorType(curParam);
             update ();
             ignoreEvents = false;
 
@@ -657,6 +651,21 @@ public class JAllPriors extends javax.swing.JPanel
         }
     }
   //********** update and check for constraints ************//
+    public  void  updatePriorType (ParameterPrior current){
+       
+        if(current == null){
+            return;
+        }
+        
+        if (current.priorType  == PRIOR_TYPE.FIXED_PARAMETER ){
+            current.setParameterType(PARAMETER_TYPE.Parameter);
+        }
+        else if (current.priorType  != PRIOR_TYPE.FIXED_PARAMETER
+                    && current.getParameterType() == PARAMETER_TYPE.Parameter){
+            current.setParameterType(PARAMETER_TYPE.NonLinear);
+        }
+
+    }
     public  void  update (){
          setMessage("");
          setConstraints();
