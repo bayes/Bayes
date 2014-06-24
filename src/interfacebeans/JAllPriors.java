@@ -614,13 +614,8 @@ public class JAllPriors extends javax.swing.JPanel
         if (ignoreEvents ) {return;}
         ignoreEvents = true;
      
-        if (evt.getStateChange() == ItemEvent.DESELECTED){
-             prevParam = getSelectedParameter();
-             ignoreEvents = false;
-             return;
-        }
-        else if (evt.getStateChange() == ItemEvent.SELECTED){
-             ParameterPrior curParam = getSelectedParameter();
+        if (evt.getStateChange() == ItemEvent.SELECTED){
+            ParameterPrior curParam = getSelectedParameter();
             if (curParam == null)  { return;}
 
             priorType               =   getGuiPriorType();
@@ -1621,7 +1616,6 @@ public class JAllPriors extends javax.swing.JPanel
     
     private java.util.List < ParameterPrior>  params    =   new Vector < ParameterPrior> ();//AllPriors.makeDummieParamsForTesting(45);
     public PRIOR_TYPE priorType                        =   PRIOR_TYPE.UNIFORM;
-    private ParameterPrior prevParam                    =   null;
     public final static String     FREQ_PARAM_NAME      =   "Freq";
     public final static String     RATE_PARAM_NAME      =   "Rate";
     public final static String     SOLVENT_FREQ_NAME    =   "SolventFreq";
