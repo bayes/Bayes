@@ -611,8 +611,8 @@ public class JAllPriors extends javax.swing.JPanel
     }//GEN-LAST:event_meanFieldKeyTyped
 
     private void comboBox_PriorTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBox_PriorTypeItemStateChanged
-        if (ignoreEvents ) {return;}
-        ignoreEvents = true;
+       // if (ignoreEvents ) {return;}
+        //ignoreEvents = true;
      
         if (evt.getStateChange() == ItemEvent.SELECTED){
             ParameterPrior curParam = getSelectedParameter();
@@ -623,7 +623,7 @@ public class JAllPriors extends javax.swing.JPanel
 
             updatePriorType(curParam);
             update ();
-            ignoreEvents = false;
+            //ignoreEvents = false;
 
             // reset package.
             resetModel();
