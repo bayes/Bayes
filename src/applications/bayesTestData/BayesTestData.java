@@ -1126,7 +1126,7 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
     public final static  int NUMBER_OUTPUT_IMAGES_DEFAULT_VALUE     =   1;
     public final static  int NUMBER_READOUT_PIXELS_DEFAULT_VALUE    =   16;
     public final static  int NUMBER_PHASE_ENCODE_DEFAULT_VALUE      =   16;
-    public final static  int ARRAYDIM_DEFAULT_VALUE                 =   1;
+    public final static  int ARRAYDIM_DEFAULT_VALUE                 =   64;
     public final static  int NUMBER_SLICES_DEFAULT_VALUE            =   1;
     public final static  double MAX_ABSCISSA_DEFAULT_VALUE          =   1.0;
     public final static  double SDEV_DEFAULT_VALUE                  =   1.0;
