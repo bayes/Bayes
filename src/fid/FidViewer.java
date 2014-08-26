@@ -915,7 +915,12 @@ public FidPopupMenu getPopupMenu(){
     }
     public Component getMainDisplay(){return this.plot_panel;}
     
-    public void             loadData (File cur_dir, boolean isLoadedByUSer ) {
+    public void  loadData (File cur_dir, boolean isLoadedByUSer ) {
+        loadData(cur_dir,isLoadedByUSer, false );
+    }
+    
+        
+    public void  loadData (File cur_dir, boolean isLoadedByUSer, boolean executeAllInEDT) {
         
         try{
         
@@ -930,7 +935,14 @@ public FidPopupMenu getPopupMenu(){
 
             String message          =   String.format("Loading data from %s.", cur_dir.getPath());
             startProgressBar(message);
-            loader.execute();
+            if(executeAllInEDT == false){
+                loader.execute();
+            }
+            else{
+                loader.doInBackground();
+                loader.done();
+            }
+          
         }
         catch(Exception e){e.printStackTrace();}
         finally{
@@ -1210,7 +1222,6 @@ public FidPopupMenu getPopupMenu(){
    
     public  void loadDefaultFid() {
         boolean isfidViewerLoadable     =  isValidFidData( );
-
         if (isfidViewerLoadable == true){
             boolean loadByUser  = false;
             File fidDir         =   DirectoryManager.getFidDir ();
@@ -1220,7 +1231,15 @@ public FidPopupMenu getPopupMenu(){
             completeGuiDefaultLoad();
         }
     }
-   
+    public void loadOnEDT(){
+        boolean isfidViewerLoadable     =  isValidFidData( );
+        if (isfidViewerLoadable == true){
+            boolean loadByUser  = false;
+            File fidDir         =   DirectoryManager.getFidDir ();
+            loadData     (   fidDir,loadByUser, true ); 
+        }
+    }
+           
     public void setMessage(String txt){
         this.messageLabel.setText(txt);
     }
@@ -1749,7 +1768,6 @@ public FidPopupMenu getPopupMenu(){
     }
 
 
-
    
      class FidLoader extends SwingWorker{
        JProgress jp                =    null;
@@ -1804,4 +1822,4 @@ public FidPopupMenu getPopupMenu(){
 
 
      }
-}
+                 }

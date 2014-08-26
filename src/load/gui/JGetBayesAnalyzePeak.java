@@ -51,7 +51,22 @@ public class JGetBayesAnalyzePeak extends javax.swing.JDialog {
 
     public static JGetBayesAnalyzePeak showDialog(){
         AllViewers.showFidViewer();
-        boolean canproceed        = FidViewer.getInstance().isLoaded();
+        FidViewer viewer =  FidViewer.getInstance();
+        
+        boolean canproceed   =viewer.isLoaded(); 
+        
+        try{
+             if(canproceed == false ){
+                // attempts to load defautl fif
+                // viewer.loadDefaultFid();
+                 viewer.loadOnEDT();
+                 canproceed   =viewer.isLoaded(); 
+            } 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+       
+        
         if ( canproceed  == false){
             String error    =   "No spectral fid is currently loaded. Exit...";
             DisplayText.popupMessage(error);
