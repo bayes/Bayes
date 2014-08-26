@@ -723,7 +723,7 @@ private void numPhaseEncodePixelTextFieldPropertyChange(java.beans.PropertyChang
         if(isReadAbscissa){
            // get reference to abscissa
            File abscissaFile           =   DirectoryManager.getAbscissaFile();
-           List <String>abscissaValues  = new <String>ArrayList();
+           List <String>abscissaValues  = new ArrayList<String>();
            // make sure absicssa file was loaded
            if (!abscissaFile.exists()) {
                 DisplayText.popupMessage("Abscissa file doesn't exist.\nExiting run.");
