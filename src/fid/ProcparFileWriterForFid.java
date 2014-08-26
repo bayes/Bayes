@@ -69,21 +69,21 @@ public class ProcparFileWriterForFid extends  ProcparFileWriter{
 
 
          if (pr.isDataArrayed()){
-             List <String>      array   =   pr.getArray();
+             List <String>      arrayList   =   pr.getArray();
              String [][] arrayValues    =   pr.getArrayValues();
 
             // clear previous setting for arrayed parameter
             //prior to writing in again.
 
             // if arrayed paramters are at the body of the procpar prototype file
-            content =  deleteArrayedParameters(content, array).toString();
+            content =  deleteArrayedParameters(content, arrayList).toString();
 
             // if arrayed paramters are at the top of the procpar file that we have just written
-            sb      =  deleteArrayedParameters(sb.toString(), array);
-
+            sb      =  deleteArrayedParameters(sb.toString(), arrayList);
 
             // Write arrayed parameters
-
+             String[] array = arrayList.toArray(new String[arrayList.size()]);  
+            
              // active key is truned on  (last integer in the argument list = 1)
              temp = writeParameter(  ARRAYDIM_KEY,  pr.getArrayDim()  ,  7,1, 32768 , 1,1,2,1,5,1);
              sb.append(temp);
@@ -92,8 +92,8 @@ public class ProcparFileWriterForFid extends  ProcparFileWriter{
              temp = writeParameter(  ARRAY_KEY, array  ,  2,2,  256 , 0, 0,2,1,1,1);
              sb.append(temp);
 
-             for (int i = 0; i < array.size(); i++) {
-                temp = writeParameter(  array.get(i), arrayValues[i]  ,  1,1,  10e+17, -10e+17, 0, 2, 1, 0, 1);
+             for (int i = 0; i < array.length; i++) {
+                temp = writeParameter(  array[i], arrayValues[i]  ,  1,1,  10e+17, -10e+17, 0, 2, 1, 0, 1);
                 sb.append(temp);
 
              }
