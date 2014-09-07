@@ -518,29 +518,15 @@ public class JAllPriors extends javax.swing.JPanel
         resetModel();
     }//GEN-LAST:event_textFieldChanged
     private void comboBox_PriorTypeActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_PriorTypeActionPerformed
-       /* if (ignoreEvents ) {return;}
-        ignoreEvents = true;
-     
-        ParameterPrior curParam = getSelectedParameter();
-        if (curParam == null)  { return;}
-        
-        priorType               =   getGuiPriorType();
-        curParam.priorType      =   priorType ;
-        
-        if (priorType  == PRIOR_TYPE.FIXED_PARAMETER ){
-            curParam.low       =    curParam.mean;
-            curParam.high      =    curParam.mean;
-            getLowField().setValue       ( curParam.mean);
-            getHighField().setValue      ( curParam.mean);
-        } 
-        
-        update ();
-        ignoreEvents = false;
-        
+       if (ignoreEvents ) {return;}
+       ignoreEvents = true; 
+       try{
         // reset package.
-        resetModel();
-         * 
-         */
+            resetModel();
+       }
+       finally{
+              ignoreEvents = false; 
+       } 
     }//GEN-LAST:event_comboBox_PriorTypeActionPerformed
     private void NotOrderedActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotOrderedActionPerformed
         ParameterPrior curParam = getSelectedParameter();
@@ -624,9 +610,6 @@ public class JAllPriors extends javax.swing.JPanel
             updatePriorType(curParam);
             update ();
             //ignoreEvents = false;
-
-            // reset package.
-            resetModel();
             return;
         }
         
