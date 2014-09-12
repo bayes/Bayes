@@ -113,7 +113,10 @@ public class Bruker2VarianFidConverter {
 
         int np              =   breader.getNp();
         double sw_hertz     =   breader.getSweepWidthHERTZ();
-        float at            =   (float)(np/2/sw_hertz);
+        double sw_ppm       =   breader.getSweepWidthPPM();
+       // float at            =   (float)(np/2/sw_hertz);
+        int gyro            =   60;
+        float at            =   (float)(np/(2*sw_ppm*gyro));
         float sfrq          =   (float)breader.getSpectrometerFrequency();
         procpar.updateProcpar(at, sfrq, np);
         procpar.setLb(1f);

@@ -111,7 +111,7 @@ public class BrukerDataInfo implements BrukerConstants{
               //Get byte ordering
               else  if (line.startsWith("##$BYTORDA")){
                 int abyteOrder =     getIntegerValue(line);
-                if (abyteOrder == 1){
+                if (abyteOrder == 0){
                     byteOrder  = ByteOrder.LITTLE_ENDIAN;
                 }
                 else{
