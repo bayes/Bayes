@@ -127,7 +127,7 @@ public class BayesIntro extends javax.swing.JPanel {
         jTextArea1.setBackground(new java.awt.Color(238, 238, 238));
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         jTextArea1.setForeground(new java.awt.Color(0, 0, 153));
         jTextArea1.setRows(5);
         jTextArea1.setTabSize(2);
@@ -137,7 +137,7 @@ public class BayesIntro extends javax.swing.JPanel {
         jTextArea2.setBackground(new java.awt.Color(238, 238, 238));
         jTextArea2.setColumns(20);
         jTextArea2.setEditable(false);
-        jTextArea2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jTextArea2.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         jTextArea2.setForeground(new java.awt.Color(0, 0, 153));
         jTextArea2.setRows(5);
         jTextArea2.setTabSize(2);
@@ -148,9 +148,9 @@ public class BayesIntro extends javax.swing.JPanel {
         title_pane.setOpaque(false);
         title_pane.setLayout(new java.awt.GridLayout(3, 1, 0, 5));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 40));
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel1.setText("Bayesian Analysis of Common NMR Problems");
+        jLabel1.setText("Bayes Data-Analysis Toolkit"); // NOI18N
         title_pane.add(jLabel1);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 28));
@@ -158,7 +158,7 @@ public class BayesIntro extends javax.swing.JPanel {
         jLabel2.setText("Developed at Washington University in St. Louis");
         title_pane.add(jLabel2);
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 28)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 28));
         jLabel4.setForeground(new java.awt.Color(0, 0, 153));
         jLabel4.setText("Mallinckrodt Institute of Radiology");
         title_pane.add(jLabel4);
