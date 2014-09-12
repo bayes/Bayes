@@ -116,7 +116,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BrukerBinaryMenuItemActionPerformed"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="BrukerBinaryMenuItem.setVisible(false);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="BrukerBinaryMenuItem.setVisible(true);"/>
                   </AuxValues>
                 </MenuItem>
               </SubComponents>

@@ -382,7 +382,7 @@ public class BayesView extends FrameView implements
         BrukerBinaryMenuItem.setText("Bruker Binary");
         BrukerBinaryMenuItem.setName("BrukerBinaryMenuItem"); // NOI18N
         BrukerBinaryMenuItem.addActionListener(formListener);
-        BrukerBinaryMenuItem.setVisible(false);
+        BrukerBinaryMenuItem.setVisible(true);
         loadFidMenu.add(BrukerBinaryMenuItem);
 
         fileMenu.add(loadFidMenu);
@@ -991,6 +991,9 @@ public class BayesView extends FrameView implements
             else if (evt.getSource() == imagePixelsUniqueMenuItem) {
                 BayesView.this.packageMenuActionPerformed(evt);
             }
+            else if (evt.getSource() == bayesTestDataMenuItem) {
+                BayesView.this.packageMenuActionPerformed(evt);
+            }
             else if (evt.getSource() == mcmcMenuItem) {
                 BayesView.this.mcmcMenuItemActionPerformed(evt);
             }
@@ -1037,9 +1040,6 @@ public class BayesView extends FrameView implements
                 BayesView.this.currentViewerScreenShotActionPerformed(evt);
             }
             else if (evt.getSource() == contactTimeMenuItem) {
-                BayesView.this.packageMenuActionPerformed(evt);
-            }
-            else if (evt.getSource() == bayesTestDataMenuItem) {
                 BayesView.this.packageMenuActionPerformed(evt);
             }
         }
