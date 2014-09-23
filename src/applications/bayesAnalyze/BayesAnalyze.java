@@ -119,35 +119,9 @@ public class BayesAnalyze   extends     javax.swing.JPanel
         return PACKAGE_INTSRUCTIONS.BAYES_ANALYZE.getInstruction();}
     public boolean           isOutliers(){return false;}
     public void              reset(){
-          setIgnoreEvents(true);
-          try{
-            setDefaults();
-            clearPreviousRun();
-
-
-            FidViewer.getInstance().resetModelAndResonances();
-            File modelDir           = DirectoryManager.getFidModelDir();
-            File bayesAnalizedir    = DirectoryManager.getBayesAnalyzeDir();
-
-            IO.emptyDirectory(bayesAnalizedir);
-            IO.deleteDirectory(modelDir);
-
-            FidModelViewer.getInstance().unloadData();
-            updateResonancesMessage ();
-
-
-             FidViewer.getInstance().updatePlot();
-
-          }
-          catch (Exception e){e.printStackTrace();}
-          finally{
-              setIgnoreEvents(false)  ;
-
-               // show defualt viewer
-                AllViewers.getInstance().showDefaultViewer();
-          }
-           
+        reset(true);
     }
+    
     public void              clearPreviousRun(){
          setIgnoreEvents(true);
           try{
@@ -155,18 +129,11 @@ public class BayesAnalyze   extends     javax.swing.JPanel
                 // this will clear ascii results
                 Reset.clearFidResutls();
 
-                //
+                // reset Jrun
                 jRun.reset();
 
-
                 // delete bayes analyze from previous runs
-                File bayesAnalizedir    =   DirectoryManager.getBayesAnalyzeDir();
-                File noiseFile          =   DirectoryManager.getBayesNoiseFile();
-                Set <File> filesToKeep  =   new TreeSet<File>();
-                filesToKeep.add(noiseFile);
-                
-                IO.emptyDirectory(bayesAnalizedir, filesToKeep );
-             
+                cleanBayesAnalyzeDir(true, true);
 
           }
           catch (Exception e){e.printStackTrace();}
@@ -296,11 +263,46 @@ public class BayesAnalyze   extends     javax.swing.JPanel
        
    }
     public void              destroy(){};
+    public void              reset(boolean setDefaults){
+          setIgnoreEvents(true);
+          try{
+              if(setDefaults){
+                    setDefaults();
+              }
+          
+             clearPreviousRun();
 
-    public static void cleanBayesAnalyzeDir(boolean keepProbFiles){
+
+            FidViewer.getInstance().resetModelAndResonances();
+            File modelDir           = DirectoryManager.getFidModelDir();
+            File bayesAnalizedir    = DirectoryManager.getBayesAnalyzeDir();
+
+            IO.emptyDirectory(bayesAnalizedir);
+            IO.deleteDirectory(modelDir);
+
+            FidModelViewer.getInstance().unloadData();
+            updateResonancesMessage ();
+
+
+             FidViewer.getInstance().updatePlot();
+
+          }
+          catch (Exception e){e.printStackTrace();}
+          finally{
+              setIgnoreEvents(false)  ;
+
+               // show defualt viewer
+                AllViewers.getInstance().showDefaultViewer();
+          }
+           
+    }
+    
+    public static void cleanBayesAnalyzeDir(boolean keepProbFiles, boolean keepNoiseFile ){
         File baDir                          =   DirectoryManager.getBayesAnalyzeDir();
         FileFilter filter                   =   new  ALLBayesAnalyzeExceptProbFilesFilter();
+        File noiseFile                      =   DirectoryManager.getBayesNoiseFile(baDir);
         File [] files                       =   null;
+      
         if (keepProbFiles){
             files   = baDir.listFiles(filter);
         }
@@ -308,7 +310,13 @@ public class BayesAnalyze   extends     javax.swing.JPanel
             files   = baDir.listFiles();
         }
         for (File file : files) {
-            file.delete();
+            if(keepNoiseFile && file.getAbsolutePath().equals(noiseFile.getPath())){
+                continue;
+            }
+            else{
+                 file.delete();
+            }
+           
         }
 
     }
@@ -837,8 +845,8 @@ public class BayesAnalyze   extends     javax.swing.JPanel
     private void setSignalAndNoisePropertyChange (java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_setSignalAndNoisePropertyChange
         if (evt.getPropertyName().equals(SetSignalFilterNoise.SIGNAL_NOISE_PROPERTY_CHANGE)){
             if (this.isIgnoreEvents () == false){
-                System.out.println("$$$$$$$$");
-            clearPreviousRun();
+            //clearPreviousRun();
+            reset(false);
             
        }
         }
@@ -1240,7 +1248,7 @@ public class BayesAnalyze   extends     javax.swing.JPanel
                     boolean bl = !f.getName().startsWith(  BAYES_ANALYZE_TYPE.BAYES_PROBABILITY);
                     return  bl;
             }
-        }
+    }
 
 
     class ModelCellRenderer extends DefaultListCellRenderer {
