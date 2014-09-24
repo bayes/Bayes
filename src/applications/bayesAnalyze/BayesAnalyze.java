@@ -119,7 +119,7 @@ public class BayesAnalyze   extends     javax.swing.JPanel
         return PACKAGE_INTSRUCTIONS.BAYES_ANALYZE.getInstruction();}
     public boolean           isOutliers(){return false;}
     public void              reset(){
-        reset(true);
+        reset(true, true,true);
     }
     
     public void              clearPreviousRun(){
@@ -263,28 +263,29 @@ public class BayesAnalyze   extends     javax.swing.JPanel
        
    }
     public void              destroy(){};
-    public void              reset(boolean setDefaults){
+    public void              reset(boolean setDefaults, boolean purgeBayesAnalyze, boolean purgeFidModel){
           setIgnoreEvents(true);
           try{
-              if(setDefaults){
+                if(setDefaults){
                     setDefaults();
-              }
-          
-             clearPreviousRun();
+                }
 
+                clearPreviousRun();
+                FidViewer.getInstance().resetModelAndResonances();
 
-            FidViewer.getInstance().resetModelAndResonances();
-            File modelDir           = DirectoryManager.getFidModelDir();
-            File bayesAnalizedir    = DirectoryManager.getBayesAnalyzeDir();
+                if(purgeBayesAnalyze){
+                    File bayesAnalizedir    = DirectoryManager.getBayesAnalyzeDir();
+                    IO.emptyDirectory(bayesAnalizedir);
 
-            IO.emptyDirectory(bayesAnalizedir);
-            IO.deleteDirectory(modelDir);
+                }
+                if(purgeFidModel){
+                    File modelDir           = DirectoryManager.getFidModelDir();
+                    IO.deleteDirectory(modelDir);
+                }
+                FidModelViewer.getInstance().unloadData();
+                updateResonancesMessage ();
 
-            FidModelViewer.getInstance().unloadData();
-            updateResonancesMessage ();
-
-
-             FidViewer.getInstance().updatePlot();
+                FidViewer.getInstance().updatePlot();
 
           }
           catch (Exception e){e.printStackTrace();}
@@ -845,8 +846,11 @@ public class BayesAnalyze   extends     javax.swing.JPanel
     private void setSignalAndNoisePropertyChange (java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_setSignalAndNoisePropertyChange
         if (evt.getPropertyName().equals(SetSignalFilterNoise.SIGNAL_NOISE_PROPERTY_CHANGE)){
             if (this.isIgnoreEvents () == false){
-            //clearPreviousRun();
-            reset(false);
+                   reset(false, false,true);
+                     
+            // make sure we delete probability files
+            cleanBayesAnalyzeDir(false, true);
+            
             
        }
         }
