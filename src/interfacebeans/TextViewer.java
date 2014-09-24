@@ -619,10 +619,18 @@ public class TextViewer extends javax.swing.JPanel implements Viewable{
     }//GEN-LAST:event_textPaneMousePressed
 
     private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
+        Color fgcolor = textPane.getForeground(); 
+        Color bgcolor = textPane.getBackground(); 
         try{
-            textPane.print();
+           textPane.setBackground(Color.WHITE);
+           textPane.setForeground(Color.BLACK);
+           textPane.print();
         }
         catch (Exception e){e.printStackTrace();}
+        finally{
+             textPane.setForeground(fgcolor);
+             textPane.setBackground(bgcolor);
+        }
 
     }//GEN-LAST:event_printButtonActionPerformed
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
