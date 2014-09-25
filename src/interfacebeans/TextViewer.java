@@ -624,12 +624,15 @@ public class TextViewer extends javax.swing.JPanel implements Viewable{
         try{
            textPane.setBackground(Color.WHITE);
            textPane.setForeground(Color.BLACK);
+           textPane.setFont(TextViewerPreferences.getPrintFont());
+        
            textPane.print();
         }
         catch (Exception e){e.printStackTrace();}
         finally{
              textPane.setForeground(fgcolor);
              textPane.setBackground(bgcolor);
+             textPane.setFont(font);
         }
 
     }//GEN-LAST:event_printButtonActionPerformed

@@ -133,7 +133,7 @@ public class JPreferences extends javax.swing.JDialog{
         jLabel8 = new javax.swing.JLabel();
         filler2 = new javax.swing.JPanel();
         TextViewerPane = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
+        textFonPane = new javax.swing.JPanel();
         textFontNameComboBox = new javax.swing.JComboBox(getFonts());
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -145,7 +145,10 @@ public class JPreferences extends javax.swing.JDialog{
         backgroundColorLabel = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        filler3 = new javax.swing.JPanel();
+        textFonPane1 = new javax.swing.JPanel();
+        printFontSizeLabel = new javax.swing.JLabel();
+        printFontSizeSpinner = new javax.swing.JSpinner();
+        jPanel10 = new javax.swing.JPanel();
         debuggingPane = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         deleteSubmittedJobFromClientCheckBox = new javax.swing.JCheckBox();
@@ -173,7 +176,7 @@ public class JPreferences extends javax.swing.JDialog{
         windowButtonPaneLayout.setHorizontalGroup(
             windowButtonPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, windowButtonPaneLayout.createSequentialGroup()
-                .addContainerGap(594, Short.MAX_VALUE)
+                .addContainerGap(582, Short.MAX_VALUE)
                 .add(closeButton)
                 .addContainerGap())
         );
@@ -240,7 +243,7 @@ public class JPreferences extends javax.swing.JDialog{
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(setHomeDirButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(resetAllPropertiesToDefault, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 192, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel0Layout.setVerticalGroup(
             jPanel0Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -299,7 +302,7 @@ public class JPreferences extends javax.swing.JDialog{
                 .add(jLabel7)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(toolTipDisplayTimeSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -416,7 +419,7 @@ public class JPreferences extends javax.swing.JDialog{
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(fileUploadBufferSizeMbSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(fileDownloadBufferSizeMbSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(new java.awt.Component[] {jLabel10, jLabel6, jLabel9}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
@@ -581,7 +584,7 @@ public class JPreferences extends javax.swing.JDialog{
                 .add(redirectJavaStreamCheckBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .add(18, 18, 18)
                 .add(monitorSubmmitedJobsCheckBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 9, Short.MAX_VALUE)
                 .add(jLabel21)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(screenShotFormatComboBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -613,7 +616,7 @@ public class JPreferences extends javax.swing.JDialog{
         filler.setLayout(fillerLayout);
         fillerLayout.setHorizontalGroup(
             fillerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 669, Short.MAX_VALUE)
+            .add(0, 657, Short.MAX_VALUE)
         );
         fillerLayout.setVerticalGroup(
             fillerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -704,7 +707,7 @@ public class JPreferences extends javax.swing.JDialog{
                         .add(contrastBarPrecisionSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(thresholdImagePixCheckBox)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -788,7 +791,7 @@ public class JPreferences extends javax.swing.JDialog{
                 .add(jLabel12)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(imageListFontSizeSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -823,7 +826,7 @@ public class JPreferences extends javax.swing.JDialog{
         filler1.setLayout(filler1Layout);
         filler1Layout.setHorizontalGroup(
             filler1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 649, Short.MAX_VALUE)
+            .add(0, 637, Short.MAX_VALUE)
         );
         filler1Layout.setVerticalGroup(
             filler1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -870,7 +873,7 @@ public class JPreferences extends javax.swing.JDialog{
                 .add(jLabel3)
                 .add(18, 18, 18)
                 .add(fidCursorPrecisionSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -955,7 +958,7 @@ public class JPreferences extends javax.swing.JDialog{
                 .add(jLabel4)
                 .add(49, 49, 49)
                 .add(cursorColorLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         jPanel8Layout.linkSize(new java.awt.Component[] {cursorColorLabel, tarce1ColorLabel, tarce2ColorLabel}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
@@ -995,7 +998,7 @@ public class JPreferences extends javax.swing.JDialog{
         filler2.setLayout(filler2Layout);
         filler2Layout.setHorizontalGroup(
             filler2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 669, Short.MAX_VALUE)
+            .add(0, 657, Short.MAX_VALUE)
         );
         filler2Layout.setVerticalGroup(
             filler2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1015,8 +1018,8 @@ public class JPreferences extends javax.swing.JDialog{
         TextViewerPane.setName("TextViewerPane"); // NOI18N
         TextViewerPane.setLayout(new java.awt.GridBagLayout());
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Text Font", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
-        jPanel10.setName("jPanel10"); // NOI18N
+        textFonPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Text Font", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
+        textFonPane.setName("textFonPane"); // NOI18N
 
         textFontNameComboBox .setSelectedItem(TextViewerPreferences.getTextFontName());
         textFontNameComboBox.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nFont name in the text viewer.<br>\nThe text outpus are frequently formatted such <br>\nto be best viewed with monospaced fonts.\n\n</font></p><html>"); // NOI18N
@@ -1063,14 +1066,14 @@ public class JPreferences extends javax.swing.JDialog{
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanel10Layout = new org.jdesktop.layout.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel10Layout.createSequentialGroup()
+        org.jdesktop.layout.GroupLayout textFonPaneLayout = new org.jdesktop.layout.GroupLayout(textFonPane);
+        textFonPane.setLayout(textFonPaneLayout);
+        textFonPaneLayout.setHorizontalGroup(
+            textFonPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(textFonPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel10Layout.createSequentialGroup()
+                .add(textFonPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(textFonPaneLayout.createSequentialGroup()
                         .add(jLabel17)
                         .add(18, 18, 18)
                         .add(textFontNameComboBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 191, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -1081,26 +1084,26 @@ public class JPreferences extends javax.swing.JDialog{
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(textViewerTextFontSizeSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(swtDefaultFontInTextViewer))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel10Layout.createSequentialGroup()
-                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+        textFonPaneLayout.setVerticalGroup(
+            textFonPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(textFonPaneLayout.createSequentialGroup()
+                .add(textFonPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(textFonPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(textFontNameComboBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                         .add(textFontBoldCheckBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jLabel17))
                 .add(9, 9, 9)
                 .add(swtDefaultFontInTextViewer))
-            .add(jPanel10Layout.createSequentialGroup()
-                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(textFonPaneLayout.createSequentialGroup()
+                .add(textFonPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .add(textViewerTextFontSizeSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(38, 38, 38))
         );
 
-        jPanel10Layout.linkSize(new java.awt.Component[] {jLabel17, jLabel18, textFontBoldCheckBox, textFontNameComboBox, textViewerTextFontSizeSpinner}, org.jdesktop.layout.GroupLayout.VERTICAL);
+        textFonPaneLayout.linkSize(new java.awt.Component[] {jLabel17, jLabel18, textFontBoldCheckBox, textFontNameComboBox, textViewerTextFontSizeSpinner}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1109,7 +1112,7 @@ public class JPreferences extends javax.swing.JDialog{
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        TextViewerPane.add(jPanel10, gridBagConstraints);
+        TextViewerPane.add(textFonPane, gridBagConstraints);
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Plot Colors", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
         jPanel9.setName("jPanel9"); // NOI18N
@@ -1155,7 +1158,7 @@ public class JPreferences extends javax.swing.JDialog{
                 .add(jLabel19)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(backgroundColorLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         jPanel9Layout.linkSize(new java.awt.Component[] {jLabel16, jLabel19}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
@@ -1185,26 +1188,68 @@ public class JPreferences extends javax.swing.JDialog{
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         TextViewerPane.add(jPanel9, gridBagConstraints);
 
-        filler3.setName("filler3"); // NOI18N
+        textFonPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Printing", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
+        textFonPane1.setName("textFonPane1"); // NOI18N
 
-        org.jdesktop.layout.GroupLayout filler3Layout = new org.jdesktop.layout.GroupLayout(filler3);
-        filler3.setLayout(filler3Layout);
-        filler3Layout.setHorizontalGroup(
-            filler3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 669, Short.MAX_VALUE)
+        printFontSizeLabel.setText("Font Size");
+        printFontSizeLabel.setName("printFontSizeLabel"); // NOI18N
+
+        printFontSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(12, 8, 32, 1));
+        printFontSizeSpinner.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n\nFont size in printed reports\n</font></p><html>"); // NOI18N
+        printFontSizeSpinner.setName("printFontSizeSpinner"); // NOI18N
+        printFontSizeSpinner.setValue(TextViewerPreferences.getPrintFontSize());
+        printFontSizeSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                printFontSizeSpinnerStateChanged(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout textFonPane1Layout = new org.jdesktop.layout.GroupLayout(textFonPane1);
+        textFonPane1.setLayout(textFonPane1Layout);
+        textFonPane1Layout.setHorizontalGroup(
+            textFonPane1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(textFonPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(printFontSizeLabel)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(printFontSizeSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(471, Short.MAX_VALUE))
         );
-        filler3Layout.setVerticalGroup(
-            filler3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 357, Short.MAX_VALUE)
+        textFonPane1Layout.setVerticalGroup(
+            textFonPane1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(textFonPane1Layout.createSequentialGroup()
+                .add(textFonPane1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(printFontSizeLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .add(printFontSizeSpinner, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(38, 38, 38))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weighty = 1.0;
-        TextViewerPane.add(filler3, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        TextViewerPane.add(textFonPane1, gridBagConstraints);
+
+        jPanel10.setName("jPanel10"); // NOI18N
+
+        org.jdesktop.layout.GroupLayout jPanel10Layout = new org.jdesktop.layout.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 657, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 269, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weighty = 5.0;
+        TextViewerPane.add(jPanel10, gridBagConstraints);
 
         configurationPane.addTab("Text Viewer", TextViewerPane);
 
@@ -1244,7 +1289,7 @@ public class JPreferences extends javax.swing.JDialog{
                 .addContainerGap()
                 .add(jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel11Layout.createSequentialGroup()
-                        .add(deleteCompletedJobFromServerCheckBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                        .add(deleteCompletedJobFromServerCheckBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                         .add(262, 262, 262))
                     .add(deleteSubmittedJobFromClientCheckBox)
                     .add(jLabel20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 504, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -1668,6 +1713,11 @@ private void screenShotFormatComboBoxItemStateChanged(java.awt.event.ItemEvent e
     
 }//GEN-LAST:event_screenShotFormatComboBoxItemStateChanged
 
+    private void printFontSizeSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_printFontSizeSpinnerStateChanged
+         int val =  (Integer)   printFontSizeSpinner.getValue();
+         TextViewerPreferences.setPrintFontSizeFontSize(val);
+    }//GEN-LAST:event_printFontSizeSpinnerStateChanged
+
 
     public static JPreferences display(){
         JPreferences dialog =  JPreferences.getInstance();
@@ -1742,7 +1792,6 @@ private void screenShotFormatComboBoxItemStateChanged(java.awt.event.ItemEvent e
     private javax.swing.JPanel filler;
     private javax.swing.JPanel filler1;
     private javax.swing.JPanel filler2;
-    private javax.swing.JPanel filler3;
     private javax.swing.JLabel foregroundColorLabel;
     private javax.swing.JPanel generalPrefsPane;
     private javax.swing.JFormattedTextField homeDirTF;
@@ -1787,6 +1836,8 @@ private void screenShotFormatComboBoxItemStateChanged(java.awt.event.ItemEvent e
     private javax.swing.JPanel mainPane;
     private javax.swing.JCheckBox monitorSubmmitedJobsCheckBox;
     private javax.swing.JRadioButton nimbusRadioButton;
+    private javax.swing.JLabel printFontSizeLabel;
+    private javax.swing.JSpinner printFontSizeSpinner;
     private javax.swing.JSpinner readTimeoutSpinner;
     private javax.swing.JCheckBox redirectJavaStreamCheckBox;
     private javax.swing.JButton resetAllPropertiesToDefault;
@@ -1796,6 +1847,8 @@ private void screenShotFormatComboBoxItemStateChanged(java.awt.event.ItemEvent e
     private javax.swing.JButton swtDefaultFontInTextViewer;
     private javax.swing.JLabel tarce1ColorLabel;
     private javax.swing.JLabel tarce2ColorLabel;
+    private javax.swing.JPanel textFonPane;
+    private javax.swing.JPanel textFonPane1;
     private javax.swing.JCheckBox textFontBoldCheckBox;
     private javax.swing.JComboBox textFontNameComboBox;
     private javax.swing.JSpinner textViewerTextFontSizeSpinner;

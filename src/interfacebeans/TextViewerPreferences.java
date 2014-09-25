@@ -57,12 +57,23 @@ public class TextViewerPreferences {
     private static final String  TEXT_FONT_BOLD_KEY                 =   "TEXT_VIEWER_TEXT_FONT_BOLD_KEY";
     private static final boolean TEXT_FONT_BOLD_DEF                 =  true;
 
+    
+    private static final String  PRINT_FONT_SIZE_KEY                 =   "TEXT_VIEWER_PRINT_FONT_SIZE_KEY";
+    private static final int   PRINT_FONT_SIZE_DEF                   =   12;
+    
     static{
         refreshColors();
 
     }
 
-
+      public static Font   getPrintFont(){
+        String name                 = getTextFontName();
+        int size                    = getPrintFontSize();
+        int type                    = 0;
+        //if ( isTextFontBold()) {type = 1;}
+        Font  font    =   new java.awt.Font(name, type , size  );
+        return font;
+    }
     public static Font   getTextFont(){
         String name                 = getTextFontName();
         int size                    = getTextFontSize();
@@ -133,5 +144,13 @@ public class TextViewerPreferences {
     public static void setBackgroundColor(int val){
       prefs.putInt(BACKGROUND_COLOR_KEY , val);
     }
+    
+     public static int getPrintFontSize(){
+      return  prefs.getInt(  PRINT_FONT_SIZE_KEY, PRINT_FONT_SIZE_DEF  );
+    }
+    public static void setPrintFontSizeFontSize(int val){
+      prefs.putInt( PRINT_FONT_SIZE_KEY, val);
+    }
+
 
 }
