@@ -54,7 +54,11 @@ public class Bruker2VarianFidConverter {
         fidWriter.getFileHeader ().np       =   paramsReader.getNp();
 
         try{
-            fidWriter.writeFid( fidDst, reader.getFid_real(), reader.getFid_imag());
+            int shift = paramsReader.calculateTimeShift();
+            float[][] shiftedReal = shift(reader.getFid_real(),shift );
+            float[][] shiftedImag = shift(reader.getFid_imag(),shift );
+            
+            fidWriter.writeFid( fidDst, shiftedReal, shiftedImag);
         } catch(IOException exp){
             exp.printStackTrace();
             DisplayText.popupMessage("Failed to write fid binary file.");
@@ -108,6 +112,18 @@ public class Bruker2VarianFidConverter {
 
         return true;
     }
+     
+     public static float [][]  shift(float [][] data, int shiftValue){
+         int dim1 = data.length;
+         int dim2 = data[0].length;
+         float [][]  shiftedData = new float [dim1][dim2];
+         for (int i = 0; i < shiftedData.length; i++) {
+             System.arraycopy(data [i], shiftValue,shiftedData[i],0,data [i].length - shiftValue);
+         }
+                 
+                 
+         return shiftedData;
+     }
      public static Procpar BrukerReader2Procpar(  BrukerDataInfo breader ){
         Procpar procpar = new  Procpar();
 

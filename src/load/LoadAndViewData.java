@@ -398,7 +398,9 @@ public class LoadAndViewData {
 
     public static void loadBrukerFid(File fidfile){
         Bruker2VarianFidConverter.readAndWrite(fidfile);
-        FidViewer.getInstance(). loadDefaultFid();
+        //FidViewer.getInstance(). loadDefaultFid();
+        FidViewer.getInstance().loadData(DirectoryManager.getFidDir(), true);
+        AllViewers.showFidViewer();
      }
 
 

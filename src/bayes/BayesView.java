@@ -853,9 +853,6 @@ public class BayesView extends FrameView implements
             else if (evt.getSource() == text2FidMenuItem) {
                 BayesView.this.text2FidMenuItemActionPerformed(evt);
             }
-            else if (evt.getSource() == BrukerBinaryMenuItem) {
-                BayesView.this.BrukerBinaryMenuItemActionPerformed(evt);
-            }
             else if (evt.getSource() == varianBinaryMenuItem) {
                 BayesView.this.varianBinaryMenuItemActionPerformed(evt);
             }
@@ -1042,6 +1039,9 @@ public class BayesView extends FrameView implements
             else if (evt.getSource() == contactTimeMenuItem) {
                 BayesView.this.packageMenuActionPerformed(evt);
             }
+            else if (evt.getSource() == BrukerBinaryMenuItem) {
+                BayesView.this.BrukerBinaryMenuItemActionPerformed(evt);
+            }
         }
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1174,12 +1174,8 @@ private void currentViewerScreenShotActionPerformed(java.awt.event.ActionEvent e
 
         VarianBinaryConverter.chooseAndLoadVarianImage();     }//GEN-LAST:event_varianBinaryMenuItemActionPerformed
 
-    private void BrukerBinaryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrukerBinaryMenuItemActionPerformed
-
-        brukerMenuAction(evt);     }//GEN-LAST:event_BrukerBinaryMenuItemActionPerformed
-
     private void text2FidMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text2FidMenuItemActionPerformed
-
+  
         DataLoader.loadTextFid();     }//GEN-LAST:event_text2FidMenuItemActionPerformed
 
     private void loadSiemensRawDataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSiemensRawDataMenuItemActionPerformed
@@ -1210,6 +1206,17 @@ private void currentViewerScreenShotActionPerformed(java.awt.event.ActionEvent e
     private void jpgMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpgMenuItemActionPerformed
        DataLoader.loadCommonImage();
     }//GEN-LAST:event_jpgMenuItemActionPerformed
+
+    private void BrukerBinaryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrukerBinaryMenuItemActionPerformed
+        this.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try{
+            DataLoader.loadBrukerFid();
+        } 
+        finally{
+             this.getComponent().setCursor(Cursor.getDefaultCursor());
+        }
+            
+    }//GEN-LAST:event_BrukerBinaryMenuItemActionPerformed
 
 
 /****** actions start ************/

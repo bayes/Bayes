@@ -35,6 +35,7 @@ public class BrukerDataInfo implements BrukerConstants{
    private double sweepWidthPPM                 =   1;
    private double spectrometerFrequency         =    1;
    private boolean loaded                       =    false;
+   private double groupDelay                     =   0;
 
    public String   errorString                  =   null;
 
@@ -125,6 +126,12 @@ public class BrukerDataInfo implements BrukerConstants{
                     np        =   anpoints;
                 
               }
+                //Get points per trace
+              else if (line.startsWith("##$GRPDLY=")){
+                double gDelay =     getDoubleValue(line);
+                    groupDelay        =   gDelay;
+                
+              }
               
               // Get Data Type
               //AQ_mod is acquisition mode (0=Real;1=Complex;2=Sequential;3=DQD)
@@ -212,7 +219,15 @@ public class BrukerDataInfo implements BrukerConstants{
       
    }
 
-
+   public int calculateTimeShift(){
+       int shift = 0;
+       if (this.groupDelay >0){
+           shift = (int) Math.floor(this.np/this.groupDelay/Math.PI);
+       }
+       
+       return shift;
+       
+   }
    public static String  getStringValue(String line){
     int start                   = -1;
     start                       =   line.lastIndexOf(KEY_VALUE_SEPARATOR);
@@ -536,6 +551,14 @@ public class BrukerDataInfo implements BrukerConstants{
 
     public void setDspfvs(int dspfvs) {
         this.dspfvs = dspfvs;
+    }
+
+    public double getGroupDelay() {
+        return groupDelay;
+    }
+
+    public void setGroupDelay(double groupDelay) {
+        this.groupDelay = groupDelay;
     }
 
 }

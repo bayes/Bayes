@@ -170,6 +170,14 @@ public class DataLoader {
         return dataFileChooser ;
 
     }
+    
+      public static JFileChooser getBrukerFileChooser(){
+        dataFileChooser.setMultiSelectionEnabled(false);
+        dataFileChooser.setFileSelectionMode (javax.swing.JFileChooser.FILES_ONLY);
+        dataFileChooser.setAcceptAllFileFilterUsed(true);
+        dataFileChooser.setDialogTitle("Load Bruker FID)");
+        return dataFileChooser ;
+    }
 
     public static void  loadAscii(){
         JFileChooser fc         =   getAsciiDataFileChooser();
@@ -433,6 +441,20 @@ public class DataLoader {
 
                 File file           = fc.getSelectedFile();
                 LoadAndViewData.loadSiemensRAWFid(file);
+        }
+    }
+   public static void  loadBrukerFid(){
+        JFileChooser fc = getBrukerFileChooser();
+        int returnVal = fc.showOpenDialog(null);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+
+              // remember for future loads
+                DirectoryManager.startDir   = fc.getCurrentDirectory();
+                
+                File file = fc.getSelectedFile();
+                LoadAndViewData.loadBrukerFid(file);
+
         }
     }
     public static void  loadTextFid(){
