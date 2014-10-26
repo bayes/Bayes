@@ -54,11 +54,14 @@ public class Bruker2VarianFidConverter {
         fidWriter.getFileHeader ().np       =   paramsReader.getNp();
 
         try{
-            int shift = paramsReader.calculateTimeShift();
-            float[][] shiftedReal = shift(reader.getFid_real(),shift );
-            float[][] shiftedImag = shift(reader.getFid_imag(),shift );
-            
-            fidWriter.writeFid( fidDst, shiftedReal, shiftedImag);
+             float[][] real = reader.getFid_real() ;
+             float[][] imag = reader.getFid_imag() ;
+            float[][][] postProcessFid= applyBrukerFilter(real,imag,paramsReader)  ; 
+//            float[][] shiftedReal = shift(reader.getFid_real(),shift );
+//            float[][] shiftedImag = shift(reader.getFid_imag(),shift );
+//            
+//            fidWriter.writeFid( fidDst, shiftedReal, shiftedImag);
+            fidWriter.writeFid( fidDst, reader.getFid_real(), reader.getFid_imag());
         } catch(IOException exp){
             exp.printStackTrace();
             DisplayText.popupMessage("Failed to write fid binary file.");
@@ -120,6 +123,28 @@ public class Bruker2VarianFidConverter {
          for (int i = 0; i < shiftedData.length; i++) {
              System.arraycopy(data [i], shiftValue,shiftedData[i],0,data [i].length - shiftValue);
          }
+                 
+                 
+         return shiftedData;
+     }
+     public static float [][][]  applyBrukerFilter (float [][] real, float [][] imag, BrukerDataInfo breader ){
+         int np                 =   breader.getNp();
+         double grpdly          =   breader.getGroupDelay();
+         float shift            =   (float)(Math.PI + 2*Math.PI*(grpdly/np));
+         int dim1               =   real.length;
+         int dim2               =   real[0].length;
+         float shiftedData  [][][]= new float [2][dim1][dim2];
+         
+         for (int i = 0; i < dim1; i++) {
+             float [][] curFFT = new float[2][dim2];
+             curFFT[0]  = real[i];
+             curFFT[1]  = imag[i];
+             curFFT     = cFFT.doFFT(curFFT, 0, -1);
+             curFFT     = cFFT.shift(curFFT, -shift);
+             curFFT     = cFFT.doFFT(curFFT, -Math.PI,1);
+//             shiftedData[0][i] = curFFT[0];
+//             shiftedData[1][i] = curFFT[1];
+     }
                  
                  
          return shiftedData;

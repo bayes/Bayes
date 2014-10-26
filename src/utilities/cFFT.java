@@ -201,6 +201,50 @@ public class cFFT {
 
        return theFFT;
     }
+     
+     
+       public static final float  [][] doFFT(float [][] theFFT, double shift , int isign){
+            int fftSize      =   theFFT[0].length;
+            if(shift != 0){
+                // Shift the frequencies so they run from -pi to pi
+                double cosa      =   cos(shift);
+                double sina      =   sin(shift);
+                double theCos    =   1.0;
+                double theSin    =   0.0;
+
+
+
+                for (int curFreq = 0; curFreq < fftSize ; curFreq++) {
+                  double wtemp       =  theCos*theFFT[0][curFreq] - theSin*theFFT[1][curFreq];
+                  theFFT[1][curFreq] = (float)( theCos*theFFT[1][curFreq] + theSin*theFFT[0][curFreq]);
+                  theFFT[0][curFreq] = (float) wtemp;
+                  double aa          =  cosa * theCos - sina * theSin;
+                  double bb          =  cosa * theSin + sina * theCos;
+                  theCos             =  aa;
+                  theSin             =  bb;
+
+                }
+
+            }
+            
+
+
+           float [] data       =   new float [2 * fftSize];
+           for (int i = 0; i < fftSize; i++) {
+                  data[2*i   ] =   theFFT[0][i] ;
+                  data[2*i+1]  =   theFFT[1][i];
+
+           }
+           data                 =   fft(data, isign);
+
+           for (int i = 0; i < fftSize; i++) {
+                theFFT[0][i] = data [2*i];
+                theFFT[1][i] = data [2*i+ 1];
+
+           }
+
+       return theFFT;
+    }
 
 
       public static final double [] slowFT ( double [] data, int isign){
