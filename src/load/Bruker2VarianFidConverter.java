@@ -56,7 +56,7 @@ public class Bruker2VarianFidConverter {
         try{
              float[][] real = reader.getFid_real() ;
              float[][] imag = reader.getFid_imag() ;
-            float[][][] postProcessFid= applyBrukerFilter(real,imag,paramsReader)  ; 
+          float[][][] postProcessFid= applyBrukerFilter(real,imag,paramsReader)  ; 
 //            float[][] shiftedReal = shift(reader.getFid_real(),shift );
 //            float[][] shiftedImag = shift(reader.getFid_imag(),shift );
 //            
@@ -139,9 +139,9 @@ public class Bruker2VarianFidConverter {
              float [][] curFFT = new float[2][dim2];
              curFFT[0]  = real[i];
              curFFT[1]  = imag[i];
-             curFFT     = cFFT.doFFT(curFFT, 0, -1);
-             curFFT     = cFFT.shift(curFFT, -shift);
-             curFFT     = cFFT.doFFT(curFFT, -Math.PI,1);
+            curFFT     = cFFT.doFFT(curFFT, 0, -1);
+            curFFT     = cFFT.shift(curFFT, shift);
+            curFFT     = cFFT.doFFT(curFFT, -Math.PI,1);
 //             shiftedData[0][i] = curFFT[0];
 //             shiftedData[1][i] = curFFT[1];
      }
