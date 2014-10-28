@@ -219,15 +219,13 @@ public class BrukerDataInfo implements BrukerConstants{
       
    }
 
-   public int calculateTimeShift(){
+
+   public int calculateTruncatedDimension(){
        int shift = 0;
        if (this.groupDelay >0){
            shift = (int) Math.floor(this.np/this.groupDelay/Math.PI);
        }
-       return shift;
-   }
-   public int calculateTruncatedDimension(){
-       int shift =  calculateTimeShift();
+    
        int originalDim = getNp()/2;
        int truncatedDim  = Math.abs(originalDim -  shift);
        return truncatedDim;

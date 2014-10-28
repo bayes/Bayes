@@ -39,7 +39,6 @@ public class Bruker2VarianFidConverter {
         File fidDst                         =   DirectoryManager.getFidFile();
         File ffhDst                         =   DirectoryManager.getFidDesciptorFile ();
         File procparFile                    =   DirectoryManager.getProcparFile();
-        File abscissFile                    =   DirectoryManager.getAbscissaFile();
         File textFile                       =   DirectoryManager.getTextFile();
 
         // create procpar
@@ -54,7 +53,6 @@ public class Bruker2VarianFidConverter {
         fidWriter.getFileHeader ().np       =   2*paramsReader.calculateTruncatedDimension();
 
         try{
-            int shift      =    paramsReader.calculateTimeShift();
             float[][] real = reader.getFid_real() ;
             float[][] imag = reader.getFid_imag() ;
             float[][][] postProcessFid= applyBrukerFilter(real,imag,paramsReader)  ; 

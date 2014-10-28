@@ -108,19 +108,8 @@ public class BrukerFidReader {
             System.arraycopy(fidData.imag, 0, fid_imag[curTrace], 0, fidData.imag.length);
         }
 
-        // apply digital shift
-        // all points with index < shift are deleted
-      //  applyDgitalShfit();
         this.dataInfo.setNp(fid_real[0].length * 2);
-        String str = new String ();
-        for (int i = 0; i < fid_real[0].length; i++) {
-           double re    =  fid_real[0][i]; 
-           double im    =  fid_imag[0][i];
-           double mag   =   Math.hypot(re, im);
-           str = str +re+"\t"+ im+ "\t"+ mag +"\n";
-            
-        }
-        IO.writeFileFromString(str, new File("BrukerFid"));
+
     }
 
     public FidData getTau(float[] real, float[] imag) {
