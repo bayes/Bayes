@@ -226,7 +226,7 @@ public class BrukerDataInfo implements BrukerConstants{
        }
        return shift;
    }
-   public int calculateTrancatedDimension(){
+   public int calculateTruncatedDimension(){
        int shift =  calculateTimeShift();
        int originalDim = getNp()/2;
        int truncatedDim  = Math.abs(originalDim -  shift);

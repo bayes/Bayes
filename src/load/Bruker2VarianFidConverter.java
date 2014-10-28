@@ -51,7 +51,7 @@ public class Bruker2VarianFidConverter {
         FidWriter fidWriter                 =   new FidWriter();
         fidWriter.getFileHeader ().nblocks  =    paramsReader.getNumberOfTraces();
         fidWriter.getFileHeader ().ntraces  =   1;
-        fidWriter.getFileHeader ().np       =   2*paramsReader.calculateTrancatedDimension();
+        fidWriter.getFileHeader ().np       =   2*paramsReader.calculateTruncatedDimension();
 
         try{
             int shift      =    paramsReader.calculateTimeShift();
@@ -120,7 +120,7 @@ public class Bruker2VarianFidConverter {
      public static float [][]  truncate(float [][] data,BrukerDataInfo breader){
          int dim1 = data.length;
          int dim2 = data[0].length;
-         int truncDim = breader.calculateTrancatedDimension();
+         int truncDim = breader.calculateTruncatedDimension();
          float [][]  shiftedData = new float [dim1][truncDim];
          for (int i = 0; i < shiftedData.length; i++) {
              System.arraycopy(data [i], 0,shiftedData[i],0,truncDim);
@@ -161,7 +161,7 @@ public class Bruker2VarianFidConverter {
        // int gyro            =   60;
          //at            =   (float)(np/(2*sw_ppm*gyro));
         float sfrq          =   (float)breader.getSpectrometerFrequency();
-        int npAfterTruncation = 2*breader.calculateTrancatedDimension();
+        int npAfterTruncation = 2*breader.calculateTruncatedDimension();
         procpar.updateProcpar(at, sfrq, npAfterTruncation);
         procpar.setLb(1f);
         procpar.setArraydim(breader.getNumberOfRepetions());
