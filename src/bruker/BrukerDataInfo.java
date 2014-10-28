@@ -224,9 +224,13 @@ public class BrukerDataInfo implements BrukerConstants{
        if (this.groupDelay >0){
            shift = (int) Math.floor(this.np/this.groupDelay/Math.PI);
        }
-       
        return shift;
-       
+   }
+   public int calculateTrancatedDimension(){
+       int shift =  calculateTimeShift();
+       int originalDim = getNp()/2;
+       int truncatedDim  = Math.abs(originalDim -  shift);
+       return truncatedDim;
    }
    public static String  getStringValue(String line){
     int start                   = -1;
