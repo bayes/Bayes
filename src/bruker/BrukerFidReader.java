@@ -92,23 +92,15 @@ public class BrukerFidReader {
         for (int curTrace = 0; curTrace < nTotalTraces; curTrace++) {
             FidData fidData = readData(channel);
 
-
-            // flip sign for imaginary component
-            // to make Bruker data equvalent to Varian data
-           // flipImagSign(fidData);
-
-
             fid_real[curTrace] = new float[fidData.real.length];
             fid_imag[curTrace] = new float[fidData.imag.length];
 
 
-
-            // save raw data
             System.arraycopy(fidData.real, 0, fid_real[curTrace], 0, fidData.real.length);
             System.arraycopy(fidData.imag, 0, fid_imag[curTrace], 0, fidData.imag.length);
         }
 
-        this.dataInfo.setNp(fid_real[0].length * 2);
+        this.dataInfo.setNp(fid_real[0].length * 2);   
 
     }
 
