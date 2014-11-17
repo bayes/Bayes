@@ -205,10 +205,10 @@ public class JPhasing extends javax.swing.JDialog {
         bindingGroup.addBinding(binding);
 
         time_slider.setBackground(new java.awt.Color(0, 0, 0));
-        time_slider.setMajorTickSpacing(100);
+        time_slider.setMajorTickSpacing(MAXIMUM_TIME_SLIDER);
         time_slider.setMaximum(MAXIMUM_TIME_SLIDER);
         time_slider.setMinimum(-MAXIMUM_TIME_SLIDER);
-        time_slider.setMinorTickSpacing(10);
+        time_slider.setMinorTickSpacing(2);
         time_slider.setSnapToTicks(true);
         time_slider.setValue(0);
         time_slider.setName("time_slider"); // NOI18N
@@ -226,12 +226,14 @@ public class JPhasing extends javax.swing.JDialog {
         binding.setSourceUnreadableValue(0);
         bindingGroup.addBinding(binding);
 
+        timeField.addActionListener(formListener1);
+
         order1_label.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         order1_label.setText("1-order phase correction (relative units)");
         order1_label.setName("order1_label"); // NOI18N
 
         trace_lbl1.setBackground(new java.awt.Color(0, 0, 0));
-        trace_lbl1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        trace_lbl1.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         trace_lbl1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         trace_lbl1.setText("Trace");
         trace_lbl1.setName("trace_lbl1"); // NOI18N
@@ -252,7 +254,7 @@ public class JPhasing extends javax.swing.JDialog {
         data_type_cb.setSelectedItem(FID_DATA_TYPE.SPECTRUM_REAL);
         data_type_cb.addActionListener(formListener1);
 
-        invertDomainAxisCB.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        invertDomainAxisCB.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         invertDomainAxisCB.setSelected(getDomainAxis().isInverted());
         invertDomainAxisCB.setText("Inverted frequency axis");
         invertDomainAxisCB.setName("invertDomainAxisCB"); // NOI18N
@@ -330,7 +332,7 @@ public class JPhasing extends javax.swing.JDialog {
         );
         chartPaneLayout.setVerticalGroup(
             chartPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 310, Short.MAX_VALUE)
+            .add(0, 309, Short.MAX_VALUE)
         );
 
         mainPane.add(chartPane, java.awt.BorderLayout.CENTER);
@@ -403,6 +405,9 @@ public class JPhasing extends javax.swing.JDialog {
             else if (evt.getSource() == applyPhaseToEntireFid) {
                 JPhasing.this.applyPhaseToEntireFidActionPerformed(evt);
             }
+            else if (evt.getSource() == timeField) {
+                JPhasing.this.timeFieldActionPerformed(evt);
+            }
         }
 
         public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -453,6 +458,10 @@ public class JPhasing extends javax.swing.JDialog {
        boolean invert = invertDomainAxisCB.isSelected();
        this.getDomainAxis().setInverted(invert);
     }//GEN-LAST:event_invertDomainAxisCBStateChanged
+
+    private void timeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_timeFieldActionPerformed
     public void updatePlot(){
 
         FidReader reader            =   viewer.getFidReader();
@@ -592,7 +601,7 @@ public class JPhasing extends javax.swing.JDialog {
         float dt                =   procpar.getTimePerSample(); // sampling time
         int   val               =   getTimeSlider().getValue ();
 
-        float time              =   dt * val /MAXIMUM_TIME_SLIDER;
+        float time              =   4*dt * val /MAXIMUM_TIME_SLIDER;
         return time;
     }
     public float getGuiPhase(){
