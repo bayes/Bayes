@@ -155,7 +155,7 @@ public class Bruker2VarianFidConverter {
     public static void  flipEvenPoints(float [][] imag ){
          int dim1               =   imag.length;
          
-         //outter loop - e.g. trace 1,2 3,4 
+         //outer loop - e.g. trace 1,2 3,4 
          for (int i = 0; i < dim1; i++) {
              int dim2  = imag[i].length;
              
