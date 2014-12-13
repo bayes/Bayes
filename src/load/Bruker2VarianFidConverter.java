@@ -55,7 +55,7 @@ public class Bruker2VarianFidConverter {
         try{
             float[][] real = reader.getFid_real() ;
             float[][] imag = reader.getFid_imag() ;
-            adjustImaginarySpectrum(imag);
+            flipEvenPoints(imag);
             
             float[][] shiftedReal = truncate(real,paramsReader );
             float[][] shiftedImag = truncate(imag,paramsReader );
@@ -152,7 +152,7 @@ public class Bruker2VarianFidConverter {
          return shiftedData;
      }
      
-    public static void  adjustImaginarySpectrum(float [][] imag ){
+    public static void  flipEvenPoints(float [][] imag ){
          int dim1               =   imag.length;
          
          //outter loop - e.g. trace 1,2 3,4 
