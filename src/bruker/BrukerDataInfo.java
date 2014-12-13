@@ -218,14 +218,33 @@ public class BrukerDataInfo implements BrukerConstants{
        }
       
    }
-
+   public int calculateShift(){
+       int shift = 0;
+       Double hold = null;
+       
+       try{
+            //dspfvs = firmware version
+           if (dspfvs >= 20 && this.groupDelay >0){
+               hold = this.groupDelay;
+           }
+           else if (dspfvs > 0){
+               hold =  BrukerDspTable.getDelay(decim, dspfvs);
+           }
+       }
+       catch(Exception e){
+           System.err.println("Error calculating bruker shift");
+           e.printStackTrace();
+       }
+      
+       if(hold!= null){
+            shift = (int) Math.ceil(hold);
+       }
+      
+       return shift;
+   }
 
    public int calculateTruncatedDimension(){
-       int shift = 0;
-       if (this.groupDelay >0){
-           shift = (int) Math.floor(this.np/this.groupDelay/Math.PI);
-       }
-    
+       int shift = calculateShift();
        int originalDim = getNp()/2;
        int truncatedDim  = Math.abs(originalDim -  shift);
        return truncatedDim;

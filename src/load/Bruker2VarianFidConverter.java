@@ -55,11 +55,11 @@ public class Bruker2VarianFidConverter {
         try{
             float[][] real = reader.getFid_real() ;
             float[][] imag = reader.getFid_imag() ;
-            float[][][] postProcessFid= applyBrukerFilter(real,imag,paramsReader)  ; 
+            adjustImaginarySpectrum(imag);
+            
             float[][] shiftedReal = truncate(real,paramsReader );
             float[][] shiftedImag = truncate(imag,paramsReader );
-//            
-//            fidWriter.writeFid( fidDst, shiftedReal, shiftedImag);
+           
             fidWriter.writeFid( fidDst, shiftedReal, shiftedImag);
         } catch(IOException exp){
             exp.printStackTrace();
@@ -115,13 +115,15 @@ public class Bruker2VarianFidConverter {
         return true;
     }
      
-     public static float [][]  truncate(float [][] data,BrukerDataInfo breader){
+       public static float [][]  truncate(float [][] data,BrukerDataInfo breader){
          int dim1 = data.length;
          int dim2 = data[0].length;
-         int truncDim = breader.calculateTruncatedDimension();
+         int truncatePoint = breader.calculateShift();
+         int truncDim = dim2 -truncatePoint; 
+           System.out.println("Bruker fid shift is estimated as  = "+truncatePoint );
          float [][]  shiftedData = new float [dim1][truncDim];
          for (int i = 0; i < shiftedData.length; i++) {
-             System.arraycopy(data [i], 0,shiftedData[i],0,truncDim);
+             System.arraycopy(data [i],truncatePoint ,shiftedData[i],0,truncDim);
          }
                  
                  
@@ -149,6 +151,26 @@ public class Bruker2VarianFidConverter {
                  
          return shiftedData;
      }
+     
+    public static void  adjustImaginarySpectrum(float [][] imag ){
+         int dim1               =   imag.length;
+         
+         //outter loop - e.g. trace 1,2 3,4 
+         for (int i = 0; i < dim1; i++) {
+             int dim2  = imag[i].length;
+             
+             // inner loop  - e.g. itterating through fid 
+             for (int j = 0; j < dim2; j+=2) {
+                 
+                 float hold =imag[i][j];
+                 imag[i][j] = -1.0f * hold;
+                 
+             }
+          
+        }
+                 
+     }
+    
      public static Procpar BrukerReader2Procpar(  BrukerDataInfo breader ){
         Procpar procpar = new  Procpar();
 
