@@ -31,6 +31,22 @@ public class BrukerDspTable {
       static {
           parseDSPTable();
       }
+      
+      public static Double getDelay(int decim, int sdpfvs){
+          Double out = null;
+          Map<Integer, Double> lookuptable = null;
+          
+          if(sdpfvs == 10){lookuptable = DSPFVS_10; }
+          if(sdpfvs == 11){lookuptable = DSPFVS_11; }
+          if(sdpfvs == 12){lookuptable = DSPFVS_12; }
+          if(sdpfvs == 13){lookuptable = DSPFVS_13; }
+          
+          if(lookuptable != null){
+              out = lookuptable.get(decim);
+          }
+          
+          return out;
+      }
       public  static void  parseDSPTable(){
           parseDSPTable(readDspTableAsString());
       }
@@ -82,14 +98,19 @@ public class BrukerDspTable {
       
       
       public static void main(String []args){
-          for (Integer key : DSPFVS_10.keySet()) {
-              System.out.println(key + " = "+ DSPFVS_10.get(key) );
-              System.out.println(key + " = "+ DSPFVS_11.get(key) );
-              System.out.println(key + " = "+ DSPFVS_12.get(key) );
-              System.out.println(key + " = "+ DSPFVS_13.get(key) );
-              System.out.println("");
-              
-          }
+//          for (Integer key : DSPFVS_10.keySet()) {
+//              System.out.println(key + " = "+ DSPFVS_10.get(key) );
+//              System.out.println(key + " = "+ DSPFVS_11.get(key) );
+//              System.out.println(key + " = "+ DSPFVS_12.get(key) );
+//              System.out.println(key + " = "+ DSPFVS_13.get(key) );
+//              System.out.println("");
+//              
+//          }
+          
+          System.out.println(getDelay(4, 12));
+          System.out.println(getDelay(23, 12));
+          System.out.println(getDelay(2, 13));
+          System.out.println(getDelay(4, 20));
       }
            
 }
