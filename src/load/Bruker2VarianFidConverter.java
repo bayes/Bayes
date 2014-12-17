@@ -55,7 +55,6 @@ public class Bruker2VarianFidConverter {
         try{
             float[][] real = reader.getFid_real() ;
             float[][] imag = reader.getFid_imag() ;
-            flipEvenPoints(imag);
             
             float[][] shiftedReal = truncate(real,paramsReader );
             float[][] shiftedImag = truncate(imag,paramsReader );
@@ -152,24 +151,7 @@ public class Bruker2VarianFidConverter {
          return shiftedData;
      }
      
-    public static void  flipEvenPoints(float [][] imag ){
-         int dim1               =   imag.length;
-         
-         //outer loop - e.g. trace 1,2 3,4 
-         for (int i = 0; i < dim1; i++) {
-             int dim2  = imag[i].length;
-             
-             // inner loop  - e.g. itterating through fid 
-             for (int j = 0; j < dim2; j+=2) {
-                 
-                 float hold =imag[i][j];
-                 imag[i][j] = -1.0f * hold;
-                 
-             }
-          
-        }
-                 
-     }
+  
     
      public static Procpar BrukerReader2Procpar(  BrukerDataInfo breader ){
         Procpar procpar = new  Procpar();
@@ -183,6 +165,7 @@ public class Bruker2VarianFidConverter {
         float sfrq          =   (float)breader.getSpectrometerFrequency();
         int npAfterTruncation = 2*breader.calculateTruncatedDimension();
         procpar.updateProcpar(at, sfrq, npAfterTruncation);
+        procpar.setFn(npAfterTruncation);
         procpar.setLb(1f);
         procpar.setArraydim(breader.getNumberOfRepetions());
 
