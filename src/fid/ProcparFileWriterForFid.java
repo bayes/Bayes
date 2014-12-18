@@ -65,7 +65,9 @@ public class ProcparFileWriterForFid extends  ProcparFileWriter{
 
          temp = writeParameter(  FPMULT_KEY,  pr.getFpmult ()  ,  1,1,  1000000000 , 0, 0,3,1,0,0);
          sb.append(temp);
-
+         
+         temp =  writeSimpleParameter(  FFT_TYPE_KEY, new String []{FFT_TYPE_KEY +" "+pr.getFftSign(), "0"});
+         sb.append(temp);
 
 
          if (pr.isDataArrayed()){

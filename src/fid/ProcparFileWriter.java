@@ -92,6 +92,24 @@ public abstract class ProcparFileWriter  implements ProcparConstants {
 
     }
 
+    public static String writeSimpleParameter( String key, String... values ){
+          StringBuilder sb           =   new  StringBuilder();
+          String        EOL          =   BayesManager.EOL;
+
+          // first line
+          sb.append(key);
+          sb.append(EOL);
+          
+          for (String value : values) {
+            sb.append(value);
+            sb.append(EOL);
+          }
+      
+
+         return sb.toString();
+
+
+    }
     public static StringBuilder writeNotArrayedSecondLine( Object values, int basictype, String space, String EOL) {
          StringBuilder sb           =   new  StringBuilder();
 

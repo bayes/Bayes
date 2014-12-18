@@ -36,6 +36,8 @@ public class BrukerDataInfo implements BrukerConstants{
    private double spectrometerFrequency         =    1;
    private boolean loaded                       =    false;
    private double groupDelay                     =   0;
+   
+   public static final int FFT_SIGN             =   -1;
 
    public String   errorString                  =   null;
 

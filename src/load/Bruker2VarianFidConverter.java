@@ -168,7 +168,7 @@ public class Bruker2VarianFidConverter {
         procpar.setFn(npAfterTruncation);
         procpar.setLb(1f);
         procpar.setArraydim(breader.getNumberOfRepetions());
-
+        procpar.setFftSign(BrukerDataInfo.FFT_SIGN );
 
         return procpar;
     }

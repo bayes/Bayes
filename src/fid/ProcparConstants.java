@@ -27,6 +27,7 @@ public interface ProcparConstants {
     public static String RFL1_KEY               = "rfl1";
     public static String LB_KEY                 = "lb";
     public static String FILE_KEY               = "file";
+    public static String FFT_TYPE_KEY           = "fft_sign";
 
     public static String FN_KEY                 = "fn";
     public static String FN1_KEY                = "fn1";

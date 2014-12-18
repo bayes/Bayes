@@ -330,7 +330,7 @@ public class FidReader {
         spec                =   utilities.cFFT. truncateOrPad(spec, n_pad);
 
         spec                =   utilities.cFFT.shift    (spec, (float)Math.PI );
-        spec                =   utilities.cFFT.fft      (spec, 1 );
+        spec                =   utilities.cFFT.fft      (spec, procpar.getFftSign());
 
 
         
