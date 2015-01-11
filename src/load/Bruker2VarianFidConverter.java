@@ -56,10 +56,12 @@ public class Bruker2VarianFidConverter {
             float[][] real = reader.getFid_real() ;
             float[][] imag = reader.getFid_imag() ;
             
-            float[][] shiftedReal = truncate(real,paramsReader );
-            float[][] shiftedImag = truncate(imag,paramsReader );
+            float[][] truncatedReal = truncate(real,paramsReader );
+            float[][] truncatedImag = truncate(imag,paramsReader );
+            
+            flipEvenPoints(truncatedImag);
            
-            fidWriter.writeFid( fidDst, shiftedReal, shiftedImag);
+            fidWriter.writeFid( fidDst, truncatedReal, truncatedImag);
         } catch(IOException exp){
             exp.printStackTrace();
             DisplayText.popupMessage("Failed to write fid binary file.");
@@ -128,6 +130,25 @@ public class Bruker2VarianFidConverter {
                  
          return shiftedData;
      }
+     public static void  flipEvenPoints(float [][] imag ){
+         int dim1               =   imag.length;
+         
+         //outer loop - e.g. trace 1,2 3,4 
+         for (int i = 0; i < dim1; i++) {
+             int dim2  = imag[i].length;
+             
+             // inner loop  - e.g. iterating through fid 
+             for (int j = 1; j < dim2; j+=2) {
+                 
+                 float hold =imag[i][j];
+                 imag[i][j] = -1.0f * hold;
+                 
+             }
+          
+        }
+                 
+     }
+  
      public static float [][][]  applyBrukerFilter (float [][] real, float [][] imag, BrukerDataInfo breader ){
          int np                 =   breader.getNp();
          double grpdly          =   breader.getGroupDelay();
