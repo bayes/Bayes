@@ -59,7 +59,7 @@ public class Bruker2VarianFidConverter {
             float[][] truncatedReal = truncate(real,paramsReader );
             float[][] truncatedImag = truncate(imag,paramsReader );
             
-            flipEvenPoints(truncatedImag);
+            flipPoints(truncatedImag);
            
             fidWriter.writeFid( fidDst, truncatedReal, truncatedImag);
         } catch(IOException exp){
@@ -130,18 +130,19 @@ public class Bruker2VarianFidConverter {
                  
          return shiftedData;
      }
-     public static void  flipEvenPoints(float [][] imag ){
-         int dim1               =   imag.length;
+
+     public static void  flipPoints(float [][] data ){
+         int dim1               =   data.length;
          
          //outer loop - e.g. trace 1,2 3,4 
          for (int i = 0; i < dim1; i++) {
-             int dim2  = imag[i].length;
+             int dim2  = data[i].length;
              
              // inner loop  - e.g. iterating through fid 
-             for (int j = 1; j < dim2; j+=2) {
+             for (int j = 0; j < dim2; j+= 1) {
                  
-                 float hold =imag[i][j];
-                 imag[i][j] = -1.0f * hold;
+                 float hold =data[i][j];
+                 data[i][j] = -1.0f * hold;
                  
              }
           
@@ -149,31 +150,6 @@ public class Bruker2VarianFidConverter {
                  
      }
   
-     public static float [][][]  applyBrukerFilter (float [][] real, float [][] imag, BrukerDataInfo breader ){
-         int np                 =   breader.getNp();
-         double grpdly          =   breader.getGroupDelay();
-         float shift            =   (float)(Math.PI + 4*Math.PI*(grpdly/np));
-         int dim1               =   real.length;
-         int dim2               =   real[0].length;
-         float shiftedData  [][][]= new float [2][dim1][dim2];
-         
-         for (int i = 0; i < dim1; i++) {
-            float [][] curFFT = new float[2][dim2];
-            curFFT[0]  = real[i];
-            curFFT[1]  = imag[i];
-            curFFT     = cFFT.doFFT(curFFT, 0, -1);
-            curFFT     = cFFT.shift(curFFT, shift);
-            curFFT     = cFFT.doFFT(curFFT, -Math.PI,1);
-            shiftedData[0][i] = curFFT[0];
-            shiftedData[1][i] = curFFT[1];
-     }
-                 
-                 
-         return shiftedData;
-     }
-     
-  
-    
      public static Procpar BrukerReader2Procpar(  BrukerDataInfo breader ){
         Procpar procpar = new  Procpar();
 
