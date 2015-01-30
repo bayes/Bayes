@@ -153,16 +153,14 @@ public class Bruker2VarianFidConverter {
      public static Procpar BrukerReader2Procpar(  BrukerDataInfo breader ){
         Procpar procpar = new  Procpar();
 
-        int np              =   breader.getNp();
         double sw_hertz     =   breader.getSweepWidthHERTZ();
-        double sw_ppm       =   breader.getSweepWidthPPM();
-        float at            =   (float)(np/2/sw_hertz);
-       // int gyro            =   60;
-         //at            =   (float)(np/(2*sw_ppm*gyro));
         float sfrq          =   (float)breader.getSpectrometerFrequency();
-        int npAfterTruncation = 2*breader.calculateTruncatedDimension();
-        procpar.updateProcpar(at, sfrq, npAfterTruncation);
-        procpar.setFn(npAfterTruncation);
+        
+        // np after trunacation
+        int np              =   2*breader.calculateTruncatedDimension();
+        float at            =   (float)(np/2/sw_hertz);
+        procpar.updateProcpar(at, sfrq, np);
+        procpar.setFn(np);
         procpar.setLb(1f);
         procpar.setArraydim(breader.getNumberOfRepetions());
         procpar.setFftSign(BrukerDataInfo.FFT_SIGN );
