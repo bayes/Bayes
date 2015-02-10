@@ -12,7 +12,6 @@ import java.nio.channels.FileChannel;
  * @author apple
  */
 public class FidWriter {
-    private FidBlockHeader  blockHeader      = new FidBlockHeader();
     private FidFileHeader fileHeader         = new FidFileHeader();
     private Procpar      procpar             = new Procpar();
 
@@ -28,7 +27,6 @@ public class FidWriter {
          *  blockHeader.status  = 0x819
          */
         asignDefaultsForFileHeader();
-        asignDefaultsFoBlockHeader();
         writeFidFile(dist, real, imag);
     }
     public void asignDefaultsForFileHeader(){
@@ -62,18 +60,7 @@ public class FidWriter {
         fileHeader.nbheaders    =  0;
 
        }
-    public void asignDefaultsFoBlockHeader(){
-        blockHeader.scale          = 0;
-        blockHeader.status         = 0x59; // binary representation = 00000101
-        blockHeader.index          = 1;
-        blockHeader.mode           = 0;
-        blockHeader.ctcount        = 1;
-        blockHeader.lpval          = 0f;
-        blockHeader.rpval          = 0f;
-        blockHeader.lvl            = 0f;
-        blockHeader.tlt            = 0f;
-
-       }
+ 
     private void writeFidFile(File dst,  float [][] real, float [][]imag) throws IOException{
          FileOutputStream fos       =   new FileOutputStream(dst);
          FileChannel channel        =   fos.getChannel();
@@ -100,8 +87,13 @@ public class FidWriter {
 
 
            for (int curTrace = 0;  curTrace <  nTotalTraces; curTrace++) {
-               getBlockHeader().index = (short)( curTrace);
-               FidBlockHeader.writeBlockHeader(channel,getBlockHeader());
+               FidBlockHeader blockHeader = getBlockHeader();
+               if(curTrace+1 == nTotalTraces){
+                   blockHeader = getFinalBlockHeader();
+               }
+             
+               blockHeader.index = (short)( curTrace);
+               FidBlockHeader.writeBlockHeader(channel,blockHeader);
 
                    for (int i = 0; i < nComplex; i++) {
                                 buffer.putFloat(real[curTrace][i]) ;
@@ -133,7 +125,6 @@ public class FidWriter {
          *  blockHeader.status  = 0x819
          */
         asignDefaultsForFileHeader();
-        asignDefaultsFoBlockHeader();
 
 
         FileOutputStream     fout   =  new FileOutputStream(dist);
@@ -295,6 +286,25 @@ public class FidWriter {
 
 
     public FidBlockHeader getBlockHeader () {
+        FidBlockHeader blockHeader         = new FidBlockHeader();
+        blockHeader.scale          = 0;
+        blockHeader.status         = 0x59; // binary representation = 00000101
+        //blockHeader.status         = 0x9; // binary representation = 1001 1101
+        blockHeader.status         = 0x9D; // binary representation = 1001 1101
+        
+       
+        blockHeader.index          = 1;
+        blockHeader.mode           = 0;
+        blockHeader.ctcount        = 1;
+        blockHeader.lpval          = 0f;
+        blockHeader.rpval          = 0f;
+        blockHeader.lvl            = 0f;
+        blockHeader.tlt            = 0f;
+        return blockHeader;
+    }
+    public FidBlockHeader getFinalBlockHeader () {
+        FidBlockHeader blockHeader =  getBlockHeader () ;
+        blockHeader.status = 0x1D; // binary representation = 0001 1101
         return blockHeader;
     }
     public FidFileHeader getFileHeader () {
