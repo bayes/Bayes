@@ -55,7 +55,8 @@ public class FidWriter {
         fileHeader.vers_id     = 0;
 
         //status of whole file
-        fileHeader.status      = 0x819; // binary representation = 100000011001
+        //fileHeader.status      = 0x819; // binary representation = 100000011001
+        fileHeader.status      = 0x1D; // binary representation = 000000011101
 
         //number of headers per block
         fileHeader.nbheaders    =  0;
