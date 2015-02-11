@@ -408,7 +408,10 @@ public class BrukerDataInfo implements BrukerConstants{
    }
    
    public int getNumberOfTraces(){
-    return this.getNs();
+//       As it turns out the number of traces in a Bruker FID is always 1.
+//Unlike Varian, Bruker writes out multiple files each containing a
+//single trace.  So just plug 1 in the number of traces.
+    return 1;
    }
 
 
