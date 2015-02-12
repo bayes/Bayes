@@ -106,8 +106,6 @@ public class Procpar implements Serializable, ProcparConstants {
 
     public static final  String regex       =    Pattern.compile("\\s+").pattern();
     private  IMAGE_TYPE  imageType          =   IMAGE_TYPE.SPIN_ECHO;
-    public static final  int DEFAULT_FFT_SIGN = 1; 
-    private int fftSign                     =   DEFAULT_FFT_SIGN;
     
     public Procpar(){};
     public Procpar (String filename) {
@@ -423,17 +421,9 @@ public class Procpar implements Serializable, ProcparConstants {
                     setArray(v);
 
              }
-             //read fft sign
-             else if ( token.equalsIgnoreCase( FFT_TYPE_KEY)  ==  true  ) {
-                    line            =   scanner.nextLine();
-                    line            =   scanner.nextLine();
-                    int val         =   getIntegerValue(line);
-                    setFftSign(val);
-
-             }
-             else {
-                    line            =   scanner.nextLine();
-             }
+         else {
+                line            =   scanner.nextLine();
+         }
 
 
 
@@ -1530,23 +1520,6 @@ public class Procpar implements Serializable, ProcparConstants {
         this.nav_echo = nav_echo;
     }
 
-    public int getFftSign() {
-        return fftSign;
-    }
-
-    public void setFftSign(int fftSign) {
-        double sign = fftSign/ Math.abs(fftSign);
-        this.fftSign = (int)fftSign;
-    }
-
-
-
-  
-
-
-  
-
-   
 
 }
    
