@@ -2337,7 +2337,13 @@ public class Nifti1Dataset {
 
 		return(b);
 	}
-		
+	
+        
+        public boolean isComplex(){
+        
+         return datatype == NIFTI_TYPE_COMPLEX64  || datatype ==NIFTI_TYPE_COMPLEX128 ||
+                datatype ==  NIFTI_TYPE_COMPLEX256 ;
+        }
 
 	//////////////////////////////////////////////////////////////////
 	/**

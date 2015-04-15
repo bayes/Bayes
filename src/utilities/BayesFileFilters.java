@@ -257,6 +257,18 @@ public class BayesFileFilters {
             return message;
         }
     };
+    
+        public static class NiftiFileChooserFilter extends javax.swing.filechooser.FileFilter{
+           
+        public boolean accept(File file) {
+            if ( file.isDirectory()      == true)  { return true;}
+            if (file.getName().endsWith(".nii")   == true) { return true;}
+            return false;
+            }
+        public String getDescription() { return ".nii files";}
+        
+    }
+    
 }    
     
     

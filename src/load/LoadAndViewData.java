@@ -20,6 +20,7 @@ import fid.FidModelViewer;
 import image.*;
 import applications.model.*;
 import applications.bayesAnalyze.BayesAnalyze;
+import image.nifti.NiftiLoader;
 import image.siemens.SiemensTo4fdpConverter;
 import java.util.Scanner;
 import image.siemens.SiemensToVarianConverter;
@@ -232,6 +233,20 @@ public class LoadAndViewData {
         VarianBinaryConverter varian2imageConverter = new VarianBinaryConverter();
         varian2imageConverter.loadImage(imgFidDir );
         AllViewers.showImageViewer();
+    }
+    public static void loadNiftiImage(File  src){
+        NiftiLoader  converter        =  new NiftiLoader();
+        boolean isSuccess             =   converter.loadNifti(src);
+        if (isSuccess == false) {return;}
+
+           boolean isWrite                 =    converter.getBinReader().writeImages();
+
+         if (isWrite  == true) {
+            ImageViewer.getInstance().resetImageSettings();
+            ImageViewer.getInstance().loadDefaultFile();
+            AllViewers.showImageViewer();
+
+        }
     }
     public static void loadDicomImage(File  src){
         Dicom2ImgConverter converter        =  new Dicom2ImgConverter();

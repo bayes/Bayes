@@ -60,6 +60,14 @@ public class DataLoader {
         return dataFileChooser ;
 
     }
+    public static JFileChooser getNiftiImageFileChooser(){
+        dataFileChooser.setMultiSelectionEnabled(true);
+        dataFileChooser.setFileSelectionMode (javax.swing.JFileChooser.FILES_AND_DIRECTORIES);
+        dataFileChooser.setFileFilter( new utilities.BayesFileFilters. NiftiFileChooserFilter ());
+        dataFileChooser.setDialogTitle("Load .nii Nifti Image");
+        return dataFileChooser ;
+
+    }
     public static JFileChooser getRawBinaryFileChooser(){
         dataFileChooser.setMultiSelectionEnabled(false);
         dataFileChooser.setFileSelectionMode (javax.swing.JFileChooser.FILES_ONLY);
@@ -224,6 +232,19 @@ public class DataLoader {
 
                 File [] files               = fc.getSelectedFiles();
                 LoadAndViewData.loadStandardBinaryImage(files);
+        }
+    }
+    public static void  loadNifti(){
+        JFileChooser fc         =    getNiftiImageFileChooser();
+        int returnVal           =    fc.showOpenDialog(null);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+                // remember for future loads
+                DirectoryManager.startDir   = fc.getCurrentDirectory();
+
+                //File [] files               = fc.getSelectedFiles();
+                File file               = fc.getSelectedFile();
+                LoadAndViewData.loadNiftiImage(file);
         }
     }
     public static void  loadGeneralBinary(){

@@ -252,6 +252,7 @@ public class BayesView extends FrameView implements
         ima2imageMenuItem = new javax.swing.JMenuItem();
         DicomMenuItem = new javax.swing.JMenuItem();
         jpgMenuItem = new javax.swing.JMenuItem();
+        niftiMenuItem = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JSeparator();
         loadAbscissaMenu = new javax.swing.JMenu();
         loadAbscissaMenuItem = new javax.swing.JMenuItem();
@@ -458,6 +459,11 @@ public class BayesView extends FrameView implements
         jpgMenuItem.setName("jpgMenuItem"); // NOI18N
         jpgMenuItem.addActionListener(formListener);
         loadImageMenu.add(jpgMenuItem);
+
+        niftiMenuItem.setText("Nifti");
+        niftiMenuItem.setName("niftiMenuItem"); // NOI18N
+        niftiMenuItem.addActionListener(formListener);
+        loadImageMenu.add(niftiMenuItem);
 
         fileMenu.add(loadImageMenu);
 
@@ -853,6 +859,9 @@ public class BayesView extends FrameView implements
             else if (evt.getSource() == text2FidMenuItem) {
                 BayesView.this.text2FidMenuItemActionPerformed(evt);
             }
+            else if (evt.getSource() == BrukerBinaryMenuItem) {
+                BayesView.this.BrukerBinaryMenuItemActionPerformed(evt);
+            }
             else if (evt.getSource() == varianBinaryMenuItem) {
                 BayesView.this.varianBinaryMenuItemActionPerformed(evt);
             }
@@ -1039,8 +1048,8 @@ public class BayesView extends FrameView implements
             else if (evt.getSource() == contactTimeMenuItem) {
                 BayesView.this.packageMenuActionPerformed(evt);
             }
-            else if (evt.getSource() == BrukerBinaryMenuItem) {
-                BayesView.this.BrukerBinaryMenuItemActionPerformed(evt);
+            else if (evt.getSource() == niftiMenuItem) {
+                BayesView.this.niftiMenuItemActionPerformed(evt);
             }
         }
     }// </editor-fold>//GEN-END:initComponents
@@ -1217,6 +1226,10 @@ private void currentViewerScreenShotActionPerformed(java.awt.event.ActionEvent e
         }
             
     }//GEN-LAST:event_BrukerBinaryMenuItemActionPerformed
+
+    private void niftiMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_niftiMenuItemActionPerformed
+         DataLoader.loadNifti(); 
+    }//GEN-LAST:event_niftiMenuItemActionPerformed
 
 
 /****** actions start ************/
@@ -1894,6 +1907,7 @@ private void expMenuItemStateChanged(java.awt.event.ItemEvent evt) {
     private javax.swing.JMenuItem multiple2seqMenuItem;
     private javax.swing.JRadioButtonMenuItem mzTKineticsMenuItem;
     private javax.swing.JRadioButtonMenuItem mzTMenuItem;
+    private javax.swing.JMenuItem niftiMenuItem;
     private javax.swing.JMenu optionsMenu;
     javax.swing.ButtonGroup packageButtonGroup;
     private javax.swing.JMenu packageMenu;
