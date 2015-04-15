@@ -55,6 +55,7 @@ public class BinaryReader {
         public boolean isValid(){
             if (this ==  GRAY_SIGNED_16BIT_INT ){return true;}
             else if(this == GRAY_SIGNED_32BIT_INT ){return true;}
+            else if(this == GRAY_SIGNED_32BIT_FLOAT ){return true;}
             else{
                 return false;
             }
