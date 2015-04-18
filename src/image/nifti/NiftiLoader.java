@@ -26,6 +26,13 @@ public class NiftiLoader {
                 nds.readHeader();
                 nds.printHeader();
                 
+                String magic = nds.magic.toString();
+                if (!magic.equalsIgnoreCase(Nifti1Dataset.NII_MAGIC_STRING)){
+                    String msg = String.format("Unsupported nifti format. "
+                            + "Magic number is %s. " ,magic);
+                
+                }
+                
                 // set byte order
                 ByteOrder byteOrder = (nds.big_endian) ? ByteOrder.BIG_ENDIAN :ByteOrder.LITTLE_ENDIAN ;
                 binReader.setByteOrder(byteOrder);
@@ -33,7 +40,7 @@ public class NiftiLoader {
                 binReader.setComplex(nds.isComplex());
                 binReader.setGapBeforeImages(false);
                 binReader.setGapBetweenImagesInBytes(0);
-                binReader.setFirstImageOffsetInBytes(352);
+                binReader.setFirstImageOffsetInBytes(Math.round(nds.vox_offset));
                 binReader.setHeight(nds.XDIM);
                 binReader.setWidth(nds.YDIM);
                 binReader.setNumberOfSlices(nds.ZDIM);
