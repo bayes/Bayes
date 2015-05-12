@@ -5,10 +5,8 @@
 package image.nifti;
 
 import image.raw.BinaryReader;
-import static image.raw.BinaryReader.*;
 import image.raw.BinaryReader.BINARY_TYPE;
 import java.io.File;
-import java.io.IOException;
 import java.nio.ByteOrder;
 import utilities.DisplayText;
 
@@ -52,6 +50,8 @@ public class NiftiLoader {
                     case Nifti1Dataset.NIFTI_TYPE_INT32: btype = BINARY_TYPE.GRAY_SIGNED_32BIT_INT; break;
                     case Nifti1Dataset.NIFTI_TYPE_INT16: btype = BINARY_TYPE.GRAY_SIGNED_16BIT_INT; break;
                     case Nifti1Dataset.NIFTI_TYPE_FLOAT32: btype = BINARY_TYPE.GRAY_SIGNED_32BIT_FLOAT; break;
+                    case Nifti1Dataset.NIFTI_TYPE_FLOAT64: btype = BINARY_TYPE.GRAY_SIGNED_64BIT_FLOAT; break;
+
                 }
                 binReader.setImageType(btype);
                 

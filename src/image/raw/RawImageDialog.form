@@ -99,7 +99,7 @@
         <Component class="javax.swing.JComboBox" name="imageTypeCB">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;new BINARY_TYPE[] {&#xa;BINARY_TYPE.GRAY_SIGNED_16BIT_INT, &#xa;BINARY_TYPE.GRAY_SIGNED_32BIT_INT,  &#xa;BINARY_TYPE.GRAY_SIGNED_32BIT_FLOAT&#xa;})" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;new BINARY_TYPE[] {&#xa;BINARY_TYPE.GRAY_SIGNED_16BIT_INT, &#xa;BINARY_TYPE.GRAY_SIGNED_32BIT_INT,  &#xa;BINARY_TYPE.GRAY_SIGNED_32BIT_FLOAT,&#xa;BINARY_TYPE.GRAY_SIGNED_64BIT_FLOAT&#xa;})" type="code"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;margin: 6px;&quot;&gt;&lt;font size=&quot;4&quot;&gt;&#xa;&lt;p&gt;&#xa;Specify image type.&#xa;&#xa;&lt;/p&gt;&#xa;&#xa;&lt;/html&gt;&#xa;&#xa;&#xa;" noResource="true"/>
             <Property name="name" type="java.lang.String" value="imageTypeCB" noResource="true"/>

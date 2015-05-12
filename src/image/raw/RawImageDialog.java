@@ -159,7 +159,8 @@ public class RawImageDialog extends javax.swing.JDialog {
             new BINARY_TYPE[] {
                 BINARY_TYPE.GRAY_SIGNED_16BIT_INT,
                 BINARY_TYPE.GRAY_SIGNED_32BIT_INT,
-                BINARY_TYPE.GRAY_SIGNED_32BIT_FLOAT
+                BINARY_TYPE.GRAY_SIGNED_32BIT_FLOAT,
+                BINARY_TYPE.GRAY_SIGNED_64BIT_FLOAT
             }));
             imageTypeCB.setToolTipText("<html><p style=\"margin: 6px;\"><font size=\"4\">\n<p>\nSpecify image type.\n\n</p>\n\n</html>\n\n\n"); // NOI18N
             imageTypeCB.setName("imageTypeCB"); // NOI18N

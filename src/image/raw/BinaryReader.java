@@ -49,6 +49,7 @@ public class BinaryReader {
         GRAY_SIGNED_16BIT_INT       (   "16-bit Gray Signed Int"  , 2),
         GRAY_SIGNED_32BIT_INT       (   "32-bit Gray Signed Int"  , 4),
         GRAY_SIGNED_32BIT_FLOAT     (   "32-bit Gray Signed Float"  , 4),
+        GRAY_SIGNED_64BIT_FLOAT     (   "64-bit Gray Signed Float"  , 8),
         GRAY_UNSIGNED_16BIT         (   "16-bit Gray Signed"  , 2),
         GRAY_UBSIGNED_32BIT         (   "32-bit Gray Signed"  , 4);
 
@@ -56,6 +57,7 @@ public class BinaryReader {
             if (this ==  GRAY_SIGNED_16BIT_INT ){return true;}
             else if(this == GRAY_SIGNED_32BIT_INT ){return true;}
             else if(this == GRAY_SIGNED_32BIT_FLOAT ){return true;}
+            else if(this == GRAY_SIGNED_64BIT_FLOAT ){return true;}
             else{
                 return false;
             }
@@ -375,6 +377,9 @@ public class BinaryReader {
                             case GRAY_SIGNED_32BIT_FLOAT:
                                  val      =   buffer.getFloat();
                                  break;
+                            case GRAY_SIGNED_64BIT_FLOAT:
+                                 val      =   (float)buffer.getDouble();
+                                 break;    
                             default:  val = 0f;
 
 

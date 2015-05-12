@@ -2351,7 +2351,8 @@ public class Nifti1Dataset {
 	* @param args <input dataset>
 	*/
 	public static void main(String[] args) {
-            String path = "/Users/apple/nifti/semsdw_01/vol_image001echo001.nii";  
+//            String path = "/Users/apple/nifti/semsdw_01/vol_image001echo001.nii";  
+            String path = "/Users/apple/nifti/problematic/Carlos#1.nii"; 
             if(args.length > 0 ) 
                 path = args[0];  
 
