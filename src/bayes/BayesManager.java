@@ -69,6 +69,9 @@ public class  BayesManager implements Serializable, ApplicationConstants{
     public static void fireResonanceIsMarked(Object resonance){
         pcs.firePropertyChange(RESONANCE_MARKED ,null,resonance);
     }
+    public static void fireFidReferenceChange(Object resonance){
+        pcs.firePropertyChange(RESONANCE_MARKED ,null,resonance);
+    }
     
  
 

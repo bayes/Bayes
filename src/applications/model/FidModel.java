@@ -10,4 +10,5 @@ package applications.model;
  * @author apple
  */
 public interface FidModel extends Model{
+       public void  fidReferenceFrequncyChange();
 }

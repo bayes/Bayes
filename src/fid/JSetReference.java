@@ -100,7 +100,7 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setLayout(new java.awt.GridLayout(2, 2, 4, 15));
 
-        curValue_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        curValue_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         curValue_lbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         curValue_lbl.setText("Current Value");
         curValue_lbl.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -109,12 +109,11 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
 
         oldF.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 102, 102)));
         oldF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        oldF.setFont(new java.awt.Font("Lucida Grande", 1, 14));
+        oldF.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         oldF.setName("oldF"); // NOI18N
-        oldF.setValue (old_value);
         jPanel2.add(oldF);
 
-        newVaue_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        newVaue_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         newVaue_lbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         newVaue_lbl.setText("New Value");
         newVaue_lbl.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -139,14 +138,14 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
         setLeftButton.addActionListener(formListener);
         jPanel3.add(setLeftButton);
 
-        setRightButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        setRightButton.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         setRightButton.setText("Set Rightmost frequency to 0");
         setRightButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         setRightButton.setName("setRightButton"); // NOI18N
         setRightButton.addActionListener(formListener);
         jPanel3.add(setRightButton);
 
-        setCenterButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        setCenterButton.setFont(new java.awt.Font("Lucida Grande", 1, 14));
         setCenterButton.setText("Set Center frequency to 0");
         setCenterButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         setCenterButton.setName("setCenterButton"); // NOI18N
@@ -154,9 +153,9 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
         jPanel3.add(setCenterButton);
 
         jPanel4.setName("jPanel4"); // NOI18N
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        cancelButon.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        cancelButon.setFont(new java.awt.Font("Lucida Grande", 1, 16));
         cancelButon.setText("CANCEL");
         cancelButon.setName("cancelButon"); // NOI18N
         cancelButon.addActionListener(formListener);
@@ -205,13 +204,7 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
     private class FormListener implements java.awt.event.ActionListener, java.awt.event.WindowListener {
         FormListener() {}
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            if (evt.getSource() == cancelButon) {
-                JSetReference.this.cancelButonActionPerformed(evt);
-            }
-            else if (evt.getSource() == set_button) {
-                JSetReference.this.set_buttonActionPerformed(evt);
-            }
-            else if (evt.getSource() == setLeftButton) {
+            if (evt.getSource() == setLeftButton) {
                 JSetReference.this.setLeftButtonActionPerformed(evt);
             }
             else if (evt.getSource() == setRightButton) {
@@ -219,6 +212,12 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
             }
             else if (evt.getSource() == setCenterButton) {
                 JSetReference.this.setCenterButtonActionPerformed(evt);
+            }
+            else if (evt.getSource() == cancelButon) {
+                JSetReference.this.cancelButonActionPerformed(evt);
+            }
+            else if (evt.getSource() == set_button) {
+                JSetReference.this.set_buttonActionPerformed(evt);
             }
         }
 
@@ -350,7 +349,7 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
 
         Model model =  PackageManager.getCurrentApplication();
         if (model != null && model instanceof FidModel){
-           model.reset();
+           ((FidModel)model).fidReferenceFrequncyChange();
         }
 
         interfacebeans.JAllPriors.getInstance().updateReferenceFrequency(ref_freq_shift);

@@ -356,13 +356,14 @@ public class BayesWater extends     javax.swing.JPanel
             
           setDefaults() ;
           clearPreviousRun();
+          FidViewer.getInstance().updatePlot();
 
-            FidViewer.getInstance().updatePlot();
+        // show defualt viewer
+         AllViewers.getInstance().showDefaultViewer();
 
-
-            // show defualt viewer
-            AllViewers.getInstance().showDefaultViewer();
-
+    }
+    public void              fidReferenceFrequncyChange(){
+        reset();
     }
     public void              clearPreviousRun(){
         Reset.clearFidResutls();

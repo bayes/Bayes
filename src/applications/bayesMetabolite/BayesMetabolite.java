@@ -273,6 +273,9 @@ public class BayesMetabolite extends javax.swing.JPanel
             AllViewers.getInstance().showDefaultViewer();
 
     }
+     public void              fidReferenceFrequncyChange(){
+        reset();
+    }
     public void              clearPreviousRun(){
         Reset.clearFidResutls();
 

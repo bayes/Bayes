@@ -614,7 +614,9 @@ private void nMaxRes_ftPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN
            AllViewers.getInstance().showDefaultViewer();
         
     }
-
+    public void              fidReferenceFrequncyChange(){
+        reset();
+    }
     public void              clearPreviousRun(){
 
          Reset.clearFidResutls();

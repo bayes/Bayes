@@ -121,6 +121,7 @@ public interface ApplicationConstants {
     String MODEL_PROGRAM_NAME               = "bayes_model";
     String PARAMETER_IS_SELECTED            = "New parameter prior is selected in JALLPriors";
     String RESONANCE_MARKED                 = "Resonances was marked";
+    String FID_REFERENCE_CHANGED            = "FID Frequency has been changed";
    
     
 

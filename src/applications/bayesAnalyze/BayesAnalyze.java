@@ -121,7 +121,9 @@ public class BayesAnalyze   extends     javax.swing.JPanel
     public void              reset(){
         reset(true, true,true);
     }
-    
+    public void              fidReferenceFrequncyChange(){
+         reset(false, true,true);
+    }
     public void              clearPreviousRun(){
          setIgnoreEvents(true);
           try{
@@ -206,7 +208,7 @@ public class BayesAnalyze   extends     javax.swing.JPanel
         if(evt.getPropertyName().equals(BayesManager.JRUN_JOB_END)  ){
          if (isFidLoaded == false) {return;}
           
-         updateParametersAfterJobWasRetreivedFromServer();
+          updateParametersAfterJobWasRetreivedFromServer();
 
           FidModelViewer.getInstance().unloadData();
           
