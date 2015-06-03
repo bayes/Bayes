@@ -178,7 +178,7 @@ public class FidPlotData   {
 
         }
 
-       axis.setRange(low +shiftInRefFreq , high + shiftInRefFreq);
+       axis.setRange(low + shiftInRefFreq , high + shiftInRefFreq);
 
     }
 

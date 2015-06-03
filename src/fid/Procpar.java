@@ -19,6 +19,7 @@ import bayes.Enums.UNITS;
 import bayes.Enums.IMAGE_TYPE;
 import bayes.Enums.FILE_ORGANIZATION;
 import utilities.IO;
+import static  utilities.MathFunctions.*;
 
 /**
  *
@@ -1020,7 +1021,7 @@ public class Procpar implements Serializable, ProcparConstants {
         sfrq            =   SFRQ;
         np              =   NP;
         sw              =   np/2/at;
-        fn              =   utilities.MathFunctions.getPaddedLength(np);
+        fn              =   getPaddedLength(np);
         lb              =   (float)3.0/at;
         lp              =   0;
         rp              =   0;

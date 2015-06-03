@@ -294,11 +294,18 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
     private void setCenterButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setCenterButtonActionPerformed
       FID_CHART_MODE fidChartMode =   getViewer().getChartPanel().getChartMode();
       if (fidChartMode == FID_CHART_MODE.FID){ return;}
-      double val =   getViewer().getChartPanel().getDataRangeForDomainAxis().getCentralValue();
-      getOldFreqFormattedTextField().setValue(val);
+      
+      float[] frequencies       =    viewer.getFidReader().getFrequencyInHertz ();
+      if(frequencies.length < 2){return;}
+      int centralPoint = frequencies.length/2;
+      float curCenterFreq = frequencies[centralPoint];
+      
+      ref_freq_shift = 0 - curCenterFreq;
+
+      getOldFreqFormattedTextField().setValue(curCenterFreq);
       getNewFreqFormattedTextField().setValue (0);
 
-      close();
+      shiftAndHide();
 }//GEN-LAST:event_setCenterButtonActionPerformed
 
 
@@ -307,9 +314,8 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
         float oldf               =  ( (Number)getOldFreqFormattedTextField().getValue () ).floatValue ();
         float newf               =  ( (Number)getNewFreqFormattedTextField().getValue () ).floatValue ();
         
-        FidReader freader        =   viewer.getFidReader();
-        Procpar procpar          =   freader.getProcpar ();
-        UNITS units              =   freader.getUnits ();
+        Procpar procpar          =   viewer.getProcpar ();
+        UNITS units              =   viewer.getUnits ();
 
         // make sure frequency shift is in hertz
         ref_freq_shift =  newf - oldf;
@@ -318,11 +324,26 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
         }
 
 
+        shiftAndHide();
+       
+    }
+  
+     public void shiftAndHide(){
+        shift();
+        hidePopup();
+    }
+
+    public void hidePopup(){
+         setVisible(false);
+    }
+
+    public void shift(){
+        FidReader freader        =   viewer.getFidReader();
+
         // calculate and record new frequency shift
         float oldRef        =   freader.getReferenceFreqInHertz();
         float ref           =   oldRef - ref_freq_shift;
         viewer.getFidReader().setReferenceFreqInHertz(ref );
-
 
         // write new frequency shift to FFH file
          FidIO.storeToDisk(freader.getFidDescriptor(), viewer.getFidDescriptorFile());
@@ -336,15 +357,11 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
          // delete fid models from memory
          FidModelViewer.getInstance().unloadData();
 
-
-
          // update Axis
-           getViewer().getFidPlotData().changeAxisWithReferenceFrequency(ref_freq_shift);
+        getViewer().getFidPlotData().changeAxisWithReferenceFrequency(ref_freq_shift);
 
          // update plot
-           getViewer().updatePlot();
-        
-       
+        getViewer().updatePlot();
 
 
         Model model =  PackageManager.getCurrentApplication();
@@ -355,8 +372,6 @@ private JSetReference(java.awt.Frame parent, boolean modal) {
         interfacebeans.JAllPriors.getInstance().updateReferenceFrequency(ref_freq_shift);
         setVisible(false);
     }
-  
-
 
     /**
     * @param args the command line arguments

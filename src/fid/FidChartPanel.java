@@ -758,7 +758,7 @@ public class FidChartPanel extends ChartPanel implements ApplicationConstants{
             cursorBJavaX    =   pos;
             cursorBplotX    =   java2DToPlotX(pos);
 
-            this.firePropertyChange(CURSOR_B_IS_DRAWN ,null,cursorBplotX);
+            this.firePropertyChange(CURSOR_B_IS_DRAWN ,null, cursorBplotX);
        } 
     }
     
@@ -1070,6 +1070,19 @@ public class FidChartPanel extends ChartPanel implements ApplicationConstants{
       return range;
     }
 
+    
+    public int getNumberOfPlotPoints(int seriesNumber){
+      XYDataset dataset     = getChart().getXYPlot().getDataset();
+      return dataset.getItemCount(seriesNumber);
+    }
+    
+    public double getDomainDelta(int seriesNumber){
+      XYDataset dataset     = getChart().getXYPlot().getDataset();
+      double p0 = dataset.getXValue(seriesNumber, 0) ;
+      double p1 = dataset.getXValue(seriesNumber, 1) ;
+      return Math.abs(p1 - p0);
+    } 
+    
     public  Range   getLocalDataRange(java.awt.event.MouseEvent evt, int radius){
        int index             = getClosestPointIndex(evt);
 
