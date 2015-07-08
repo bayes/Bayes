@@ -19,7 +19,7 @@ public class  BayesManager implements Serializable, ApplicationConstants{
     private BayesManager(){};
     private static final Object guiProps                = new Object();
     public static final PropertyChangeSupport pcs       = new PropertyChangeSupport(guiProps);
-    public final static String APPLICATION_VERSION      = "4.22";
+    public final static String APPLICATION_VERSION      = "4.23";
     public final static String APPLICATION_TITLE        = "Bayes Data-Analysis Toolkit "+APPLICATION_VERSION ;
 
     
