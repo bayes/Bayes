@@ -87,24 +87,13 @@ public class ASCIIDataViewer extends javax.swing.JPanel
         JFreeChart chart   = ChartFactory.createXYLineChart( 
                                 null, null, null,getXydataset(),PlotOrientation.VERTICAL,
                                 true, this.generateTooltips, false  );
-          NumberAxis rangeaxis = (NumberAxis)chart.getXYPlot().getRangeAxis();
+        NumberAxis rangeaxis = (NumberAxis)chart.getXYPlot().getRangeAxis();
+        NumberAxis domainaxis = (NumberAxis)chart.getXYPlot().getDomainAxis();
+        
+        domainaxis.setAutoRange(true);
         rangeaxis.setAutoRangeIncludesZero(false);
         XYPlot plot         =   (XYPlot)chart .getPlot();
 
-        /*
-        NumberAxis rangeaxis             =  new NumberAxis();
-        rangeaxis.setAutoRangeIncludesZero(false);
-        final  XYItemRenderer renderer             = new XYLineAndShapeRenderer();
-        if (generateTooltips) {
-            renderer.setBaseToolTipGenerator(new StandardXYToolTipGenerator());
-        }
-
-        XYPlot plot                     =  new FastXYPlot(     xydataset,
-                                                                new NumberAxis(),
-                                                                rangeaxis,
-                                                                renderer );
-        JFreeChart chart           = new JFreeChart (plot) ;
- */
         plot.setBackgroundPaint(Color.WHITE);
         plot.setRangeGridlinePaint(Color.BLACK  );
         plot.setDomainGridlinePaint(Color.BLACK );
@@ -118,7 +107,7 @@ public class ASCIIDataViewer extends javax.swing.JPanel
         boolean isPannable = ( plot instanceof Pannable);
         if (isPannable ){
                plot.setDomainPannable(true);
-                plot.setRangePannable(true);
+               plot.setRangePannable(true);
          }
  // System.out.println(" Stop Initializing chart panel Ascii data viewer");
         return  chartPane;
@@ -394,34 +383,6 @@ public class ASCIIDataViewer extends javax.swing.JPanel
     private void infoButtonActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
         viewAsciiInfo();
 }//GEN-LAST:event_infoButtonActionPerformed
-    public void fileToXYSeries(File file, int [][] plotInstuctions)throws IOException
-    {
-            // clear all series
-            getXydataset().removeAllSeries ();
-
-            if ( plotInstuctions != null){
-                for (int i = 0; i < plotInstuctions.length; i++) {
-                    int x_col       = plotInstuctions[i][0] + 1;
-                    int y_col       = plotInstuctions[i][1] + 1;
-                    double [] x     = IO.nASCI2double (file, x_col);
-                    double [] y     = IO.nASCI2double (file, y_col);
-                    addDataSeries (x ,y,file.getName());
-                }
-
-            }
-            else{
-                int numCol      =   IO.getNumberOfColumns(file);
-                double [] x     =   IO.nASCI2double (file, 1);
-
-                for (int i = 2; i <= numCol ; i++) {
-                    double [] y = IO.nASCI2double (file, i);
-                    addDataSeries (x ,y,file.getName()+"series"+i);
-                }
-
-            }
-
-
-    }
 
     public static void      loadFiles( File [] files){
             File dir            =   DirectoryManager.getBayesOtherAnalysisDir();
@@ -441,80 +402,14 @@ public class ASCIIDataViewer extends javax.swing.JPanel
 
     }
 
-    public void readDataFuture(int [][] plot_instructions, File file) throws IOException{
-        int nseries                     =    plot_instructions.length;
-
-        long t1         =System.nanoTime();
-        String content                  =    IO.readFileToString(file);
-        long t2         =System.nanoTime();double  time = (t2 - t1)*1E-9;
-        System.out.println("Time to read File"+time);
-
-    
-        // maximum trace number
-        int maxTraceNumber                =   0;
-        for (int curInts = 0; curInts < plot_instructions.length; curInts++) {
-            for (int curVal = 0; curVal < plot_instructions[curInts].length; curVal++) {
-                    maxTraceNumber        = Math.max(maxTraceNumber,  plot_instructions[curInts][curVal]);
-            }
-
-        }
-
-        // count number of lines in the file
-        int numberOfLines           =      0;
-        Scanner scanner             =    new Scanner(content );
-        while (scanner.hasNextLine()){
-                        scanner.nextLine();
-                        numberOfLines +=1;
-        }
-        scanner.close();
-
-        // read all required data
-        int numberOfColumnsToRead   =   maxTraceNumber + 1;
-        double [][] alldata         =   new double [ numberOfColumnsToRead][numberOfLines];
-
-t1=System.nanoTime();
-        scanner             =    new Scanner(content );
-        for (int curLine = 0; curLine < numberOfLines ; curLine++) {
-            for (int curCol = 0; curCol < alldata.length ; curCol++) {
-                    double val  = scanner.nextDouble();
-                    alldata[curCol][curLine] = val;
-            }
-            scanner.nextLine();
-
-        }
-        scanner.close();
- t2 =System.nanoTime(); time = (t2 - t1)*1E-9;
- System.out.println("Time to parse file "+time);
-
-t1=System.nanoTime();
-         for (int i = 0; i < nseries ; i++) {
-            String seriesName           =   "Data Series "+ i;
-            XYSeries curSeries          =    new XYSeries(seriesName);
-            int [] instructions         =    plot_instructions[i];
-            int  colX                   =    instructions[0];
-            int  colY                   =    instructions[1];
-           //  System.out.println("colX  "+ colX  + "colY  "+ colY );
-             for (int curPoint = 0; curPoint < numberOfLines ; curPoint++) {
-                    double x  = alldata[colX][curPoint] ;
-                    double y  = alldata[colY][curPoint] ;
-                    curSeries.add(x, y);
-             }
-            getXydataset().addSeries(curSeries);
-        }
-
- t2 =System.nanoTime(); time = (t2 - t1)*1E-9;
- System.out.println("Time to populate xydataseries "+time);
-
-    }
 
     public static void main(String [] arg){
         int [][] plot_instructions = {{0,1}, {0,2}};
         File file        = new File("/Users/apple/Bayes/Exp3/BayesOtherAnalysis/002.dat");
         ASCIIDataViewer v = new ASCIIDataViewer();
-        long t1         =System.nanoTime();
+        long t1  = System.nanoTime();
         try{
             for (int i = 0; i < 10; i++) {
-                System.out.println(i);
              v.readData(plot_instructions, file);
             }
 
@@ -532,9 +427,9 @@ t1=System.nanoTime();
     public void updateData(){
         
         getJListOfFiles().removeListSelectionListener(instance);
-
-            DefaultListModel newList = generateDefaultListModel();
-            getJListOfFiles().setModel(newList);
+       
+        DefaultListModel newList = generateDefaultListModel();
+        getJListOfFiles().setModel(newList);
         getJListOfFiles().addListSelectionListener(instance);
         
         
@@ -553,8 +448,14 @@ t1=System.nanoTime();
   
     private  void       addDataSeries(double [] x , double [] y, String xySeriesName){
         XYSeries series     = new XYSeries	(xySeriesName);
-        for (int i = 0; i < x.length;  i++ ){series.add(x[i], y[i]);}
+        
+        for (int i = 0; i < x.length;  i++ ){ 
+            series.add(x[i], y[i]);
+        }
         getXydataset().addSeries(series );
+        
+        boolean isInverted = ( x.length > 2 && x[1] <  x[0] )? true : false;
+        getXAxis().setInverted(isInverted);
     } 
     private void         deleteCurrentlySelectedData(){
          if (getJListOfFiles().isSelectionEmpty() ) { return;}
@@ -564,12 +465,10 @@ t1=System.nanoTime();
          
          getJListOfFiles().removeListSelectionListener(this);
 
-            deleteFile(curFile);
+         deleteFile(curFile);
             
-
          getJListOfFiles().addListSelectionListener(this);
         
-       
          int newInd         = (i > 0)? i-1 : 0;
          getJListOfFiles().setSelectedIndex(newInd);
        
@@ -616,6 +515,7 @@ t1=System.nanoTime();
        frame.pack ();
        frame.setVisible (true);
     } 
+    
     public  void showGUI (JComponent pane) {   
        if (pane == null) {
           // showGUI(new JFrame());
@@ -635,10 +535,7 @@ t1=System.nanoTime();
 
         XYPlot plot         =    getPlot();
    
-
-      //  XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) plot.getRenderer();
-
-         XYLineAndShapeRenderer renderer  = new XYLineAndShapeRenderer();
+        XYLineAndShapeRenderer renderer  = new XYLineAndShapeRenderer();
         renderer.setAutoPopulateSeriesStroke(false);
         renderer.setAutoPopulateSeriesPaint(false);
         renderer.setAutoPopulateSeriesShape(false);
@@ -665,6 +562,7 @@ t1=System.nanoTime();
         }
         return plot_instructions ;
     }
+     
      public  static DefaultListModel generateDefaultListModel(){
         DefaultListModel dm     =   new DefaultListModel();
         File [] files           =    DirectoryManager.getAsciiDataFiles();
@@ -673,7 +571,6 @@ t1=System.nanoTime();
         Arrays.sort(files);
         for (int i = 0; i < files.length; i++) {
             dm.add(i, files[i]);
-
         }
         return dm;
     }
@@ -700,6 +597,15 @@ t1=System.nanoTime();
      public  JFreeChart getChart(){
         return chartPanel.getChart();
      }
+     
+      public  NumberAxis getYAxis(){
+        return  (NumberAxis)chartPanel.getChart().getXYPlot().getRangeAxis();
+     }
+      
+     public  NumberAxis getXAxis(){
+        return  (NumberAxis)chartPanel.getChart().getXYPlot().getDomainAxis();
+     }
+     
      public  void clearPlot(){
              getXydataset ().removeAllSeries();
      }
