@@ -354,16 +354,14 @@ public class ASCIIDataViewer extends javax.swing.JPanel
                 });
                 popup.add(  delteAllMenuItem );
 
-
-           
-
                 JMenuItem viewMenuItem     = new JMenuItem ("View as text");
                 viewMenuItem .addActionListener (new ActionListener (){
                 public void actionPerformed (ActionEvent e) {
-                                    viewAsciiFile();
+                        viewAsciiFile();
                 }});
                 popup.add ( viewMenuItem);
                 popup.add (new JSeparator());
+                
                 JMenuItem infoMenuItem     = new JMenuItem ("Show info");
                 infoMenuItem.addActionListener (new ActionListener (){
                 public void actionPerformed (ActionEvent e) {
