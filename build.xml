@@ -85,35 +85,39 @@
 
           <signjar
             destDir="${sign.dir}"
-            alias="bayeskey"
-            keystore="/home/larry/.keystore"
-            storepass="PissOff22"
-            keypass="PissOff22"
+            alias="radest02bmr702"
+            keystore="/home/larry/NetBeansProjects/keystore.jks"
+            storepass="Lubriderm.4"
+            keypass="Lubriderm.4"
             preservelastmodified="true"
             verbose="true"
             executable="/usr/bin/jarsigner"
+            tsaurl= "http://tsa.starfieldtech.com"
             >
           <path>
             <fileset dir="dist" includes="*.jar" />
           </path>
           <flattenmapper />
-        </signjar>
+ 
+          </signjar>
 
          <signjar
 
             destDir="${signLibDirName}"
-            alias="bayeskey"
-            keystore="/home/larry/.keystore"
-            storepass="PissOff22"
-            keypass="PissOff22"
+            alias="radest02bmr702"
+            keystore="/home/larry/NetBeansProjects/keystore.jks"
+            storepass="Lubriderm.4"
+            keypass="Lubriderm.4"
             preservelastmodified="true"
             verbose="true"
             executable="/usr/bin/jarsigner"
+            tsaurl= "http://tsa.starfieldtech.com"
             >
           <path>
             <fileset dir="dist" includes="lib/*.jar" />
           </path>
           <flattenmapper />
         </signjar>
+
     </target>
 </project>
