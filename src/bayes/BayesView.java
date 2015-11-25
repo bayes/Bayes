@@ -73,6 +73,7 @@ public class BayesView extends FrameView implements
     private javax.swing.JRadioButtonMenuItem selectedPackageMenutItem;
     public static boolean debug = false;
 
+//BayesView
     public BayesView(SingleFrameApplication app) {
         super(app);
 
