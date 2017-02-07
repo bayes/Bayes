@@ -85,13 +85,13 @@
 
           <signjar
             destDir="${sign.dir}"
-            alias="radest02bmr702"
-            keystore="/home/larry/NetBeansProjects/keystore.jks"
+            alias="codesigncert2017"
+            keystore="${user.home}/bayesCert/keystore.jks"
             storepass="Lubriderm.4"
             keypass="Lubriderm.4"
             preservelastmodified="true"
             verbose="true"
-            executable="/usr/bin/jarsigner"
+            executable="jarsigner"
             tsaurl= "http://tsa.starfieldtech.com"
             >
           <path>
@@ -104,13 +104,13 @@
          <signjar
 
             destDir="${signLibDirName}"
-            alias="radest02bmr702"
-            keystore="/home/larry/NetBeansProjects/keystore.jks"
+            alias="codesigncert2017"
+            keystore="${user.home}/bayesCert/keystore.jks"
             storepass="Lubriderm.4"
             keypass="Lubriderm.4"
             preservelastmodified="true"
             verbose="true"
-            executable="/usr/bin/jarsigner"
+            executable="jarsigner"
             tsaurl= "http://tsa.starfieldtech.com"
             >
           <path>
